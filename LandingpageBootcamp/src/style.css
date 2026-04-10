@@ -67,15 +67,14 @@ html {
   transform: translateY(0);
 }
 
-/* Marquee Animation */
+/* Marquee Animation (Left to Right) */
 @keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-100%);
-  }
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0%); }
+}
+@keyframes marquee2 {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(100%); }
 }
 
 .animate-marquee {
@@ -83,7 +82,7 @@ html {
 }
 
 .animate-marquee2 {
-  animation: marquee 30s linear infinite;
+  animation: marquee2 30s linear infinite;
 }
 
 /* Timeline Connector */

@@ -1,106 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Mastery Bootcamp | AI Mastery Workshop</title>
-  <!-- SEO Meta Tags -->
-  <meta name="description"
-    content="Premium AI training for professionals. AI Mastery Bootcamp.">
-  <!-- Google Fonts: Poppins -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Font Awesome -->
+  <meta name="description" content="Premium AI training for professionals. AI Mastery Bootcamp.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Razorpay Inside Head -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
+<body class="font-[Poppins] text-gray-900 overflow-x-hidden pt-28 bg-[#F7F8FC] selection:bg-[#3D2C8D] selection:text-white">
 
-<body class="font-poppins text-gray-900 overflow-x-hidden pt-28 bg-[#F7F8FC]">
+  <!-- Grid Background -->
+  <div class="absolute inset-0 z-0 h-[2200px] pointer-events-none opacity-[0.1] bg-[linear-gradient(to_right,#3D2C8D_1px,transparent_1px),linear-gradient(to_bottom,#3D2C8D_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_40%_at_50%_0%,#000_70%,transparent_100%)]"></div>
 
-  <!-- NAVIGATION -->
-  <nav
-    class="fixed top-4 left-4 right-4 md:left-auto md:right-auto md:w-[95%] max-w-7xl md:mx-auto bg-white/95 backdrop-blur-md border border-gray-100 z-50 h-[72px] flex items-center shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-full transition-all">
+  <!-- NAVIGATION PILL -->
+  <nav class="fixed top-4 left-4 right-4 md:left-auto md:right-auto md:w-[95%] max-w-7xl md:mx-auto bg-white/95 backdrop-blur-md border border-gray-100 z-50 h-[72px] flex items-center shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-full transition-all">
     <div class="px-6 md:px-8 w-full flex items-center justify-between">
-      <a href="#" class="flex items-center gap-2 text-xl font-bold text-[#3D2C8D]">
-        <i class="fas fa-brain"></i>
-        <span>AI Mastery Workshop</span>
+      <a href="#" class="flex items-center gap-2 text-xl font-black text-[#3D2C8D]">
+        <i class="fas fa-brain text-[#3D2C8D]"></i>
+        <span>Bootcamp Pro.</span>
       </a>
 
-      <div class="hidden md:flex items-center gap-8 font-semibold text-sm">
-        <a href="#bootcamp" class="hover:text-[#3D2C8D] transition-colors">AI Bootcamp</a>
-        <a href="#about" class="hover:text-[#3D2C8D] transition-colors">About Us</a>
-        <a href="#faq" class="hover:text-[#3D2C8D] transition-colors">FAQs</a>
-        <button onclick="document.getElementById('enroll').scrollIntoView()"
-          class="bg-[#3D2C8D] text-white px-6 py-2 rounded-full hover:shadow-lg transition-all shadow-indigo/20">Enroll
-          Now</button>
+      <div class="hidden md:flex items-center gap-8 font-bold text-sm text-[#1E1B4B]">
+        <a href="#home" class="hover:text-[#3D2C8D] transition-colors">Home</a>
+        <a href="#syllabus" class="hover:text-[#3D2C8D] transition-colors">Curriculum</a>
+        <a href="#faq" class="hover:text-[#3D2C8D] transition-colors">FAQ</a>
+        <button onclick="document.getElementById('enroll').scrollIntoView()" class="bg-[#3D2C8D] text-white px-6 py-2.5 rounded-full hover:shadow-lg hover:-translate-y-0.5 transition-all shadow-[#3D2C8D]/20">Reserve Seat</button>
       </div>
-
-      <button id="mobile-menu-button" class="md:hidden text-2xl p-2">
-        <i class="fas fa-bars"></i>
-      </button>
+      <button class="md:hidden text-2xl p-2 text-[#3D2C8D]"><i class="fas fa-bars"></i></button>
     </div>
   </nav>
 
-  <!-- MOBILE MENU -->
-  <div id="mobile-menu"
-    class="fixed inset-0 bg-white z-[60] flex flex-col items-center justify-center gap-8 text-2xl font-bold hidden">
-    <button id="close-menu" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-gray-900"><i
-        class="fas fa-times"></i></button>
-    <a href="#bootcamp">AI Bootcamp</a>
-    <a href="#about">About Us</a>
-    <a href="#faq">FAQs</a>
-    <button class="bg-[#3D2C8D] text-white px-10 py-3 rounded-full">Enroll Now</button>
-  </div>
-
   <!-- HERO SECTION -->
-  <section id="home" class="relative pt-12 pb-32 md:pb-48 bg-gradient-to-b from-[#EEF2FF] to-[#F7F8FC]">
+  <section id="home" class="relative pt-24 pb-32 md:pb-48 bg-gradient-to-b from-[#EEF2FF] to-[#F7F8FC]">
     <div class="max-w-7xl mx-auto px-4 relative z-10">
       <div class="text-center max-w-4xl mx-auto">
-        <span class="inline-block px-5 py-2 bg-[#3D2C8D]/10 text-[#3D2C8D] rounded-full text-[10px] font-black uppercase mb-6 tracking-widest border border-[#3D2C8D]/20">For Professionals</span>
-        <h1 class="text-5xl md:text-7xl font-extrabold mb-6 text-[#1E1B4B] tracking-tight leading-tight">AI Mastery <br />Bootcamp</h1>
-        <p class="text-lg md:text-xl text-gray-600 mb-10 italic font-medium max-w-2xl mx-auto">"Level up your workflow with industry-grade AI."</p>
+        <span class="inline-block px-5 py-2 bg-[#3D2C8D]/10 text-[#3D2C8D] rounded-full text-[10px] font-black uppercase mb-6 tracking-widest border border-[#3D2C8D]/20">For Professionals & Students</span>
+        <h1 class="text-5xl md:text-7xl font-black mb-6 text-[#1E1B4B] tracking-tight leading-tight">AI Mastery <br /><span class="text-[#3D2C8D]">Bootcamp</span></h1>
+        <p class="text-lg md:text-xl text-gray-600 mb-10 italic font-medium max-w-2xl mx-auto">"Level up your workflow with industry-grade AI strategy."</p>
 
-        <button onclick="document.getElementById('bootcamp').scrollIntoView()"
-          class="btn bg-[#3D2C8D] text-white px-10 py-4 rounded-full text-lg font-bold shadow-xl shadow-[#3D2C8D]/30 hover:-translate-y-1 transition-transform">Reserve
-          Your Seat <i class="fas fa-arrow-right text-sm ml-2"></i></button>
-        <p class="text-center text-xs text-gray-500 italic font-medium mt-4">⚡ Limited seats per batch</p>
+        <button onclick="document.getElementById('syllabus').scrollIntoView()"
+          class="btn bg-[#3D2C8D] mx-auto w-max text-white px-10 py-5 rounded-full text-lg font-black shadow-xl shadow-[#3D2C8D]/30 hover:-translate-y-1 transition-transform">Get Started <i class="fas fa-arrow-right text-sm ml-2"></i></button>
       </div>
 
       <!-- Overlapping Stats Grid -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-5xl mx-auto relative top-20 md:top-32">
-        <div class="bg-white p-6 md:p-8 rounded-[24px] shadow-[0_20px_40px_rgb(0,0,0,0.06)] border border-gray-50 text-center hover:-translate-y-2 transition-transform">
-          <span class="block text-4xl md:text-5xl font-black text-[#3D2C8D] mb-2" data-count="30">30</span>
-          <span class="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-widest">AI Tools</span>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto relative top-20 md:top-32 px-4 md:px-0">
+        <div class="bg-white p-6 rounded-[24px] shadow-[0_20px_40px_rgb(0,0,0,0.06)] border border-gray-50 text-center hover:-translate-y-2 transition-transform flex flex-col justify-center">
+          <span class="block text-4xl md:text-5xl font-black text-[#3D2C8D] mb-1">2</span>
+          <span class="block text-xl md:text-2xl font-black text-[#3D2C8D] mb-2">Days</span>
+          <span class="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-widest leading-relaxed">Intensive<br/>Workshop</span>
         </div>
-        <div class="bg-white p-6 md:p-8 rounded-[24px] shadow-[0_20px_40px_rgb(0,0,0,0.06)] border border-gray-50 text-center hover:-translate-y-2 transition-transform">
-          <span class="block text-4xl md:text-5xl font-black text-[#3D2C8D] mb-2" data-count="2">2</span>
-          <span class="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-widest">Intense Days</span>
+        <div class="bg-white p-6 rounded-[24px] shadow-[0_20px_40px_rgb(0,0,0,0.06)] border border-gray-50 text-center hover:-translate-y-2 transition-transform flex flex-col justify-center">
+          <span class="block text-4xl md:text-5xl font-black text-[#3D2C8D] mb-1">10</span>
+          <span class="block text-xl md:text-2xl font-black text-[#3D2C8D] mb-2">Sessions</span>
+          <span class="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-widest leading-relaxed">Across Both<br/>Days</span>
         </div>
-        <div class="bg-white p-6 md:p-8 rounded-[24px] shadow-[0_20px_40px_rgb(0,0,0,0.06)] border border-gray-50 text-center hover:-translate-y-2 transition-transform flex flex-col items-center justify-center">
-          <div class="w-12 h-12 bg-[#3D2C8D]/10 rounded-full flex items-center justify-center text-[#3D2C8D] mb-3"><i class="fas fa-rocket text-xl"></i></div>
-          <span class="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-widest">Accelerate</span>
+        <div class="bg-white p-6 rounded-[24px] shadow-[0_20px_40px_rgb(0,0,0,0.06)] border border-gray-50 text-center hover:-translate-y-2 transition-transform flex flex-col justify-center">
+          <span class="block text-4xl md:text-5xl font-black text-[#3D2C8D] mb-1">30+</span>
+          <span class="block text-xl md:text-2xl font-black text-[#3D2C8D] mb-2">AI Tools</span>
+          <span class="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-widest leading-relaxed">Hands-On<br/>Stack</span>
         </div>
-        <div class="bg-white p-6 md:p-8 rounded-[24px] shadow-[0_20px_40px_rgb(0,0,0,0.06)] border border-gray-50 text-center hover:-translate-y-2 transition-transform flex flex-col items-center justify-center">
-          <div class="w-12 h-12 bg-[#3D2C8D]/10 rounded-full flex items-center justify-center text-[#3D2C8D] mb-3"><i class="fas fa-certificate text-xl"></i></div>
-          <span class="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-widest">Certified</span>
+        <div class="bg-white p-6 rounded-[24px] shadow-[0_20px_40px_rgb(0,0,0,0.06)] border border-gray-50 text-center hover:-translate-y-2 transition-transform flex flex-col justify-center">
+          <span class="block text-4xl md:text-5xl font-black text-[#3D2C8D] mb-1">0</span>
+          <span class="block text-xl md:text-2xl font-black text-[#3D2C8D] mb-2">Coding Req.</span>
+          <span class="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-widest leading-relaxed">No Tech<br/>Background</span>
         </div>
       </div>
     </div>
   </section>
+  <div class="h-32 bg-[#F7F8FC]"></div>
 
   <!-- LOGO/TRUST BAND -->
-  <div class="pt-32 md:pt-48 pb-20 bg-white border-b border-gray-100 overflow-hidden relative z-0">
-    <h4 class="text-center font-bold text-gray-400 text-xs tracking-widest uppercase mb-8">Trusted by professionals across India</h4>
+  <div class="pt-16 pb-20 bg-white border-b border-gray-100 overflow-hidden relative z-0">
+    <h4 class="text-center font-bold text-gray-400 text-xs tracking-widest uppercase mb-8">Trusted by students & parents across India</h4>
     <div class="relative flex overflow-x-hidden opacity-60">
       <div class="flex animate-marquee whitespace-nowrap items-center py-2">
-        <span class="mx-8 text-sm font-black text-gray-600 flex items-center gap-2"><i class="fas fa-star text-[#3D2C8D] text-[10px]"></i> 20+ AI TOOLS COVERED</span>
+        <span class="mx-8 text-sm font-black text-gray-600 flex items-center gap-2"><i class="fas fa-star text-[#3D2C8D] text-[10px]"></i> 30+ AI TOOLS COVERED</span>
         <span class="mx-8 text-sm font-black text-gray-600 flex items-center gap-2"><i class="fas fa-star text-[#3D2C8D] text-[10px]"></i> NO CODING REQUIRED</span>
         <span class="mx-8 text-sm font-black text-gray-600 flex items-center gap-2"><i class="fas fa-star text-[#3D2C8D] text-[10px]"></i> REAL PROJECTS EVERY SESSION</span>
         <span class="mx-8 text-sm font-black text-gray-600 flex items-center gap-2"><i class="fas fa-star text-[#3D2C8D] text-[10px]"></i> CERTIFICATE OF COMPLETION</span>
       </div>
-      <div class="flex absolute top-0 animate-marquee2 whitespace-nowrap items-center py-2">
-        <span class="mx-8 text-sm font-black text-gray-600 flex items-center gap-2"><i class="fas fa-star text-[#3D2C8D] text-[10px]"></i> 20+ AI TOOLS COVERED</span>
+      <div class="flex absolute top-0 left-0 animate-marquee2 whitespace-nowrap items-center py-2">
+        <span class="mx-8 text-sm font-black text-gray-600 flex items-center gap-2"><i class="fas fa-star text-[#3D2C8D] text-[10px]"></i> 30+ AI TOOLS COVERED</span>
         <span class="mx-8 text-sm font-black text-gray-600 flex items-center gap-2"><i class="fas fa-star text-[#3D2C8D] text-[10px]"></i> NO CODING REQUIRED</span>
         <span class="mx-8 text-sm font-black text-gray-600 flex items-center gap-2"><i class="fas fa-star text-[#3D2C8D] text-[10px]"></i> REAL PROJECTS EVERY SESSION</span>
         <span class="mx-8 text-sm font-black text-gray-600 flex items-center gap-2"><i class="fas fa-star text-[#3D2C8D] text-[10px]"></i> CERTIFICATE OF COMPLETION</span>
@@ -108,93 +91,595 @@
     </div>
   </div>
 
-  <!-- DIVIDER QUOTE -->
-  <section class="bg-[#F7F8FC] py-24 text-center px-4 relative border-b border-gray-100">
-    <div class="max-w-4xl mx-auto">
-      <i class="fas fa-quote-left text-5xl text-[#3D2C8D] opacity-20 mb-8 block"></i>
-      <h2 class="text-3xl md:text-5xl font-black mb-10 leading-tight text-[#1E1B4B]">
-        "What took a developer 2 weeks in 2020 — anyone can build it in 45 minutes today."
-      </h2>
-      <div class="flex flex-col md:flex-row justify-center gap-6">
-        <button onclick="document.getElementById('bootcamp').scrollIntoView()" class="px-10 py-4 bg-white border border-gray-200 shadow-sm rounded-full font-bold hover:shadow-md transition-shadow text-[#1E1B4B] cursor-pointer">Explore Curriculum ↓</button>
+  <!-- LEARNING PLAN SECTION -->
+  <section id="syllabus" class="py-24 relative bg-white border-b border-gray-100">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl md:text-[2.5rem] font-black text-center mb-16 text-[#1E1B4B]">The <span class="text-[#3D2C8D]">Professional</span> Journey</h2>
+      
+
+      <!-- Tab Content Card -->
+      <div class="bg-white border-4 border-[#F5F3FF] rounded-[32px] p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)] mb-14" data-aos="fade-up">
+        <div class="flex flex-col md:flex-row gap-12 items-center">
+          <div class="w-full md:w-[45%]">
+            <div class="bg-black rounded-[24px] overflow-hidden aspect-video relative shadow-xl">
+               <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover">
+               <div class="absolute inset-0 bg-[#3D2C8D]/20 mix-blend-multiply"></div>
+            </div>
+          </div>
+          <div class="w-full md:w-[55%]">
+            <div class="flex justify-between items-start mb-6">
+               <span class="bg-[#3D2C8D] text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm">Workshop Overview</span>
+               <div class="w-8 h-8 bg-[#3D2C8D]/10 rounded-full flex items-center justify-center"><i class="fas fa-rocket text-[#3D2C8D]"></i></div>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-black mb-6 text-[#1E1B4B]">AI Foundations & Strategic Prompting</h3>
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-start gap-4 text-sm font-bold text-gray-700"><span class="w-2.5 h-2.5 bg-[#3D2C8D] rounded-full mt-1.5 shrink-0 shadow-sm"></span> <span>Deep dive into LLM architectures (GPT-4o, Claude 3.5, Gemini 1.5 Pro)</span></li>
+              <li class="flex items-start gap-4 text-sm font-bold text-gray-700"><span class="w-2.5 h-2.5 bg-[#3D2C8D] rounded-full mt-1.5 shrink-0 shadow-sm"></span> <span>Advanced Prompt Engineering: Chain-of-Thought & Multi-shot frameworks</span></li>
+              <li class="flex items-start gap-4 text-sm font-bold text-gray-700"><span class="w-2.5 h-2.5 bg-[#3D2C8D] rounded-full mt-1.5 shrink-0 shadow-sm"></span> <span>Building personalized workflow agents & Persona simulations</span></li>
+              <li class="flex items-start gap-4 text-sm font-bold text-gray-700"><span class="w-2.5 h-2.5 bg-[#3D2C8D] rounded-full mt-1.5 shrink-0 shadow-sm"></span> <span>Ethical AI practices & Data security for corporate environments</span></li>
+            </ul>
+            <div class="bg-[#EEF2FF] border border-[#3D2C8D]/20 rounded-2xl p-5 text-xs text-[#1E1B4B] font-semibold flex gap-4 items-start">
+              <i class="fas fa-lightbulb text-[#3D2C8D] text-lg"></i>
+              <p>Takeaway: Master the core logic of AI to automate 40% of your daily administrative tasks and high-level decision making.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <a href="/AI_Mastery_Bootcamp_Curriculum.pdf" download class="inline-block border-2 border-[#3D2C8D] text-[#3D2C8D] font-bold py-4 px-12 rounded-full hover:bg-[#3D2C8D] hover:text-white transition-all hover:shadow-xl"><i class="fas fa-download mr-2"></i> Download Full Syllabus</a>
       </div>
     </div>
   </section>
 
-  <!-- SECTION B: PRO BOOTCAMP -->
-  <section id="bootcamp" class="py-24 bg-white px-4">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16 fade-in">
-        <span class="inline-block px-5 py-2 bg-[#3D2C8D]/10 text-[#3D2C8D] rounded-full text-[10px] font-black uppercase mb-6 tracking-widest border border-[#3D2C8D]/20">Professionals & Students</span>
-        <h2 class="text-4xl md:text-5xl font-black mb-6 text-[#1E1B4B]">AI Mastery Bootcamp</h2>
-        <h3 class="text-2xl md:text-3xl font-bold text-gray-600">Two days. Thirty tools. One complete skill set.</h3>
+  <!-- DELIVERABLES SECTION -->
+  <section class="py-24 bg-[#F7F8FC]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="mb-12 border-b-4 border-[#3D2C8D] pb-4">
+        <h2 class="text-2xl md:text-3xl font-black text-[#1E1B4B] uppercase tracking-tight">WHAT YOU WILL WALK AWAY WITH</h2>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-24">
-        <!-- Adani styled cards for Day 1 and Day 2 grid -->
-        <div class="bg-[#F7F8FC] p-10 rounded-[24px] border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.06)] transition-shadow fade-in relative overflow-hidden group">
-          <div class="absolute top-0 right-0 w-32 h-32 bg-[#3D2C8D]/5 rounded-bl-[100px] -z-0"></div>
-          <h4 class="text-2xl font-black mb-8 text-[#3D2C8D] relative z-10 flex items-center gap-3"><i class="fas fa-calendar-day"></i> Day 1</h4>
-          <ul class="space-y-6 font-bold text-[#1E1B4B] relative z-10">
-            <li class="flex items-center gap-4"><span class="w-10 h-10 rounded-full bg-white text-[#3D2C8D] shadow-sm flex items-center justify-center text-sm border border-gray-100"><i class="fas fa-check"></i></span> Personal prompt library</li>
-            <li class="flex items-center gap-4"><span class="w-10 h-10 rounded-full bg-white text-[#3D2C8D] shadow-sm flex items-center justify-center text-sm border border-gray-100"><i class="fas fa-check"></i></span> Your first Custom GPT Assistant</li>
-            <li class="flex items-center gap-4"><span class="w-10 h-10 rounded-full bg-white text-[#3D2C8D] shadow-sm flex items-center justify-center text-sm border border-gray-100"><i class="fas fa-check"></i></span> AI-generated visual board</li>
-          </ul>
+      <div class="bg-white border border-gray-200 rounded-[12px] overflow-hidden shadow-sm" data-aos="fade-up">
+        <div class="overflow-x-auto w-full">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-[#1E1B4B] text-white text-sm font-bold">
+                <th class="p-4 md:p-6 border-r border-[#3D2C8D]/20 w-1/2">Day 1 Deliverables</th>
+                <th class="p-4 md:p-6 w-1/2">Day 2 Deliverables</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-700 text-sm md:text-base font-medium">
+              <tr class="border-b border-gray-100 italic">
+                <td class="p-4 md:p-6 border-r border-gray-100">A personal prompt library with 5 frameworks ready to use</td>
+                <td class="p-4 md:p-6">A live no-code website or landing page built by you</td>
+              </tr>
+              <tr class="border-b border-gray-100">
+                <td class="p-4 md:p-6 border-r border-gray-100">Your first Custom GPT tuned to your role or subject</td>
+                <td class="p-4 md:p-6">An AI automation workflow mapped and partially built</td>
+              </tr>
+              <tr class="border-b border-gray-100 italic">
+                <td class="p-4 md:p-6 border-r border-gray-100">AI-generated research report on a topic you choose</td>
+                <td class="p-4 md:p-6">A voice agent concept or AI calling flow designed</td>
+              </tr>
+              <tr class="border-b border-gray-100">
+                <td class="p-4 md:p-6 border-r border-gray-100">A set of AI-generated images or product visuals</td>
+                <td class="p-4 md:p-6">An AI-generated video with voice and avatar overlay</td>
+              </tr>
+              <tr class="border-b border-gray-100 italic">
+                <td class="p-4 md:p-6 border-r border-gray-100">Platform comparison matrix personalised to your needs</td>
+                <td class="p-4 md:p-6">Full understanding of how Agents, n8n & Make work</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="bg-[#F7F8FC] p-10 rounded-[24px] border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.06)] transition-shadow fade-in relative overflow-hidden group">
-          <div class="absolute top-0 left-0 w-32 h-32 bg-[#3D2C8D]/5 rounded-br-[100px] -z-0"></div>
-          <h4 class="text-2xl font-black mb-8 text-[#3D2C8D] relative z-10 flex items-center gap-3"><i class="fas fa-calendar-day"></i> Day 2</h4>
-          <ul class="space-y-6 font-bold text-[#1E1B4B] relative z-10">
-            <li class="flex items-center gap-4"><span class="w-10 h-10 rounded-full bg-white text-[#3D2C8D] shadow-sm flex items-center justify-center text-sm border border-gray-100"><i class="fas fa-check"></i></span> Live no-code website published</li>
-            <li class="flex items-center gap-4"><span class="w-10 h-10 rounded-full bg-white text-[#3D2C8D] shadow-sm flex items-center justify-center text-sm border border-gray-100"><i class="fas fa-check"></i></span> AI Automation workflow (Make.com)</li>
-            <li class="flex items-center gap-4"><span class="w-10 h-10 rounded-full bg-white text-[#3D2C8D] shadow-sm flex items-center justify-center text-sm border border-gray-100"><i class="fas fa-check"></i></span> Voice & Video Agents</li>
-          </ul>
+      </div>
+      
+      <div class="text-center mt-12">
+        <button onclick="document.getElementById('enroll').scrollIntoView()" class="bg-[#3D2C8D] text-white font-black py-4 px-12 rounded-full shadow-[0_10px_20px_rgba(61,44,141,0.3)] hover:-translate-y-1 transition-all text-lg hover:bg-[#2b1f69]">Secure Your Spot</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 WEEKS SKILLS -->
+  <section class="py-24 bg-white relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
+      <h2 class="text-3xl md:text-[2.5rem] font-black text-center mb-16 text-[#1E1B4B]">Master <span class="text-[#3D2C8D]">4 High-Income</span> AI Skills</h2>
+
+      <div class="bg-[#F7F8FC] rounded-[32px] shadow-[0_10px_40px_rgb(0,0,0,0.03)] border-2 border-indigo-50/50 flex flex-col md:flex-row items-stretch overflow-hidden max-w-4xl mx-auto relative group">
+        <div class="md:w-[45%] relative aspect-[4/3] md:aspect-auto overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-r from-[#3D2C8D]/90 to-[#3D2C8D]/40 mix-blend-multiply"></div>
+          <div class="absolute inset-0 flex items-center justify-center p-8">
+            <div class="border-2 border-white/30 bg-white/10 backdrop-blur-md rounded-2xl p-6 transform -rotate-3 hover:rotate-0 transition-transform shadow-2xl text-center">
+              <i class="fas fa-microchip text-white text-3xl mb-3"></i>
+              <h3 class="text-white font-black text-2xl uppercase tracking-widest shadow-sm">Industry<br/><span class="text-white">Workflows</span></h3>
+            </div>
+          </div>
+        </div>
+        <div class="md:w-[55%] py-12 px-8 md:px-12 flex flex-col justify-center gap-8 bg-white">
+          <div class="flex items-start gap-5">
+            <div class="w-10 h-10 rounded-full bg-[#3D2C8D]/10 flex items-center justify-center shrink-0 mt-1"><i class="fas fa-terminal text-[#3D2C8D] text-lg"></i></div>
+            <div>
+              <h4 class="font-bold text-[#1E1B4B] text-[15px] mb-2">Prompt Strategy & Design Patterns</h4>
+              <p class="text-[11px] md:text-xs text-gray-500 font-medium leading-relaxed bg-[#F7F8FC] p-3 rounded-xl border border-gray-100 hover:shadow-sm transition-shadow">
+                Master advanced frameworks like Zero-shot, Chain-of-Thought, and RAG-optimization to build high-performance AI prompts for enterprise-level outputs.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-5">
+            <div class="w-10 h-10 rounded-full bg-[#3D2C8D]/10 flex items-center justify-center shrink-0 mt-1"><i class="fas fa-play-circle text-[#3D2C8D] text-lg"></i></div>
+            <div>
+              <h4 class="font-bold text-[#1E1B4B] text-[15px] mb-2">AI Media & Content Production</h4>
+              <p class="text-[11px] md:text-xs text-gray-500 font-medium leading-relaxed bg-[#F7F8FC] p-3 rounded-xl border border-gray-100 hover:shadow-sm transition-shadow">
+                Generate studio-quality brand assets, marketing videos, and voiceovers using specialized AI tools (Midjourney, Runway, ElevenLabs) for professional campaigns.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-5">
+            <div class="w-10 h-10 rounded-full bg-[#3D2C8D]/10 flex items-center justify-center shrink-0 mt-1"><i class="fas fa-layer-group text-[#3D2C8D] text-lg"></i></div>
+            <div>
+              <h4 class="font-bold text-[#1E1B4B] text-[15px] mb-2">Build Internal Tools without Code</h4>
+              <p class="text-[11px] md:text-xs text-gray-500 font-medium leading-relaxed bg-[#F7F8FC] p-3 rounded-xl border border-gray-100 hover:shadow-sm transition-shadow">
+                Create custom dashboards, CRM integrations, and micro-SaaS applications using Vibe Coding and No-Code platforms—no technical degree required.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-5">
+            <div class="w-10 h-10 rounded-full bg-[#3D2C8D]/10 flex items-center justify-center shrink-0 mt-1"><i class="fas fa-link text-[#3D2C8D] text-lg"></i></div>
+            <div>
+              <h4 class="font-bold text-[#1E1B4B] text-[15px] mb-2">Workflow & Agentic Automation</h4>
+              <p class="text-[11px] md:text-xs text-gray-500 font-medium leading-relaxed bg-[#F7F8FC] p-3 rounded-xl border border-gray-100 hover:shadow-sm transition-shadow">
+                Design multi-step automated agents that research, draft, and publish work autonomously, connecting AI directly to your existing software stack.
+              </p>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER & WHATSAPP -->
-  <footer class="bg-white py-16 border-t border-gray-200">
-    <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-12 mb-12">
-      <div>
-        <a href="#" class="flex items-center gap-2 text-2xl font-black text-[#3D2C8D] mb-6">
-          <i class="fas fa-brain"></i>
-          <span>Bootcamp Pro.</span>
-        </a>
-        <p class="text-gray-500 font-medium leading-relaxed mb-6">The future belongs to those who know how to automate and build with artificial intelligence.</p>
+  <!-- OVERVIEW & STATS -->
+  <section class="py-24 bg-[#F7F8FC] border-y border-gray-100 relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <div class="mb-16 border-b-2 border-[#3D2C8D] pb-3 text-left inline-block">
+        <h2 class="text-xl md:text-2xl font-black text-[#3D2C8D] uppercase tracking-wide">Professional Learning Path</h2>
       </div>
-      <div>
-        <h4 class="font-bold text-[#1E1B4B] mb-6 text-lg">Quick Links</h4>
-        <ul class="space-y-4 text-gray-600 font-medium">
-          <li><a href="#home" class="hover:text-[#3D2C8D] transition-colors">Home</a></li>
-          <li><a href="#bootcamp" class="hover:text-[#3D2C8D] transition-colors">Syllabus</a></li>
-          <li><a href="#about" class="hover:text-[#3D2C8D] transition-colors">About Us</a></li>
-          <li><a href="#enroll" class="hover:text-[#3D2C8D] transition-colors">Reserve Seat</a></li>
-        </ul>
+      
+      <div class="bg-white rounded-[32px] p-8 md:p-12 shadow-[0_10px_40px_rgb(0,0,0,0.06)] border border-gray-100 mb-24 max-w-5xl mx-auto">
+        <h3 class="text-center font-black text-2xl md:text-3xl text-gray-700 mb-16">The Professional Journey</h3>
+        
+        <!-- Timeline Graphic -->
+        <div class="relative flex flex-col md:flex-row justify-between items-start gap-8 md:gap-0 mb-20 px-4 md:px-0">
+          <div class="hidden md:block absolute top-[28px] left-[10%] right-[10%] h-[20px] z-0">
+             <svg width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 1000 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,20 Q125,0 250,20 Q375,0 500,20 Q625,0 750,20 Q875,0 1000,20" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="6 6" fill="none"/>
+             </svg>
+          </div>
+
+          <!-- Step 1 -->
+          <div class="flex flex-col items-center text-center relative z-10 w-full md:w-1/5 group">
+             <div class="w-20 h-20 bg-indigo-50 rounded-full flex items-center justify-center border-[6px] border-white shadow-md mb-4 group-hover:-translate-y-2 transition-transform">
+                <i class="fas fa-glasses text-3xl text-[#3D2C8D]"></i>
+             </div>
+             <h4 class="font-black text-sm text-[#3D2C8D] mb-2 text-center">AI Strategy</h4>
+             <p class="text-[10px] font-bold text-gray-500 px-2 leading-relaxed text-center">Identifying AI opportunities in your role</p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="flex flex-col items-center text-center relative z-10 w-full md:w-1/5 group">
+             <div class="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center border-[6px] border-white shadow-md mb-4 group-hover:-translate-y-2 transition-transform">
+                <i class="fas fa-pen-nib text-3xl text-blue-500"></i>
+             </div>
+             <h4 class="font-black text-sm text-blue-500 mb-2 text-center">Content Mastery</h4>
+             <p class="text-[10px] font-bold text-gray-500 px-2 leading-relaxed text-center">Scaling high-quality output with GenAI</p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="flex flex-col items-center text-center relative z-10 w-full md:w-1/5 group">
+             <div class="w-20 h-20 bg-purple-50 rounded-full flex items-center justify-center border-[6px] border-white shadow-md mb-4 group-hover:-translate-y-2 transition-transform">
+                <i class="fas fa-project-diagram text-3xl text-purple-500"></i>
+             </div>
+             <h4 class="font-black text-sm text-purple-500 mb-2 leading-tight text-center">No-Code Build</h4>
+             <p class="text-[10px] font-bold text-gray-500 px-2 leading-relaxed text-center">Deploying custom internal business tools</p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="flex flex-col items-center text-center relative z-10 w-full md:w-1/5 group">
+             <div class="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center border-[6px] border-white shadow-md mb-4 group-hover:-translate-y-2 transition-transform">
+                <i class="fas fa-bolt text-3xl text-emerald-500"></i>
+             </div>
+             <h4 class="font-black text-sm text-emerald-500 mb-2 text-center">Automation</h4>
+             <p class="text-[10px] font-bold text-gray-500 px-2 leading-relaxed text-center">Connecting agents to live workflows</p>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="flex flex-col items-center text-center relative z-10 w-full md:w-1/5 group">
+             <div class="w-20 h-20 bg-[#F5F3FF] rounded-full flex items-center justify-center border-[6px] border-white shadow-md mb-4 group-hover:-translate-y-2 transition-transform">
+                <i class="fas fa-certificate text-3xl text-[#3D2C8D]"></i>
+             </div>
+             <h4 class="font-black text-sm text-[#3D2C8D] mb-2 text-center">Certification</h4>
+             <p class="text-[10px] font-bold text-gray-500 px-2 leading-relaxed text-center">Showcasing your AI transformation</p>
+          </div>
+        </div>
+
+        <!-- Table -->
+        <div class="overflow-x-auto rounded-[16px] border border-gray-200">
+           <table class="w-full text-left border-collapse min-w-[700px]">
+              <thead>
+                <tr class="bg-[#2B1B61] text-white font-bold text-sm">
+                   <th class="p-5 pl-8 w-[15%] text-left">Week</th>
+                   <th class="p-5 border-l border-[#3D2C8D] w-[35%] tracking-wide text-left">Theme</th>
+                   <th class="p-5 border-l border-[#3D2C8D] w-[50%] tracking-wide text-left">Major Deliverable</th>
+                </tr>
+              </thead>
+              <tbody class="text-[13px] md:text-sm font-medium text-gray-700 bg-white">
+                 <tr class="border-b border-gray-100 hover:bg-[#F7F8FC]">
+                   <td class="p-5 pl-8">Week 1</td>
+                   <td class="p-5 border-l border-gray-100">AI Strategy & Prompt Engineering</td>
+                   <td class="p-5 border-l border-gray-100 text-gray-600">Personal Productivity Agent + Prompt Library</td>
+                 </tr>
+                 <tr class="border-b border-gray-100 hover:bg-[#F7F8FC]">
+                   <td class="p-5 pl-8">Week 2</td>
+                   <td class="p-5 border-l border-gray-100">Professional Media Production</td>
+                   <td class="p-5 border-l border-gray-100 text-gray-600">AI Content Strategy + Brand Asset Pack</td>
+                 </tr>
+                 <tr class="border-b border-gray-100 hover:bg-[#F7F8FC]">
+                   <td class="p-5 pl-8">Week 3</td>
+                   <td class="p-5 border-l border-gray-100">No-Code Application Building</td>
+                   <td class="p-5 border-l border-gray-100 text-gray-600">Custom Business Dashboard + Automated CRM</td>
+                 </tr>
+                 <tr class="hover:bg-[#F7F8FC]">
+                   <td class="p-5 pl-8">Week 4</td>
+                   <td class="p-5 border-l border-gray-100">Workflow Automation & Showcase</td>
+                   <td class="p-5 border-l border-gray-100 text-gray-600">End-to-End Automated Business Workflow</td>
+                 </tr>
+              </tbody>
+           </table>
+        </div>
       </div>
-      <div>
-        <h4 class="font-bold text-[#1E1B4B] mb-6 text-lg">Secure Your Spot</h4>
-        <button onclick="openRazorpay('pro')"
-          class="bg-[#3D2C8D] text-white px-8 py-3 rounded-full font-bold shadow-lg shadow-[#3D2C8D]/20 hover:-translate-y-1 transition-transform">Join Bootcamp Now</button>
+
+      <!-- BANNER CTA -->
+      <div class="bg-gradient-to-r from-[#3D2C8D] to-[#2B1B61] rounded-[32px] p-10 md:p-14 flex flex-col md:flex-row items-center justify-between mb-24 shadow-[0_20px_40px_rgba(61,44,141,0.2)] relative overflow-hidden max-w-5xl mx-auto">
+         <div class="absolute inset-0 opacity-10"><i class="fas fa-brain text-[200px] absolute -right-10 -bottom-10 text-white"></i></div>
+         <div class="relative z-10 text-center md:text-left mb-8 md:mb-0">
+           <h3 class="text-3xl md:text-4xl font-black text-white mb-2 tracking-tight uppercase">Don't Get Left Behind</h3>
+           <p class="text-2xl md:text-3xl font-black text-[#EEF2FF] opacity-90">Future-Proof Your Career Today.</p>
+         </div>
+         <div class="relative z-10 text-center md:text-right">
+           <button onclick="document.getElementById('enroll').scrollIntoView()" class="bg-white text-[#3D2C8D] font-black py-4 px-12 md:px-14 rounded-full shadow-lg hover:-translate-y-1 transition-all text-lg">Claim Your Seat</button>
+         </div>
+      </div>
+
+      <h2 class="text-3xl md:text-[2.5rem] font-black text-center mb-16 text-[#1E1B4B] tracking-tight">The <span class="text-[#3D2C8D]">Professional</span> Impact</h2>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-6 max-w-5xl mx-auto bg-white p-8 md:p-10 rounded-[32px] shadow-sm border border-gray-100">
+        <div class="md:border-r border-dashed border-gray-200 px-4 flex flex-col items-center md:items-start text-center md:text-left">
+          <div class="w-12 h-12 bg-[#EEF2FF] rounded-full flex items-center justify-center text-[#3D2C8D] font-black text-xl mb-4">40%</div>
+          <p class="text-sm font-bold text-[#1E1B4B] leading-snug mb-3">average productivity gain for AI-enabled pros.</p>
+          <p class="text-[10px] text-gray-400 font-medium uppercase tracking-widest">(Harvard Business Review)</p>
+        </div>
+        <div class="md:border-r border-dashed border-gray-200 px-4 flex flex-col items-center md:items-start text-center md:text-left">
+          <div class="w-12 h-12 bg-[#F5F3FF] rounded-full flex items-center justify-center text-[#3D2C8D] font-black text-xl mb-4">6x</div>
+          <p class="text-sm font-bold text-[#1E1B4B] leading-snug mb-3">higher demand for AI-literate talent.</p>
+          <p class="text-[10px] text-gray-400 font-medium uppercase tracking-widest">(LinkedIn Insights)</p>
+        </div>
+        <div class="md:border-r border-dashed border-gray-200 px-4 flex flex-col items-center md:items-start text-center md:text-left">
+          <div class="w-12 h-auto bg-[#EEF2FF] rounded-full px-4 py-3 flex items-center justify-center text-[#3D2C8D] font-black text-lg mb-4 whitespace-nowrap">20+ hrs</div>
+          <p class="text-sm font-bold text-[#1E1B4B] leading-snug mb-3">saved per week using high-level automation.</p>
+          <p class="text-[10px] text-gray-400 font-medium uppercase tracking-widest">(McKinsey)</p>
+        </div>
+        <div class="px-4 flex flex-col items-center md:items-start text-center md:text-left">
+          <div class="w-12 h-12 bg-[#F5F3FF] rounded-full flex items-center justify-center text-[#3D2C8D] font-black text-xl mb-4">₹15L+</div>
+          <p class="text-sm font-bold text-[#1E1B4B] leading-snug mb-3">salary premium for AI strategic roles.</p>
+          <p class="text-[10px] text-gray-400 font-medium uppercase tracking-widest">(NASSCOM)</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROFESSIONAL EDGE -->
+  <section class="py-24 bg-white relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl md:text-[2.5rem] font-black text-center mb-20 text-[#1E1B4B] tracking-tight">The Strategic <span class="text-[#3D2C8D] border-b-4 border-[#3D2C8D]/20">AI Edge</span> for Professionals</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-aos="fade-up">
+         <!-- Card 1 -->
+         <div class="bg-white rounded-[32px] shadow-[0_10px_40px_rgb(0,0,0,0.06)] border border-gray-100 overflow-hidden flex flex-col group hover:-translate-y-2 transition-transform duration-300">
+           <div class="p-4 pb-0">
+             <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop" class="w-full h-48 object-cover rounded-[24px]">
+           </div>
+           <div class="p-8">
+             <h4 class="font-black text-[#1E1B4B] text-lg mb-5">Automated Data Analysis & Insights</h4>
+             <ul class="space-y-4">
+               <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#3D2C8D] mt-0.5 text-sm"></i> <span class="text-xs text-gray-600 font-bold leading-relaxed">Turn raw spreadsheets into executive summaries and visual dashboards in seconds.</span></li>
+               <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#3D2C8D] mt-0.5 text-sm"></i> <span class="text-xs text-gray-600 font-bold leading-relaxed">Use AI to identify trends, predict outcomes, and support strategic decision-making.</span></li>
+             </ul>
+           </div>
+         </div>
+         <!-- Card 2 -->
+         <div class="bg-white rounded-[32px] shadow-[0_10px_40px_rgb(0,0,0,0.06)] border border-gray-100 overflow-hidden flex flex-col group hover:-translate-y-2 transition-transform duration-300">
+           <div class="p-4 pb-0">
+             <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=600&auto=format&fit=crop" class="w-full h-48 object-cover rounded-[24px]">
+           </div>
+           <div class="p-8">
+             <h4 class="font-black text-[#1E1B4B] text-lg mb-5">Executive Communication & Pres-Gen</h4>
+             <ul class="space-y-4">
+               <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#3D2C8D] mt-0.5 text-sm"></i> <span class="text-xs text-gray-600 font-bold leading-relaxed">Generate high-impact investor decks, proposals, and speeches using AI structure.</span></li>
+               <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#3D2C8D] mt-0.5 text-sm"></i> <span class="text-xs text-gray-600 font-bold leading-relaxed">Draft professional emails and multi-lingual content with consistent brand voice.</span></li>
+             </ul>
+           </div>
+         </div>
+         <!-- Card 3 -->
+         <div class="bg-white rounded-[32px] shadow-[0_10px_40px_rgb(0,0,0,0.06)] border border-gray-100 overflow-hidden flex flex-col group hover:-translate-y-2 transition-transform duration-300">
+           <div class="p-4 pb-0">
+             <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=600&auto=format&fit=crop" class="w-full h-48 object-cover rounded-[24px]">
+           </div>
+           <div class="p-8">
+             <h4 class="font-black text-[#1E1B4B] text-lg mb-5">No-Code Product Prototyping</h4>
+             <ul class="space-y-4">
+               <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#3D2C8D] mt-0.5 text-sm"></i> <span class="text-xs text-gray-600 font-bold leading-relaxed">Build and deploy full-stack web applications and internal tools using only natural language.</span></li>
+               <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#3D2C8D] mt-0.5 text-sm"></i> <span class="text-xs text-gray-600 font-bold leading-relaxed">Iterate on business ideas at 10x speed without hiring expensive developers.</span></li>
+             </ul>
+           </div>
+         </div>
+         <!-- Card 4 -->
+         <div class="bg-white rounded-[32px] shadow-[0_10px_40px_rgb(0,0,0,0.06)] border border-gray-100 overflow-hidden flex flex-col group hover:-translate-y-2 transition-transform duration-300">
+           <div class="p-4 pb-0">
+             <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=600&auto=format&fit=crop" class="w-full h-48 object-cover rounded-[24px]">
+           </div>
+           <div class="p-8">
+             <h4 class="font-black text-[#1E1B4B] text-lg mb-5">Lead Gen & Revenue Operations</h4>
+             <ul class="space-y-4">
+               <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#3D2C8D] mt-0.5 text-sm"></i> <span class="text-xs text-gray-600 font-bold leading-relaxed">Automate personalized outreach, prospect research, and sales follow-up chains.</span></li>
+               <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#3D2C8D] mt-0.5 text-sm"></i> <span class="text-xs text-gray-600 font-bold leading-relaxed">Integrate AI agents into your CRM to manage leads and optimize conversions.</span></li>
+             </ul>
+           </div>
+         </div>
+         <!-- Card 5 -->
+         <div class="bg-white rounded-[32px] shadow-[0_10px_40px_rgb(0,0,0,0.06)] border border-gray-100 overflow-hidden flex flex-col group hover:-translate-y-2 transition-transform duration-300">
+           <div class="p-4 pb-0">
+             <img src="https://images.unsplash.com/photo-1542744094-24638eff58bb?q=80&w=600&auto=format&fit=crop" class="w-full h-48 object-cover rounded-[24px]">
+           </div>
+           <div class="p-8">
+             <h4 class="font-black text-[#1E1B4B] text-lg mb-5">Strategic Content & Brand Ops</h4>
+             <ul class="space-y-4">
+               <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#3D2C8D] mt-0.5 text-sm"></i> <span class="text-xs text-gray-600 font-bold leading-relaxed">Produce high-fidelity marketing visuals, product shots, and video ads in minutes.</span></li>
+               <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#3D2C8D] mt-0.5 text-sm"></i> <span class="text-xs text-gray-600 font-bold leading-relaxed">Manage your entire social media and content pipeline with AI-driven automation.</span></li>
+             </ul>
+           </div>
+         </div>
+         <!-- Card 6 -->
+         <div class="bg-white rounded-[32px] shadow-[0_10px_40px_rgb(0,0,0,0.06)] border border-gray-100 overflow-hidden flex flex-col group hover:-translate-y-2 transition-transform duration-300">
+           <div class="p-4 pb-0">
+             <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=600&auto=format&fit=crop" class="w-full h-48 object-cover rounded-[24px]">
+           </div>
+           <div class="p-8">
+             <h4 class="font-black text-[#1E1B4B] text-lg mb-5">Custom Agent Architecture</h4>
+             <ul class="space-y-4">
+               <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#3D2C8D] mt-0.5 text-sm"></i> <span class="text-xs text-gray-600 font-bold leading-relaxed">Create specialized "Digital Twins" of roles to handle complex, multi-step workflows.</span></li>
+               <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#3D2C8D] mt-0.5 text-sm"></i> <span class="text-xs text-gray-600 font-bold leading-relaxed">Set up autonomous systems that research, execute, and report results while you focus on vision.</span></li>
+             </ul>
+           </div>
+         </div>
+      </div>
+
+      <div class="text-center mt-20 inline-block w-full">
+         <div class="bg-[#EEF2FF] border-2 border-[#3D2C8D]/20 text-[#1E1B4B] inline-block px-8 py-4 rounded-full shadow-lg">
+            <h3 class="text-xl md:text-2xl font-black uppercase tracking-widest"><i class="fas fa-award text-[#3D2C8D] mr-2 text-2xl"></i> Professional Certification <span class="font-bold text-gray-700">Upon Completion</span></h3>
+         </div>
       </div>
     </div>
-    <div class="border-t border-gray-100 max-w-7xl mx-auto px-4 pt-8 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-4">
-      <p class="text-gray-500 font-bold uppercase tracking-widest text-[10px]">© 2026 AI Mastery Workshop. All rights reserved.</p>
-      <div class="flex gap-4">
-        <a href="#" class="w-10 h-10 rounded-full bg-[#F7F8FC] flex items-center justify-center text-gray-600 hover:bg-[#3D2C8D] hover:text-white transition-colors"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="w-10 h-10 rounded-full bg-[#F7F8FC] flex items-center justify-center text-gray-600 hover:bg-[#3D2C8D] hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="w-10 h-10 rounded-full bg-[#F7F8FC] flex items-center justify-center text-gray-600 hover:bg-[#3D2C8D] hover:text-white transition-colors"><i class="fab fa-linkedin-in"></i></a>
+  </section>
+
+  <!-- MENTOR SECTION -->
+  <section class="py-24 bg-[#F7F8FC] relative border-y border-gray-100">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
+      
+      <h2 class="text-3xl md:text-[2.5rem] font-black text-center mb-16 text-[#1E1B4B] tracking-tight uppercase">Meet Your AI Transformation Strategist</h2>
+      
+      <div class="bg-white rounded-[32px] shadow-xl border border-white p-6 md:p-10 flex flex-col md:flex-row items-center gap-12 max-w-4xl mx-auto mb-20 whitespace-pre-line" data-aos="fade-left" data-aos-duration="1000">
+        <div class="md:w-[320px] shrink-0 relative">
+           <div class="absolute inset-0 bg-[#FF8C00] transform translate-y-4 translate-x-4 rounded-[24px]"></div>
+           <img src="/mentor.jpg" alt="Om Mehta" class="rounded-[24px] w-full object-cover shadow-sm relative z-10 h-[380px]">
+        </div>
+        <div class="md:w-2/3">
+           <h3 class="text-2xl md:text-3xl font-black text-[#1E1B4B] mb-2">Om Mehta</h3>
+           <p class="text-[#FF8C00] font-bold text-sm tracking-widest uppercase mb-6">AI Consultant & Trainer</p>
+           
+           <p class="text-xs md:text-sm text-gray-600 mb-5 font-medium leading-relaxed">
+             Founder & CEO of The AI Innovators Club, a brand that has trained teams at leading global enterprises. He specializes in AI-driven productivity, workflow automation, and prompt engineering.
+           </p>
+           <p class="text-xs md:text-sm text-gray-600 mb-5 font-medium leading-relaxed">
+             Trained 10,000+ students across schools. Known for simplifying AI for kids. Featured speaker at major tech conferences and trusted advisor for EdTech implementation strategies.
+           </p>
+           <a href="https://www.linkedin.com/in/om-mehta-222a7a174/?skipRedirect=true" target="_blank" class="bg-[#3D2C8D] text-white text-xs font-bold py-3 px-6 rounded-full hover:bg-[#2b1f69] hover:shadow-lg transition-all flex items-center gap-3 w-max mt-4"><i class="fab fa-linkedin text-lg"></i> View LinkedIn Profile</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-[2.5rem] font-black mb-4 text-[#1E1B4B] tracking-tight uppercase">Frequently Asked <span class="text-[#3D2C8D]">Questions</span></h2>
+        <p class="text-gray-500 font-bold text-sm tracking-wide uppercase">All you need to know about the Bootcamp</p>
+      </div>
+
+      <div class="space-y-4">
+        <!-- FAQ 1 -->
+        <div class="faq-item bg-[#F7F8FC] rounded-2xl p-6 cursor-pointer hover:shadow-sm border border-gray-200 transition-all" onclick="toggleFAQ(this)">
+          <div class="w-full flex items-center justify-between text-left font-black text-[15px] md:text-lg text-[#1E1B4B]">
+            <span>Is this Bootcamp suitable for non-technical professionals?</span>
+            <div class="icon-bg w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#3D2C8D] shadow-sm shrink-0 transition-colors"><i class="fas fa-minus text-sm"></i></div>
+          </div>
+          <div class="faq-answer text-xs md:text-sm font-medium text-gray-500 mt-4 pr-8 leading-relaxed border-t border-gray-200 pt-4 transition-all">
+            Absolutely. In fact, 70% of our previous cohorts were from non-tech backgrounds (Marketing, HR, Finance, and Operations). This program focuses on "Strategic AI Usage"—how to leverage existing tools to solve business problems—rather than writing code. If you can use a browser, you can master these AI tools.
+          </div>
+        </div>
+        <!-- FAQ 2 -->
+        <div class="faq-item bg-white rounded-2xl p-6 cursor-pointer hover:shadow-sm border border-gray-200 transition-all" onclick="toggleFAQ(this)">
+          <div class="w-full flex items-center justify-between text-left font-black text-[15px] md:text-lg text-[#1E1B4B]">
+            <span>What specific outcomes can I expect in my daily work?</span>
+            <div class="icon-bg w-10 h-10 bg-[#F7F8FC] rounded-full flex items-center justify-center text-[#3D2C8D] shrink-0 transition-colors"><i class="fas fa-plus text-sm"></i></div>
+          </div>
+          <div class="faq-answer hidden text-xs md:text-sm font-medium text-gray-500 mt-4 pr-8 leading-relaxed border-t border-gray-200 pt-4 transition-all">
+            You will be able to automate repetitive document work, generate high-fidelity visual assets, build internal data dashboards, and set up autonomous agents to handle lead research and outreach. Most participants report saving 10-15 hours per week by the end of Week 4.
+          </div>
+        </div>
+        <!-- FAQ 3 -->
+        <div class="faq-item bg-white rounded-2xl p-6 cursor-pointer hover:shadow-sm border border-gray-200 transition-all" onclick="toggleFAQ(this)">
+          <div class="w-full flex items-center justify-between text-left font-black text-[15px] md:text-lg text-[#1E1B4B]">
+            <span>Will I receive a formal certification?</span>
+            <div class="icon-bg w-10 h-10 bg-[#F7F8FC] rounded-full flex items-center justify-center text-[#3D2C8D] shrink-0 transition-colors"><i class="fas fa-plus text-sm"></i></div>
+          </div>
+          <div class="faq-answer hidden text-xs md:text-sm font-medium text-gray-500 mt-4 pr-8 leading-relaxed border-t border-gray-200 pt-4 transition-all">
+            Yes. You will receive an industry-recognized Certificate of Completion from the AI Innovators Club. This certification validates your mastery of Prompt Engineering, Workflow Automation, and No-Code Build frameworks, making it a powerful addition to your LinkedIn profile.
+          </div>
+        </div>
+        <!-- FAQ 4 -->
+        <div class="faq-item bg-white rounded-2xl p-6 cursor-pointer hover:shadow-sm border border-gray-200 transition-all" onclick="toggleFAQ(this)">
+          <div class="w-full flex items-center justify-between text-left font-black text-[15px] md:text-lg text-[#1E1B4B]">
+            <span>Are there corporate group discounts or GST invoicing?</span>
+            <div class="icon-bg w-10 h-10 bg-[#F7F8FC] rounded-full flex items-center justify-center text-[#3D2C8D] shrink-0 transition-colors"><i class="fas fa-plus text-sm"></i></div>
+          </div>
+          <div class="faq-answer hidden text-xs md:text-sm font-medium text-gray-500 mt-4 pr-8 leading-relaxed border-t border-gray-200 pt-4 transition-all">
+            Yes, we provide GST-compliant invoices for corporate reimbursements. For group enrollments (5+ participants from the same organization), please reach out to us for specialized team-training rates and executive-focused modules.
+          </div>
+        </div>
+        <!-- FAQ 5 -->
+        <div class="faq-item bg-white rounded-2xl p-6 cursor-pointer hover:shadow-sm border border-gray-200 transition-all" onclick="toggleFAQ(this)">
+          <div class="w-full flex items-center justify-between text-left font-black text-[15px] md:text-lg text-[#1E1B4B]">
+            <span>What happens if I miss a live weekend session?</span>
+            <div class="icon-bg w-10 h-10 bg-[#F7F8FC] rounded-full flex items-center justify-center text-[#3D2C8D] shrink-0 transition-colors"><i class="fas fa-plus text-sm"></i></div>
+          </div>
+          <div class="faq-answer hidden text-xs md:text-sm font-medium text-gray-500 mt-4 pr-8 leading-relaxed border-t border-gray-200 pt-4 transition-all">
+            Every session is recorded in high definition and uploaded to your personal dashboard within 2 hours of completion. You will have lifetime access to these recordings, along with the source materials, tool-lists, and prompt libraries.
+          </div>
+        </div>
+        <!-- FAQ 6 -->
+        <div class="faq-item bg-white rounded-2xl p-6 cursor-pointer hover:shadow-sm border border-gray-200 transition-all" onclick="toggleFAQ(this)">
+          <div class="w-full flex items-center justify-between text-left font-black text-[15px] md:text-lg text-[#1E1B4B]">
+            <span>Will I need to pay for AI tool subscriptions?</span>
+            <div class="icon-bg w-10 h-10 bg-[#F7F8FC] rounded-full flex items-center justify-center text-[#3D2C8D] shrink-0 transition-colors"><i class="fas fa-plus text-sm"></i></div>
+          </div>
+          <div class="faq-answer hidden text-xs md:text-sm font-medium text-gray-500 mt-4 pr-8 leading-relaxed border-t border-gray-200 pt-4 transition-all">
+            We prioritize free-usage tiers for all 30+ tools taught in the program. While we demonstrate advanced features of paid versions (like ChatGPT Plus or Midjourney), you can achieve 90% of the course outcomes using the free tiers we've vetted and selected for this curriculum.
+          </div>
+        </div>
       </div>
     </div>
+  </section>
+  <!-- ENROLL / PRICING SECTION -->
+  <section id="enroll" class="py-24 bg-[#F7F8FC] border-y border-gray-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 relative z-10 w-full">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-[2.5rem] font-black mb-4 text-[#1E1B4B] tracking-tight text-center">Gain Your <span class="text-[#3D2C8D]">Professional Edge</span></h2>
+        <p class="text-gray-500 font-bold text-sm tracking-wide uppercase text-center">Complete AI Transformation for Professionals</p>
+      </div>
+
+      <div class="bg-white max-w-lg mx-auto rounded-[32px] overflow-hidden shadow-[0_20px_40px_rgb(0,0,0,0.08)] border-2 border-[rgb(61,44,141,0.2)] transform hover:-translate-y-2 transition-transform duration-300">
+        <!-- Header -->
+        <div class="bg-[#3D2C8D] p-8 text-center relative overflow-hidden">
+            <div class="absolute inset-0 opacity-20"><i class="fas fa-rocket text-8xl absolute -right-6 -bottom-6 text-white"></i></div>
+            <h3 class="text-2xl font-black text-white relative z-10 uppercase tracking-widest">Mastery Pass</h3>
+            <p class="text-white/80 font-bold text-sm mt-1 relative z-10">4-Week Strategic Mastery Series</p>
+            <div class="mt-6 flex justify-center items-center gap-2 relative z-10">
+                <span class="text-5xl font-black text-white">₹5,000</span>
+            </div>
+            <span class="inline-block mt-3 bg-white/20 px-3 py-1 text-white text-[11px] font-black uppercase tracking-widest rounded-full relative z-10 shadow-sm border border-white/30">Limited Founders Rate</span>
+        </div>
+        
+        <!-- Body / Breakdown -->
+        <div class="p-8 pb-10">
+            <p class="text-[11px] font-black text-gray-400 uppercase tracking-widest mb-6">Program Inclusions</p>
+            <ul class="space-y-4 font-bold text-sm text-[#1E1B4B] mb-10">
+                <li class="flex items-start gap-4">
+                    <span class="w-8 h-8 rounded-full bg-[#3D2C8D]/10 text-[#3D2C8D] flex items-center justify-center shrink-0 border border-[#3D2C8D]/20"><i class="fas fa-check text-xs"></i></span>
+                    <span class="mt-1">8 Executive Training Sessions (Live Sat-Sun)</span>
+                </li>
+                <li class="flex items-start gap-4">
+                    <span class="w-8 h-8 rounded-full bg-[#3D2C8D]/10 text-[#3D2C8D] flex items-center justify-center shrink-0 border border-[#3D2C8D]/20"><i class="fas fa-check text-xs"></i></span>
+                    <span class="mt-1">8 Private Industrial Case Study Projects</span>
+                </li>
+                <li class="flex items-start gap-4">
+                    <span class="w-8 h-8 rounded-full bg-[#3D2C8D]/10 text-[#3D2C8D] flex items-center justify-center shrink-0 border border-[#3D2C8D]/20"><i class="fas fa-check text-xs"></i></span>
+                    <span class="mt-1">Professional Certification & LinkedIn Badge</span>
+                </li>
+                <li class="flex items-start gap-4">
+                    <span class="w-8 h-8 rounded-full bg-[#3D2C8D]/10 text-[#3D2C8D] flex items-center justify-center shrink-0 border border-[#3D2C8D]/20"><i class="fas fa-check text-xs"></i></span>
+                    <span class="mt-1">Vibe Coding Mastery (Build Apps Without Code)</span>
+                </li>
+                <li class="flex items-start gap-4">
+                    <span class="w-8 h-8 rounded-full bg-[#3D2C8D]/10 text-[#3D2C8D] flex items-center justify-center shrink-0 border border-[#3D2C8D]/20"><i class="fas fa-check text-xs"></i></span>
+                    <span class="mt-1">Lifetime Access to AI Library & Prompts</span>
+                </li>
+            </ul>
+            
+            <button onclick="openRazorpay('pro')" class="w-full bg-[#3D2C8D] text-white py-5 rounded-xl font-black text-lg shadow-[0_10px_20px_rgba(61,44,141,0.3)] hover:bg-[#2B1B61] hover:-translate-y-1 hover:shadow-xl transition-all">Secure My Seat</button>
+            <p class="text-center text-[11px] text-gray-500 font-bold mt-4 uppercase tracking-widest"><i class="fas fa-lock text-gray-400 mr-1"></i> SSL Secure Enrollment</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM FOOTER -->
+  <footer class="bg-[#1E1B4B] pt-24 pb-12 relative overflow-hidden text-center">
+      <div class="absolute inset-0 opacity-10"><i class="fas fa-quote-left text-[200px] absolute -left-10 top-10 text-white"></i></div>
+      <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+         <h2 class="text-4xl md:text-5xl font-black text-white leading-tight mb-10 text-center">"What took a developer 2 weeks in 2020 — anyone can build it in 45 minutes today."</h2>
+         
+         <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-10 mt-16 text-center">
+            <h3 class="text-2xl font-black text-white mb-8">Ready to Automate Your Success?</h3>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <button class="bg-[#25D366] text-white font-black py-4 px-10 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105 flex items-center gap-3 w-full sm:w-auto text-lg"><i class="fab fa-whatsapp text-2xl"></i> Support on WhatsApp</button>
+              <button onclick="document.getElementById('enroll').scrollIntoView()" class="bg-[#3D2C8D] text-white font-black py-4 px-10 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105 w-full sm:w-auto text-lg">Secure Your Seat</button>
+            </div>
+         </div>
+      </div>
   </footer>
 
-  <a href="https://wa.me/yournumber"
-    class="fixed bottom-8 right-8 w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center text-4xl shadow-2xl hover:scale-110 active:scale-95 z-[9999] border-4 border-white">
-    <i class="fab fa-whatsapp"></i>
-  </a>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      once: false,
+      mirror: true,
+      duration: 1200,
+      offset: 100,
+    });
 
+    function toggleFAQ(element) {
+      const answer = element.querySelector('.faq-answer');
+      const icon = element.querySelector('i');
+      const iconContainer = element.querySelector('.icon-bg');
+      
+      if (answer.classList.contains('hidden')) {
+         // Open
+         answer.classList.remove('hidden');
+         icon.classList.replace('fa-plus', 'fa-minus');
+         iconContainer.classList.remove('bg-[#F7F8FC]', 'text-[#3D2C8D]');
+         iconContainer.classList.add('bg-white', 'text-[#3D2C8D]', 'shadow-sm');
+         element.classList.remove('bg-white');
+         element.classList.add('bg-[#F7F8FC]');
+      } else {
+         // Close
+         answer.classList.add('hidden');
+         icon.classList.replace('fa-minus', 'fa-plus');
+         iconContainer.classList.remove('bg-white', 'text-[#3D2C8D]', 'shadow-sm');
+         iconContainer.classList.add('bg-[#F7F8FC]', 'text-[#3D2C8D]');
+         element.classList.remove('bg-[#F7F8FC]');
+         element.classList.add('bg-white');
+      }
+    }
+  </script>
   <script type="module" src="/src/main.ts"></script>
 </body>
-
 </html>
