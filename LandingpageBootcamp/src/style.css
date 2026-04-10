@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@theme {
+  --font-poppins: "Poppins", sans-serif;
+  --color-indigo: #3D2C8D;
+  --color-indigo-900: #1E1060;
+  --color-indigo-950: #0F0A2E;
+  --color-indigo-tint: #EEF2FF;
+  /* Slightly more blue */
+  --color-violet: #7B2FBE;
+  --color-cyan: #00C6FF;
+  --color-amber: #FF8C00;
+  --color-amber-tint: #FFF4E6;
+  /* Slightly more peach */
+  --color-amber-parent: #FFF3E0;
+  --color-page-bg: #F0F2F5;
+  /* Slightly darker grey to contrast with cards */
+  --color-marquee-bg: #E5E7EB;
+  /* Darker scroller bg */
+
+  --shadow-premium: 0 10px 30px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 20px 40px rgba(0, 0, 0, 0.08);
+  --radius-xl: 24px;
+}
+
+@layer base {
+  body {
+    @apply font-poppins text-gray-900 overflow-x-hidden pt-16 bg-page-bg;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-8 py-4 rounded-full font-bold transition-all duration-300 transform hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-2;
+  }
+
+  .btn-amber {
+    @apply bg-amber text-white shadow-lg shadow-amber/20 hover:bg-orange-600;
+  }
+
+  .btn-indigo {
+    @apply bg-indigo text-white shadow-lg shadow-indigo/20 hover:bg-indigo-900;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-5xl font-extrabold mb-6 leading-tight;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.glass-nav {
+  @apply bg-white/95 backdrop-blur-md border-b border-gray-200 z-50;
+}
+
+/* Custom animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee2 {
+  animation: marquee 30s linear infinite;
+}
+
+/* Timeline Connector */
+.timeline-connector {
+  @apply hidden md:block absolute top-1/2 left-0 right-0 h-0.5 border-t-2 border-dashed border-amber/30 -translate-y-1/2 -z-10;
+}
+
+/* Floating WhatsApp Button */
+.whatsapp-float {
+  @apply fixed bottom-8 right-8 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-transform active:scale-95 z-[9999];
+}

@@ -1,0 +1,30 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        indigo: {
+          950: '#1a143d',
+          DEFAULT: '#3D2C8D',
+        },
+        violet: {
+          DEFAULT: '#7B2FBE',
+        },
+        cyan: {
+          DEFAULT: '#00C6FF',
+        },
+        amber: {
+          DEFAULT: '#FF8C00',
+        },
+      },
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif'],
+      },
+    },
+  },
+  plugins: [],
+}

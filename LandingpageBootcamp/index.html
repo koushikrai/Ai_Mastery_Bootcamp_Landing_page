@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Mastery Bootcamp | AI Mastery Workshop</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Premium AI training for professionals. AI Mastery Bootcamp.">
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Razorpay Inside Head -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+
+<body class="font-poppins text-gray-900 overflow-x-hidden pt-28 bg-[#F7F8FC]">
+
+  <!-- NAVIGATION -->
+  <nav
+    class="fixed top-4 left-4 right-4 md:left-auto md:right-auto md:w-[95%] max-w-7xl md:mx-auto bg-white/95 backdrop-blur-md border border-gray-100 z-50 h-[72px] flex items-center shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-full transition-all">
+    <div class="px-6 md:px-8 w-full flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2 text-xl font-bold text-[#3D2C8D]">
+        <i class="fas fa-brain"></i>
+        <span>AI Mastery Workshop</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8 font-semibold text-sm">
+        <a href="#bootcamp" class="hover:text-[#3D2C8D] transition-colors">AI Bootcamp</a>
+        <a href="#about" class="hover:text-[#3D2C8D] transition-colors">About Us</a>
+        <a href="#faq" class="hover:text-[#3D2C8D] transition-colors">FAQs</a>
+        <button onclick="document.getElementById('enroll').scrollIntoView()"
+          class="bg-[#3D2C8D] text-white px-6 py-2 rounded-full hover:shadow-lg transition-all shadow-indigo/20">Enroll
+          Now</button>
+      </div>
+
+      <button id="mobile-menu-button" class="md:hidden text-2xl p-2">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div id="mobile-menu"
+    class="fixed inset-0 bg-white z-[60] flex flex-col items-center justify-center gap-8 text-2xl font-bold hidden">
+    <button id="close-menu" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-gray-900"><i
+        class="fas fa-times"></i></button>
+    <a href="#bootcamp">AI Bootcamp</a>
+    <a href="#about">About Us</a>
+    <a href="#faq">FAQs</a>
+    <button class="bg-[#3D2C8D] text-white px-10 py-3 rounded-full">Enroll Now</button>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="relative pt-12 pb-32 md:pb-48 bg-gradient-to-b from-[#EEF2FF] to-[#F7F8FC]">
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+      <div class="text-center max-w-4xl mx-auto">
+        <span class="inline-block px-5 py-2 bg-[#3D2C8D]/10 text-[#3D2C8D] rounded-full text-[10px] font-black uppercase mb-6 tracking-widest border border-[#3D2C8D]/20">For Professionals</span>
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-6 text-[#1E1B4B] tracking-tight leading-tight">AI Mastery <br />Bootcamp</h1>
+        <p class="text-lg md:text-xl text-gray-600 mb-10 italic font-medium max-w-2xl mx-auto">"Level up your workflow with industry-grade AI."</p>
+
+        <button onclick="document.getElementById('bootcamp').scrollIntoView()"
+          class="btn bg-[#3D2C8D] text-white px-10 py-4 rounded-full text-lg font-bold shadow-xl shadow-[#3D2C8D]/30 hover:-translate-y-1 transition-transform">Reserve
+          Your Seat <i class="fas fa-arrow-right text-sm ml-2"></i></button>
+        <p class="text-center text-xs text-gray-500 italic font-medium mt-4">⚡ Limited seats per batch</p>
+      </div>
+
+      <!-- Overlapping Stats Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-5xl mx-auto relative top-20 md:top-32">
+        <div class="bg-white p-6 md:p-8 rounded-[24px] shadow-[0_20px_40px_rgb(0,0,0,0.06)] border border-gray-50 text-center hover:-translate-y-2 transition-transform">
+          <span class="block text-4xl md:text-5xl font-black text-[#3D2C8D] mb-2" data-count="30">30</span>
+          <span class="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-widest">AI Tools</span>
+        </div>
+        <div class="bg-white p-6 md:p-8 rounded-[24px] shadow-[0_20px_40px_rgb(0,0,0,0.06)] border border-gray-50 text-center hover:-translate-y-2 transition-transform">
+          <span class="block text-4xl md:text-5xl font-black text-[#3D2C8D] mb-2" data-count="2">2</span>
+          <span class="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-widest">Intense Days</span>
+        </div>
+        <div class="bg-white p-6 md:p-8 rounded-[24px] shadow-[0_20px_40px_rgb(0,0,0,0.06)] border border-gray-50 text-center hover:-translate-y-2 transition-transform flex flex-col items-center justify-center">
+          <div class="w-12 h-12 bg-[#3D2C8D]/10 rounded-full flex items-center justify-center text-[#3D2C8D] mb-3"><i class="fas fa-rocket text-xl"></i></div>
+          <span class="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-widest">Accelerate</span>
+        </div>
+        <div class="bg-white p-6 md:p-8 rounded-[24px] shadow-[0_20px_40px_rgb(0,0,0,0.06)] border border-gray-50 text-center hover:-translate-y-2 transition-transform flex flex-col items-center justify-center">
+          <div class="w-12 h-12 bg-[#3D2C8D]/10 rounded-full flex items-center justify-center text-[#3D2C8D] mb-3"><i class="fas fa-certificate text-xl"></i></div>
+          <span class="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-widest">Certified</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGO/TRUST BAND -->
+  <div class="pt-32 md:pt-48 pb-20 bg-white border-b border-gray-100 overflow-hidden relative z-0">
+    <h4 class="text-center font-bold text-gray-400 text-xs tracking-widest uppercase mb-8">Trusted by professionals across India</h4>
+    <div class="relative flex overflow-x-hidden opacity-60">
+      <div class="flex animate-marquee whitespace-nowrap items-center py-2">
+        <span class="mx-8 text-sm font-black text-gray-600 flex items-center gap-2"><i class="fas fa-star text-[#3D2C8D] text-[10px]"></i> 20+ AI TOOLS COVERED</span>
+        <span class="mx-8 text-sm font-black text-gray-600 flex items-center gap-2"><i class="fas fa-star text-[#3D2C8D] text-[10px]"></i> NO CODING REQUIRED</span>
+        <span class="mx-8 text-sm font-black text-gray-600 flex items-center gap-2"><i class="fas fa-star text-[#3D2C8D] text-[10px]"></i> REAL PROJECTS EVERY SESSION</span>
+        <span class="mx-8 text-sm font-black text-gray-600 flex items-center gap-2"><i class="fas fa-star text-[#3D2C8D] text-[10px]"></i> CERTIFICATE OF COMPLETION</span>
+      </div>
+      <div class="flex absolute top-0 animate-marquee2 whitespace-nowrap items-center py-2">
+        <span class="mx-8 text-sm font-black text-gray-600 flex items-center gap-2"><i class="fas fa-star text-[#3D2C8D] text-[10px]"></i> 20+ AI TOOLS COVERED</span>
+        <span class="mx-8 text-sm font-black text-gray-600 flex items-center gap-2"><i class="fas fa-star text-[#3D2C8D] text-[10px]"></i> NO CODING REQUIRED</span>
+        <span class="mx-8 text-sm font-black text-gray-600 flex items-center gap-2"><i class="fas fa-star text-[#3D2C8D] text-[10px]"></i> REAL PROJECTS EVERY SESSION</span>
+        <span class="mx-8 text-sm font-black text-gray-600 flex items-center gap-2"><i class="fas fa-star text-[#3D2C8D] text-[10px]"></i> CERTIFICATE OF COMPLETION</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIVIDER QUOTE -->
+  <section class="bg-[#F7F8FC] py-24 text-center px-4 relative border-b border-gray-100">
+    <div class="max-w-4xl mx-auto">
+      <i class="fas fa-quote-left text-5xl text-[#3D2C8D] opacity-20 mb-8 block"></i>
+      <h2 class="text-3xl md:text-5xl font-black mb-10 leading-tight text-[#1E1B4B]">
+        "What took a developer 2 weeks in 2020 — anyone can build it in 45 minutes today."
+      </h2>
+      <div class="flex flex-col md:flex-row justify-center gap-6">
+        <button onclick="document.getElementById('bootcamp').scrollIntoView()" class="px-10 py-4 bg-white border border-gray-200 shadow-sm rounded-full font-bold hover:shadow-md transition-shadow text-[#1E1B4B] cursor-pointer">Explore Curriculum ↓</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION B: PRO BOOTCAMP -->
+  <section id="bootcamp" class="py-24 bg-white px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 fade-in">
+        <span class="inline-block px-5 py-2 bg-[#3D2C8D]/10 text-[#3D2C8D] rounded-full text-[10px] font-black uppercase mb-6 tracking-widest border border-[#3D2C8D]/20">Professionals & Students</span>
+        <h2 class="text-4xl md:text-5xl font-black mb-6 text-[#1E1B4B]">AI Mastery Bootcamp</h2>
+        <h3 class="text-2xl md:text-3xl font-bold text-gray-600">Two days. Thirty tools. One complete skill set.</h3>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-24">
+        <!-- Adani styled cards for Day 1 and Day 2 grid -->
+        <div class="bg-[#F7F8FC] p-10 rounded-[24px] border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.06)] transition-shadow fade-in relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-[#3D2C8D]/5 rounded-bl-[100px] -z-0"></div>
+          <h4 class="text-2xl font-black mb-8 text-[#3D2C8D] relative z-10 flex items-center gap-3"><i class="fas fa-calendar-day"></i> Day 1</h4>
+          <ul class="space-y-6 font-bold text-[#1E1B4B] relative z-10">
+            <li class="flex items-center gap-4"><span class="w-10 h-10 rounded-full bg-white text-[#3D2C8D] shadow-sm flex items-center justify-center text-sm border border-gray-100"><i class="fas fa-check"></i></span> Personal prompt library</li>
+            <li class="flex items-center gap-4"><span class="w-10 h-10 rounded-full bg-white text-[#3D2C8D] shadow-sm flex items-center justify-center text-sm border border-gray-100"><i class="fas fa-check"></i></span> Your first Custom GPT Assistant</li>
+            <li class="flex items-center gap-4"><span class="w-10 h-10 rounded-full bg-white text-[#3D2C8D] shadow-sm flex items-center justify-center text-sm border border-gray-100"><i class="fas fa-check"></i></span> AI-generated visual board</li>
+          </ul>
+        </div>
+        <div class="bg-[#F7F8FC] p-10 rounded-[24px] border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.06)] transition-shadow fade-in relative overflow-hidden group">
+          <div class="absolute top-0 left-0 w-32 h-32 bg-[#3D2C8D]/5 rounded-br-[100px] -z-0"></div>
+          <h4 class="text-2xl font-black mb-8 text-[#3D2C8D] relative z-10 flex items-center gap-3"><i class="fas fa-calendar-day"></i> Day 2</h4>
+          <ul class="space-y-6 font-bold text-[#1E1B4B] relative z-10">
+            <li class="flex items-center gap-4"><span class="w-10 h-10 rounded-full bg-white text-[#3D2C8D] shadow-sm flex items-center justify-center text-sm border border-gray-100"><i class="fas fa-check"></i></span> Live no-code website published</li>
+            <li class="flex items-center gap-4"><span class="w-10 h-10 rounded-full bg-white text-[#3D2C8D] shadow-sm flex items-center justify-center text-sm border border-gray-100"><i class="fas fa-check"></i></span> AI Automation workflow (Make.com)</li>
+            <li class="flex items-center gap-4"><span class="w-10 h-10 rounded-full bg-white text-[#3D2C8D] shadow-sm flex items-center justify-center text-sm border border-gray-100"><i class="fas fa-check"></i></span> Voice & Video Agents</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER & WHATSAPP -->
+  <footer class="bg-white py-16 border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-12 mb-12">
+      <div>
+        <a href="#" class="flex items-center gap-2 text-2xl font-black text-[#3D2C8D] mb-6">
+          <i class="fas fa-brain"></i>
+          <span>Bootcamp Pro.</span>
+        </a>
+        <p class="text-gray-500 font-medium leading-relaxed mb-6">The future belongs to those who know how to automate and build with artificial intelligence.</p>
+      </div>
+      <div>
+        <h4 class="font-bold text-[#1E1B4B] mb-6 text-lg">Quick Links</h4>
+        <ul class="space-y-4 text-gray-600 font-medium">
+          <li><a href="#home" class="hover:text-[#3D2C8D] transition-colors">Home</a></li>
+          <li><a href="#bootcamp" class="hover:text-[#3D2C8D] transition-colors">Syllabus</a></li>
+          <li><a href="#about" class="hover:text-[#3D2C8D] transition-colors">About Us</a></li>
+          <li><a href="#enroll" class="hover:text-[#3D2C8D] transition-colors">Reserve Seat</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-[#1E1B4B] mb-6 text-lg">Secure Your Spot</h4>
+        <button onclick="openRazorpay('pro')"
+          class="bg-[#3D2C8D] text-white px-8 py-3 rounded-full font-bold shadow-lg shadow-[#3D2C8D]/20 hover:-translate-y-1 transition-transform">Join Bootcamp Now</button>
+      </div>
+    </div>
+    <div class="border-t border-gray-100 max-w-7xl mx-auto px-4 pt-8 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-gray-500 font-bold uppercase tracking-widest text-[10px]">© 2026 AI Mastery Workshop. All rights reserved.</p>
+      <div class="flex gap-4">
+        <a href="#" class="w-10 h-10 rounded-full bg-[#F7F8FC] flex items-center justify-center text-gray-600 hover:bg-[#3D2C8D] hover:text-white transition-colors"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="w-10 h-10 rounded-full bg-[#F7F8FC] flex items-center justify-center text-gray-600 hover:bg-[#3D2C8D] hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="w-10 h-10 rounded-full bg-[#F7F8FC] flex items-center justify-center text-gray-600 hover:bg-[#3D2C8D] hover:text-white transition-colors"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/yournumber"
+    class="fixed bottom-8 right-8 w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center text-4xl shadow-2xl hover:scale-110 active:scale-95 z-[9999] border-4 border-white">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
