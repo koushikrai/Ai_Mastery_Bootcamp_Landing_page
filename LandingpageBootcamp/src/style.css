@@ -94,3 +94,28 @@ html {
 .whatsapp-float {
   @apply fixed bottom-8 right-8 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-transform active:scale-95 z-[9999];
 }
+
+/* Base styles for mobile menu */
+#mobile-menu {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#mobile-menu-overlay {
+  transition: opacity 0.4s ease;
+}
+
+/* Ensure navbar transitions smooth */
+nav {
+  transition: all 0.3s ease;
+}
+
+/* Fix for horizontal scroll on some mobile browsers due to AOS animations */
+[data-aos] {
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    @apply text-3xl mb-4;
+  }
+}

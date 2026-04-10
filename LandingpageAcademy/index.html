@@ -9,35 +9,93 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <style>
+    .hide-scroll-bar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scroll-bar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  
+    /* Carousel Styling */
+    #curriculum-slider {
+      cursor: grab;
+      user-select: none;
+    }
+    #curriculum-slider:active {
+      cursor: grabbing;
+    }
+    .carousel-dot.active {
+      background-color: #FF8C00;
+      width: 24px;
+    }
+    .carousel-arrow {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .carousel-arrow:hover {
+      background: #3D2C8D;
+      color: white;
+    }
+
+  </style>
 </head>
-<body class="font-[Poppins] text-gray-900 overflow-x-hidden pt-28 bg-[#F7F8FC] selection:bg-[#FF8C00] selection:text-white">
+<body class="font-[Poppins] text-gray-900 overflow-x-hidden pt-28 bg-[#F7F8FC] selection:bg-[#FF8C00] selection:text-white w-full max-w-full">
+  <div class="relative w-full max-w-full overflow-x-hidden">
 
   <!-- Grid Background -->
   <div class="absolute inset-0 z-0 h-[2200px] pointer-events-none opacity-[0.15] bg-[linear-gradient(to_right,#3D2C8D_1px,transparent_1px),linear-gradient(to_bottom,#3D2C8D_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_40%_at_50%_0%,#000_70%,transparent_100%)]"></div>
 
   <!-- NAVIGATION PILL -->
-  <nav class="fixed top-4 left-4 right-4 md:left-auto md:right-auto md:w-[95%] max-w-7xl md:mx-auto bg-white/95 backdrop-blur-md border border-gray-100 z-50 h-[72px] flex items-center shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-full transition-all">
-    <div class="px-6 md:px-8 w-full flex items-center justify-between">
-      <a href="#" class="flex items-center no-underline">
-        <img src="/adani-logo.svg" alt="Adani Skill Development" class="h-8 md:h-10">
-      </a>
-
-      <div class="hidden md:flex items-center gap-8 font-bold text-sm text-[#1E1B4B]">
-        <a href="#home" class="hover:text-[#FF8C00] transition-colors">Home</a>
-        <a href="#syllabus" class="hover:text-[#FF8C00] transition-colors">Curriculum</a>
-        <a href="#faq" class="hover:text-[#FF8C00] transition-colors">FAQ</a>
-        <button onclick="document.getElementById('enroll').scrollIntoView()" class="bg-[#FF8C00] text-white px-6 py-2.5 rounded-full hover:shadow-lg hover:-translate-y-0.5 transition-all shadow-[#FF8C00]/20">Enroll Now</button>
+  <nav class="fixed top-4 left-0 right-0 z-50 px-4 pointer-events-none">
+    <div class="max-w-7xl mx-auto w-full md:w-[95%] bg-white/95 backdrop-blur-md border border-gray-100 h-[72px] flex items-center shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-full transition-all px-6 md:px-8 pointer-events-auto">
+      <div class="w-full flex items-center justify-between">
+        <a href="#" class="flex items-center no-underline">
+          <img src="/adani-logo.svg" alt="Adani Skill Development" class="h-8 md:h-10">
+        </a>
+  
+        <div class="hidden md:flex items-center gap-8 font-bold text-sm text-[#1E1B4B]">
+          <a href="#home" class="hover:text-[#FF8C00] transition-colors">Home</a>
+          <a href="#syllabus" class="hover:text-[#FF8C00] transition-colors">Curriculum</a>
+          <a href="#faq" class="hover:text-[#FF8C00] transition-colors">FAQ</a>
+          <button onclick="document.getElementById('enroll').scrollIntoView()" class="bg-[#FF8C00] text-white px-6 py-2.5 rounded-full hover:shadow-lg hover:-translate-y-0.5 transition-all shadow-[#FF8C00]/20">Enroll Now</button>
+        </div>
+        <button onclick="toggleMobileMenu()" class="md:hidden text-2xl p-2 text-[#3D2C8D] transition-transform active:scale-90"><i class="fas fa-bars"></i></button>
       </div>
-      <button class="md:hidden text-2xl p-2 text-[#3D2C8D]"><i class="fas fa-bars"></i></button>
     </div>
   </nav>
+
+  <!-- MOBILE MENU OVERLAY -->
+  <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 z-[60] opacity-0 pointer-events-none transition-opacity duration-300 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+  
+  <!-- MOBILE MENU DRAWER -->
+  <div id="mobile-menu" class="fixed top-0 right-0 h-full w-[280px] bg-white z-[70] translate-x-full transition-transform duration-300 shadow-2xl flex flex-col p-8">
+    <div class="flex items-center justify-between mb-12">
+      <img src="/adani-logo.svg" alt="Logo" class="h-8">
+      <button onclick="toggleMobileMenu()" class="text-2xl text-gray-500"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="flex flex-col gap-6 text-lg font-bold text-[#1E1B4B]">
+      <a href="#home" onclick="toggleMobileMenu()" class="hover:text-[#FF8C00] transition-colors flex items-center gap-4"><i class="fas fa-home w-6"></i> Home</a>
+      <a href="#syllabus" onclick="toggleMobileMenu()" class="hover:text-[#FF8C00] transition-colors flex items-center gap-4"><i class="fas fa-book w-6"></i> Curriculum</a>
+      <a href="#faq" onclick="toggleMobileMenu()" class="hover:text-[#FF8C00] transition-colors flex items-center gap-4"><i class="fas fa-question-circle w-6"></i> FAQ</a>
+      <hr class="border-gray-100">
+      <button onclick="toggleMobileMenu(); document.getElementById('enroll').scrollIntoView()" class="bg-[#FF8C00] text-white px-6 py-4 rounded-xl hover:shadow-lg transition-all shadow-[#FF8C00]/20 mt-4">Enroll Now</button>
+    </div>
+    <div class="mt-auto pt-10 border-t border-gray-100 flex flex-col gap-4">
+      <a href="https://wa.me/919723604009" target="_blank" class="flex items-center gap-3 text-sm font-bold text-gray-600 hover:text-[#25D366] transition-colors">
+        <i class="fab fa-whatsapp text-lg"></i> WhatsApp Support
+      </a>
+    </div>
+  </div>
 
   <!-- HERO SECTION -->
   <section id="home" class="relative pt-24 pb-32 md:pb-48 bg-gradient-to-b from-[#FFF4E6] to-[#F7F8FC]">
     <div class="max-w-7xl mx-auto px-4 relative z-10">
       <div class="text-center max-w-4xl mx-auto" data-aos="zoom-out-down" data-aos-duration="1000">
         <span class="inline-block px-5 py-2 bg-[#FF8C00]/10 text-[#FF8C00] rounded-full text-[10px] font-black uppercase mb-6 tracking-widest border border-[#FF8C00]/20">For Students & Kids</span>
-        <h1 class="text-5xl md:text-7xl font-black mb-6 text-[#1E1B4B] tracking-tight leading-tight">AI Explorers <br /><span class="text-[#3D2C8D]">Academy</span></h1>
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-black mb-6 text-[#1E1B4B] tracking-tight leading-tight">AI Explorers <br /><span class="text-[#3D2C8D]">Academy</span></h1>
         <p class="text-lg md:text-xl text-gray-600 mb-10 italic font-medium max-w-2xl mx-auto">"Where Curiosity Meets Creation  •  Where Students Become Inventors "</p>
 
         <button onclick="document.getElementById('syllabus').scrollIntoView()"
@@ -98,13 +156,13 @@
 
 
   <!-- LEARNING PLAN SECTION -->
-  <section id="syllabus" class="py-24 relative bg-white border-b border-gray-100">
+  <section id="curriculum-intro" class="py-24 relative bg-white border-b border-gray-100">
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
       <h2 class="text-3xl md:text-[2.5rem] font-black text-center mb-16 text-[#1E1B4B]">The <span class="text-[#FF8C00]">Academy</span> Journey</h2>
       
 
       <!-- Tab Content Card -->
-      <div class="bg-white border-4 border-[#F5F3FF] rounded-[32px] p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)] mb-14" data-aos="fade-up">
+      <div class="bg-white border-4 border-[#F5F3FF] rounded-[32px] p-8 md:p-12 shadow-[0_8px_30px_rgba(0,0,0,0.04)] mb-14">
         <div class="flex flex-col md:flex-row gap-12 items-center">
           <div class="w-full md:w-[45%]">
             <div class="bg-black rounded-[24px] overflow-hidden aspect-video relative shadow-xl">
@@ -139,13 +197,33 @@
   </section>
 
   <!-- CURRICULUM SECTION -->
-  <section class="py-24 bg-[#F7F8FC]">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-[2.5rem] font-black mb-4 text-[#1E1B4B]">Our <span class="text-[#FF8C00]">Curriculum</span></h2>
-      </div>
+      <div id="syllabus"></div>
+      <!-- Sticky Horizontal Scroller Track -->
+      <section id="curriculum-scroll-track" class="relative w-full py-24 md:py-32 bg-gradient-to-b from-white via-[#F7F8FC] to-white">
+        <div class="w-full h-auto flex flex-col items-start justify-start">
+          
+          
+          <div class="w-full mb-8 text-center relative z-10 shrink-0 px-4">
+             <span class="inline-block px-4 py-1.5 bg-[#3D2C8D]/10 text-[#3D2C8D] rounded-full text-[10px] font-black uppercase mb-4 tracking-widest border border-[#3D2C8D]/20">The Roadmap</span>
+             <h2 class="text-3xl md:text-4xl lg:text-[2.5rem] font-black text-[#1E1B4B]">Our <span class="text-[#FF8C00]">Curriculum</span></h2>
+          </div>
+          
+          
+          <div class="w-full relative group">
+            <!-- Navigation Arrows -->
+            <button id="prev-week" class="carousel-arrow absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full hidden md:flex items-center justify-center shadow-xl z-30 opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button id="next-week" class="carousel-arrow absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full hidden md:flex items-center justify-center shadow-xl z-30 opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0">
+              <i class="fas fa-chevron-right"></i>
+            </button>
 
-      <div class="bg-white border border-gray-200 rounded-[24px] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] mb-12" data-aos="fade-up">
+            <div id="curriculum-slider" class="flex flex-row flex-nowrap items-start gap-6 md:gap-12 w-full px-[10vw] md:px-[calc(50vw-425px)] lg:px-[calc(50vw-450px)] overflow-x-auto hide-scroll-bar snap-x snap-mandatory flex-nowrap scroll-smooth pb-12">
+          
+          <!-- WEEK 1 SLIDE -->
+          <div class="shrink-0 w-[85vw] md:w-[750px] lg:w-[900px] curriculum-slide snap-center transition-all duration-500 ease-out relative">
+            <div class="absolute -top-12 -left-8 text-[180px] font-black text-gray-100/10 select-none pointer-events-none z-0 hidden md:block leading-none">01</div>
+      <div class="bg-white border border-gray-200 rounded-[24px] relative z-10 overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.04)] h-full w-full">
         <div class="p-6 md:px-8 md:py-6 bg-white flex items-center justify-between border-b border-gray-200">
            <h3 class="text-xl md:text-2xl font-black text-[#3D2C8D] uppercase tracking-wide border-b-2 border-[#3D2C8D] pb-1 inline-block">WEEK 1 SESSION SCHEDULE</h3>
         </div>
@@ -221,19 +299,244 @@
           </table>
         </div>
       </div>
-      
-      <div class="text-center mt-12">
-        <button onclick="document.getElementById('enroll').scrollIntoView()" class="bg-[#3D2C8D] text-white font-black py-4 px-12 rounded-full shadow-[0_10px_20px_rgba(61,44,141,0.3)] hover:-translate-y-1 transition-all text-lg hover:bg-[#2b1f69]">Enroll for Course</button>
+
+          </div>
+
+          <!-- WEEK 2 SLIDE -->
+          <div class="shrink-0 w-[85vw] md:w-[750px] lg:w-[900px] curriculum-slide snap-center transition-all duration-500 ease-out relative">
+            <div class="absolute -top-12 -left-8 text-[180px] font-black text-gray-100/10 select-none pointer-events-none z-0 hidden md:block leading-none">02</div>
+      <div class="bg-white border border-gray-200 rounded-[24px] relative z-10 overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.04)] h-full w-full">
+        <div class="p-6 md:px-8 md:py-6 bg-white flex items-center justify-between border-b border-gray-200">
+           <h3 class="text-xl md:text-2xl font-black text-[#065F46] uppercase tracking-wide border-b-2 border-[#065F46] pb-1 inline-block">WEEK 02</h3>
+        </div>
+        <div class="overflow-x-auto w-full">
+          <table class="w-full text-left border-collapse min-w-[700px]">
+            <thead>
+              <tr class="bg-[#1E1B4B] text-white text-xs font-black uppercase tracking-widest">
+                <th class="p-4 md:p-5 pl-6 md:pl-8 w-[10%]">Day</th>
+                <th class="p-4 md:p-5 w-[20%]">Time</th>
+                <th class="p-4 md:p-5 w-[50%]">Session / Activity</th>
+                <th class="p-4 md:p-5 w-[20%]">Format</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-700 text-[13px] md:text-sm font-medium">
+              <tr class="border-b border-gray-100 hover:bg-[#F7F8FC] transition-colors">
+                <td class="p-4 md:p-5 pl-6 md:pl-8 font-black text-[#3D2C8D]">Sat</td>
+                <td class="p-4 md:p-5 font-bold text-[#3D2C8D]">10:00–10:15</td>
+                <td class="p-4 md:p-5 border-l border-gray-50">Week 1 Project Share — Study Buddy Wins</td>
+                <td class="p-4 md:p-5 text-gray-500 italic border-l border-gray-50">Celebration</td>
+              </tr>
+              <tr class="border-b border-gray-100 hover:bg-[#F7F8FC] transition-colors">
+                <td class="p-4 md:p-5 pl-6 md:pl-8 font-black text-[#3D2C8D]">Sat</td>
+                <td class="p-4 md:p-5 font-bold text-[#3D2C8D]">10:15–11:00</td>
+                <td class="p-4 md:p-5 border-l border-gray-50">Session 2A — AI Image Generation Masterclass</td>
+                <td class="p-4 md:p-5 text-gray-500 italic border-l border-gray-50">Concept + Create</td>
+              </tr>
+              <tr class="border-b border-gray-100 hover:bg-[#F7F8FC] transition-colors">
+                <td class="p-4 md:p-5 pl-6 md:pl-8 font-black text-[#3D2C8D]">Sat</td>
+                <td class="p-4 md:p-5 font-bold text-[#3D2C8D]">11:00–11:50</td>
+                <td class="p-4 md:p-5 border-l border-gray-50">Session 2B — AI Comic Strip Creator</td>
+                <td class="p-4 md:p-5 text-gray-500 italic border-l border-gray-50">Creative Build</td>
+              </tr>
+              <tr class="border-b border-gray-200 hover:bg-[#F7F8FC] transition-colors">
+                <td class="p-4 md:p-5 pl-6 md:pl-8 font-black text-[#3D2C8D]">Sat</td>
+                <td class="p-4 md:p-5 font-bold text-[#3D2C8D]">11:50–12:00</td>
+                <td class="p-4 md:p-5 border-l border-gray-50">Share + Comic Gallery Walk (Virtual)</td>
+                <td class="p-4 md:p-5 text-gray-500 italic border-l border-gray-50">Showcase</td>
+              </tr>
+              <tr class="border-b border-gray-100 hover:bg-[#F7F8FC] transition-colors">
+                <td class="p-4 md:p-5 pl-6 md:pl-8 font-black text-[#3D2C8D] bg-[#ecfdf5]">Sun</td>
+                <td class="p-4 md:p-5 font-bold text-[#3D2C8D] bg-[#ecfdf5]">10:00–10:15</td>
+                <td class="p-4 md:p-5 border-l border-gray-50">Gallery Votes + Week 2 Preview</td>
+                <td class="p-4 md:p-5 text-gray-500 italic border-l border-gray-50">Energiser</td>
+              </tr>
+              <tr class="border-b border-gray-100 hover:bg-[#F7F8FC] transition-colors">
+                <td class="p-4 md:p-5 pl-6 md:pl-8 font-black text-[#3D2C8D] bg-[#ecfdf5]">Sun</td>
+                <td class="p-4 md:p-5 font-bold text-[#3D2C8D] bg-[#ecfdf5]">10:15–10:50</td>
+                <td class="p-4 md:p-5 border-l border-gray-50">Session 2C — Voice AI & Audio Creation</td>
+                <td class="p-4 md:p-5 text-gray-500 italic border-l border-gray-50">Demo + Discuss</td>
+              </tr>
+              <tr class="border-b border-gray-100 hover:bg-[#F7F8FC] transition-colors">
+                <td class="p-4 md:p-5 pl-6 md:pl-8 font-black text-[#3D2C8D] bg-[#ecfdf5]">Sun</td>
+                <td class="p-4 md:p-5 font-bold text-[#3D2C8D] bg-[#ecfdf5]">10:50–11:45</td>
+                <td class="p-4 md:p-5 border-l border-gray-50">Session 2D — Build Your AI Avatar Video</td>
+                <td class="p-4 md:p-5 text-gray-500 italic border-l border-gray-50">Hands-On Build</td>
+              </tr>
+              <tr class="hover:bg-[#F7F8FC] transition-colors">
+                <td class="p-4 md:p-5 pl-6 md:pl-8 font-black text-[#3D2C8D] bg-[#ecfdf5]">Sun</td>
+                <td class="p-4 md:p-5 font-bold text-[#3D2C8D] bg-[#ecfdf5]">11:45–12:00</td>
+                <td class="p-4 md:p-5 border-l border-gray-50">Avatar Film Festival + Ethics Discussion</td>
+                <td class="p-4 md:p-5 text-gray-500 italic border-l border-gray-50">Share + Debate</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
-  </section>
+
+          </div>
+
+          <!-- WEEK 3 SLIDE -->
+          <div class="shrink-0 w-[85vw] md:w-[750px] lg:w-[900px] curriculum-slide snap-center transition-all duration-500 ease-out relative">
+            <div class="absolute -top-12 -left-8 text-[180px] font-black text-gray-100/10 select-none pointer-events-none z-0 hidden md:block leading-none">03</div>
+      <div class="bg-white border border-gray-200 rounded-[24px] relative z-10 overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.04)] h-full w-full">
+        <div class="p-6 md:px-8 md:py-6 bg-white flex items-center justify-between border-b border-gray-200">
+           <h3 class="text-xl md:text-2xl font-black text-[#9A3412] uppercase tracking-wide border-b-2 border-[#9A3412] pb-1 inline-block">WEEK 03</h3>
+        </div>
+        <div class="overflow-x-auto w-full">
+          <table class="w-full text-left border-collapse min-w-[700px]">
+            <thead>
+              <tr class="bg-[#1E1B4B] text-white text-xs font-black uppercase tracking-widest">
+                <th class="p-4 md:p-5 pl-6 md:pl-8 w-[10%]">Day</th>
+                <th class="p-4 md:p-5 w-[20%]">Time</th>
+                <th class="p-4 md:p-5 w-[50%]">Session / Activity</th>
+                <th class="p-4 md:p-5 w-[20%]">Format</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-700 text-[13px] md:text-sm font-medium">
+              <tr class="border-b border-gray-100 hover:bg-[#F7F8FC] transition-colors">
+                <td class="p-4 md:p-5 pl-6 md:pl-8 font-black text-[#3D2C8D]">Sat</td>
+                <td class="p-4 md:p-5 font-bold text-[#3D2C8D]">10:00–10:15</td>
+                <td class="p-4 md:p-5 border-l border-gray-50">Avatar Film Festival Rewatch + Voting</td>
+                <td class="p-4 md:p-5 text-gray-500 italic border-l border-gray-50">Celebration</td>
+              </tr>
+              <tr class="border-b border-gray-100 hover:bg-[#F7F8FC] transition-colors">
+                <td class="p-4 md:p-5 pl-6 md:pl-8 font-black text-[#3D2C8D]">Sat</td>
+                <td class="p-4 md:p-5 font-bold text-[#3D2C8D]">10:15–10:40</td>
+                <td class="p-4 md:p-5 border-l border-gray-50">Session 3A — What is Vibe Coding? Introduction</td>
+                <td class="p-4 md:p-5 text-gray-500 italic border-l border-gray-50">Concept</td>
+              </tr>
+              <tr class="border-b border-gray-100 hover:bg-[#F7F8FC] transition-colors">
+                <td class="p-4 md:p-5 pl-6 md:pl-8 font-black text-[#3D2C8D]">Sat</td>
+                <td class="p-4 md:p-5 font-bold text-[#3D2C8D]">10:40–11:50</td>
+                <td class="p-4 md:p-5 border-l border-gray-50">Session 3B — Build Your Personal Website</td>
+                <td class="p-4 md:p-5 text-gray-500 italic border-l border-gray-50">Hands-On Build</td>
+              </tr>
+              <tr class="border-b border-gray-200 hover:bg-[#F7F8FC] transition-colors">
+                <td class="p-4 md:p-5 pl-6 md:pl-8 font-black text-[#3D2C8D]">Sat</td>
+                <td class="p-4 md:p-5 font-bold text-[#3D2C8D]">11:50–12:00</td>
+                <td class="p-4 md:p-5 border-l border-gray-50">Website Launch Celebration — Share Live Links</td>
+                <td class="p-4 md:p-5 text-gray-500 italic border-l border-gray-50">Showcase</td>
+              </tr>
+              <tr class="border-b border-gray-100 hover:bg-[#F7F8FC] transition-colors">
+                <td class="p-4 md:p-5 pl-6 md:pl-8 font-black text-[#3D2C8D] bg-[#fff7ed]">Sun</td>
+                <td class="p-4 md:p-5 font-bold text-[#3D2C8D] bg-[#fff7ed]">10:00–10:15</td>
+                <td class="p-4 md:p-5 border-l border-gray-50">Website improvements from weekend feedback</td>
+                <td class="p-4 md:p-5 text-gray-500 italic border-l border-gray-50">Iteration</td>
+              </tr>
+              <tr class="border-b border-gray-100 hover:bg-[#F7F8FC] transition-colors">
+                <td class="p-4 md:p-5 pl-6 md:pl-8 font-black text-[#3D2C8D] bg-[#fff7ed]">Sun</td>
+                <td class="p-4 md:p-5 font-bold text-[#3D2C8D] bg-[#fff7ed]">10:15–11:00</td>
+                <td class="p-4 md:p-5 border-l border-gray-50">Session 3C — Build an AI Quiz Game</td>
+                <td class="p-4 md:p-5 text-gray-500 italic border-l border-gray-50">Creative Build</td>
+              </tr>
+              <tr class="border-b border-gray-100 hover:bg-[#F7F8FC] transition-colors">
+                <td class="p-4 md:p-5 pl-6 md:pl-8 font-black text-[#3D2C8D] bg-[#fff7ed]">Sun</td>
+                <td class="p-4 md:p-5 font-bold text-[#3D2C8D] bg-[#fff7ed]">11:00–11:45</td>
+                <td class="p-4 md:p-5 border-l border-gray-50">Session 3D — Introduction to Automation</td>
+                <td class="p-4 md:p-5 text-gray-500 italic border-l border-gray-50">Concept + Map</td>
+              </tr>
+              <tr class="hover:bg-[#F7F8FC] transition-colors">
+                <td class="p-4 md:p-5 pl-6 md:pl-8 font-black text-[#3D2C8D] bg-[#fff7ed]">Sun</td>
+                <td class="p-4 md:p-5 font-bold text-[#3D2C8D] bg-[#fff7ed]">11:45–12:00</td>
+                <td class="p-4 md:p-5 border-l border-gray-50">Week 3 Showcase + Week 4 Preview</td>
+                <td class="p-4 md:p-5 text-gray-500 italic border-l border-gray-50">Showcase</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+          </div>
+
+          <!-- WEEK 4 SLIDE -->
+          <div class="shrink-0 w-[85vw] md:w-[750px] lg:w-[900px] curriculum-slide snap-center transition-all duration-500 ease-out relative">
+            <div class="absolute -top-12 -left-8 text-[180px] font-black text-gray-100/10 select-none pointer-events-none z-0 hidden md:block leading-none">04</div>
+      <div class="bg-white border border-gray-200 rounded-[24px] relative z-10 overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.04)] h-full w-full">
+        <div class="p-6 md:px-8 md:py-6 bg-white flex items-center justify-between border-b border-gray-200">
+           <h3 class="text-xl md:text-2xl font-black text-[#5b21b6] uppercase tracking-wide border-b-2 border-[#5b21b6] pb-1 inline-block">WEEK 04</h3>
+        </div>
+        <div class="overflow-x-auto w-full">
+          <table class="w-full text-left border-collapse min-w-[700px]">
+            <thead>
+              <tr class="bg-[#1E1B4B] text-white text-xs font-black uppercase tracking-widest">
+                <th class="p-4 md:p-5 pl-6 md:pl-8 w-[10%]">Day</th>
+                <th class="p-4 md:p-5 w-[20%]">Time</th>
+                <th class="p-4 md:p-5 w-[50%]">Session / Activity</th>
+                <th class="p-4 md:p-5 w-[20%]">Format</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-700 text-[13px] md:text-sm font-medium">
+              <tr class="border-b border-gray-100 hover:bg-[#F7F8FC] transition-colors">
+                <td class="p-4 md:p-5 pl-6 md:pl-8 font-black text-[#3D2C8D]">Sat</td>
+                <td class="p-4 md:p-5 font-bold text-[#3D2C8D]">10:00–10:15</td>
+                <td class="p-4 md:p-5 border-l border-gray-50">Automation Ideas Share + Week 4 Preview</td>
+                <td class="p-4 md:p-5 text-gray-500 italic border-l border-gray-50">Energiser</td>
+              </tr>
+              <tr class="border-b border-gray-100 hover:bg-[#F7F8FC] transition-colors">
+                <td class="p-4 md:p-5 pl-6 md:pl-8 font-black text-[#3D2C8D]">Sat</td>
+                <td class="p-4 md:p-5 font-bold text-[#3D2C8D]">10:15–11:00</td>
+                <td class="p-4 md:p-5 border-l border-gray-50">Session 4A — AI for Data: Reading the World in Numbers</td>
+                <td class="p-4 md:p-5 text-gray-500 italic border-l border-gray-50">Concept + Demo</td>
+              </tr>
+              <tr class="border-b border-gray-100 hover:bg-[#F7F8FC] transition-colors">
+                <td class="p-4 md:p-5 pl-6 md:pl-8 font-black text-[#3D2C8D]">Sat</td>
+                <td class="p-4 md:p-5 font-bold text-[#3D2C8D]">11:00–11:50</td>
+                <td class="p-4 md:p-5 border-l border-gray-50">Session 4B — Build Your Data Story Poster</td>
+                <td class="p-4 md:p-5 text-gray-500 italic border-l border-gray-50">Creative Build</td>
+              </tr>
+              <tr class="border-b border-gray-200 hover:bg-[#F7F8FC] transition-colors">
+                <td class="p-4 md:p-5 pl-6 md:pl-8 font-black text-[#3D2C8D]">Sat</td>
+                <td class="p-4 md:p-5 font-bold text-[#3D2C8D]">11:50–12:00</td>
+                <td class="p-4 md:p-5 border-l border-gray-50">Ethics Preview: Case Study Teaser for Sunday</td>
+                <td class="p-4 md:p-5 text-gray-500 italic border-l border-gray-50">Discussion Teaser</td>
+              </tr>
+              <tr class="border-b border-gray-100 hover:bg-[#F7F8FC] transition-colors">
+                <td class="p-4 md:p-5 pl-6 md:pl-8 font-black text-[#3D2C8D] bg-[#f5f3ff]">Sun</td>
+                <td class="p-4 md:p-5 font-bold text-[#3D2C8D] bg-[#f5f3ff]">10:00–10:30</td>
+                <td class="p-4 md:p-5 border-l border-gray-50">Session 4C — Ethics Deep Dive & Personal AI Pledge</td>
+                <td class="p-4 md:p-5 text-gray-500 italic border-l border-gray-50">Ethics Lab</td>
+              </tr>
+              <tr class="border-b border-gray-100 hover:bg-[#F7F8FC] transition-colors">
+                <td class="p-4 md:p-5 pl-6 md:pl-8 font-black text-[#3D2C8D] bg-[#f5f3ff]">Sun</td>
+                <td class="p-4 md:p-5 font-bold text-[#3D2C8D] bg-[#f5f3ff]">10:30–11:15</td>
+                <td class="p-4 md:p-5 border-l border-gray-50">Capstone Preparation — Polish All Projects</td>
+                <td class="p-4 md:p-5 text-gray-500 italic border-l border-gray-50">Studio Time</td>
+              </tr>
+              <tr class="hover:bg-[#F7F8FC] transition-colors">
+                <td class="p-4 md:p-5 pl-6 md:pl-8 font-black text-[#3D2C8D] bg-[#f5f3ff]">Sun</td>
+                <td class="p-4 md:p-5 font-bold text-[#3D2C8D] bg-[#f5f3ff]">11:15–12:00</td>
+                <td class="p-4 md:p-5 border-l border-gray-50">CAPSTONE SHOWCASE — Parent & Peer Presentations</td>
+                <td class="p-4 md:p-5 text-gray-500 italic border-l border-gray-50">Celebration</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+          </div>
+          </div> <!-- End Group Wrapper -->
+
+          <!-- Carousel Dots -->
+          <div class="flex items-center justify-center gap-3 mt-12 mb-4">
+            <div class="carousel-dot active w-2.5 h-2.5 rounded-full bg-gray-300 transition-all duration-300"></div>
+            <div class="carousel-dot w-2.5 h-2.5 rounded-full bg-gray-300 transition-all duration-300"></div>
+            <div class="carousel-dot w-2.5 h-2.5 rounded-full bg-gray-300 transition-all duration-300"></div>
+            <div class="carousel-dot w-2.5 h-2.5 rounded-full bg-gray-300 transition-all duration-300"></div>
+          </div>
+
+      </section>
+
+      <div class="pb-24 pt-12 bg-white border-b border-gray-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
+            <button onclick="document.getElementById('enroll').scrollIntoView()" class="bg-[#3D2C8D] text-white font-black py-4 px-12 rounded-full shadow-[0_10px_20px_rgba(61,44,141,0.3)] hover:-translate-y-1 transition-all text-lg hover:bg-[#2b1f69]">Enroll for Course</button>
+        </div>
+      </div>
 
   <!-- 4 WEEKS SKILLS -->
   <section class="py-24 bg-white relative overflow-hidden">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
       <h2 class="text-3xl md:text-[2.5rem] font-black text-center mb-16 text-[#1E1B4B]"><span class="text-[#FF8C00]">4 Weeks</span> to Level Up in AI</h2>
 
-      <div class="bg-[#F7F8FC] rounded-[32px] shadow-[0_10px_40px_rgb(0,0,0,0.03)] border-2 border-indigo-50/50 flex flex-col md:flex-row items-stretch overflow-hidden max-w-4xl mx-auto relative group" data-aos="fade-right" data-aos-duration="1000">
+      <div class="bg-[#F7F8FC] rounded-[32px] shadow-[0_10px_40px_rgb(0,0,0,0.03)] border-2 border-indigo-50/50 flex flex-col md:flex-row items-stretch overflow-hidden max-w-4xl mx-auto relative group">
         <div class="md:w-[45%] relative aspect-[4/3] md:aspect-auto overflow-hidden">
           <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-r from-[#3D2C8D]/90 to-[#3D2C8D]/40 mix-blend-multiply"></div>
@@ -405,7 +708,7 @@
 
       <h2 class="text-3xl md:text-[2.5rem] font-black text-center mb-16 text-[#1E1B4B] tracking-tight">Why this <span class="text-[#FF8C00]">Matters?</span></h2>
       
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-6 max-w-5xl mx-auto bg-white p-8 md:p-10 rounded-[32px] shadow-sm border border-gray-100">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-6 max-w-5xl mx-auto bg-white p-8 md:p-10 rounded-[32px] shadow-sm border border-gray-100">
         <div class="md:border-r border-dashed border-gray-200 px-4 flex flex-col items-center md:items-start text-center md:text-left">
           <div class="w-12 h-12 bg-[#FFF4E6] rounded-full flex items-center justify-center text-[#FF8C00] font-black text-xl mb-4">90%</div>
           <p class="text-sm font-bold text-[#1E1B4B] leading-snug mb-3">careers will demand AI skills by 2030.</p>
@@ -528,26 +831,41 @@
   <!-- MENTOR SECTION -->
   <section class="py-24 bg-[#FFF4E6] relative border-y border-[#FF8C00]/20">
     <div class="absolute inset-0 z-0 h-full pointer-events-none opacity-10 bg-[linear-gradient(to_right,#FF8C00_1px,transparent_1px),linear-gradient(to_bottom,#FF8C00_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
       
-      <h2 class="text-3xl md:text-[2.5rem] font-black text-center mb-16 text-[#7C2D12] tracking-tight">The Mentor Who Turns Beginners Into Young Creators</h2>
+      <h2 class="text-3xl md:text-[2.5rem] font-black text-center mb-16 text-[#7C2D12] tracking-tight uppercase">Meet Your AI <span class="text-[#FF8C00]">Mentors</span></h2>
       
-      <div class="bg-white rounded-[32px] shadow-xl border border-white p-6 md:p-10 flex flex-col md:flex-row items-center gap-12 max-w-4xl mx-auto mb-20 whitespace-pre-line" data-aos="fade-left" data-aos-duration="1000">
-        <div class="md:w-[320px] shrink-0 relative">
-           <div class="absolute inset-0 bg-[#FF8C00] transform translate-y-4 translate-x-4 rounded-[24px]"></div>
-           <img src="/mentor.jpg" alt="Om Mehta" class="rounded-[24px] w-full object-cover shadow-sm relative z-10 h-[380px]">
+      <div class="grid lg:grid-cols-2 gap-8 md:gap-10 max-w-6xl mx-auto">
+        <!-- Mentor 1: Om Mehta -->
+        <div class="bg-white rounded-[32px] shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-white p-6 md:p-8 flex flex-col md:flex-row items-center gap-8 whitespace-pre-line" data-aos="fade-up">
+          <div class="w-[200px] md:w-[220px] shrink-0 relative group">
+             <div class="absolute inset-0 bg-[#FF8C00] transform translate-y-3 translate-x-3 rounded-[24px] group-hover:translate-y-2 group-hover:translate-x-2 transition-transform"></div>
+             <img src="/mentor.jpg" alt="Om Mehta" class="rounded-[24px] w-full object-cover shadow-sm relative z-10 h-[260px] md:h-[280px]">
+          </div>
+          <div class="flex-1 text-center md:text-left">
+             <h3 class="text-2xl font-black text-[#1E1B4B] mb-1">Om Mehta</h3>
+             <p class="text-[#FF8C00] font-bold text-[10px] tracking-widest uppercase mb-4">AI Consultant & Trainer</p>
+             <p class="text-[13px] text-gray-600 mb-5 font-medium leading-relaxed">
+               Expert Educator @ Adani Skill Development Centre. Founder of AI Innovators Club. Specializes in making complex AI simple for young minds.
+             </p>
+             <a href="https://www.linkedin.com/in/om-mehta-222a7a174/" target="_blank" class="bg-[#3D2C8D] text-white text-[11px] font-bold py-3 px-6 rounded-full hover:bg-black transition-all flex items-center gap-2 w-max mx-auto md:mx-0 shadow-lg shadow-[#3D2C8D]/20"><i class="fab fa-linkedin text-sm"></i> View Profile</a>
+          </div>
         </div>
-        <div class="md:w-2/3">
-           <h3 class="text-2xl md:text-3xl font-black text-[#1E1B4B] mb-2">Om Mehta</h3>
-           <p class="text-[#FF8C00] font-bold text-sm tracking-widest uppercase mb-6">AI Consultant & Trainer</p>
-           
-           <p class="text-xs md:text-sm text-gray-600 mb-5 font-medium leading-relaxed">
-             Founder & CEO of The AI Innovators Club, a brand that has trained teams at leading global enterprises. He specializes in AI-driven productivity, workflow automation, and prompt engineering.
-           </p>
-           <p class="text-xs md:text-sm text-gray-600 mb-5 font-medium leading-relaxed">
-             Trained 10,000+ students across schools. Known for simplifying AI for kids. Featured speaker at major tech conferences and trusted advisor for EdTech implementation strategies.
-           </p>
-           <a href="https://www.linkedin.com/in/om-mehta-222a7a174/?skipRedirect=true" target="_blank" class="bg-[#3D2C8D] text-white text-xs font-bold py-3 px-6 rounded-full hover:bg-[#2b1f69] hover:shadow-lg transition-all flex items-center gap-3 w-max mt-4"><i class="fab fa-linkedin text-lg"></i> View LinkedIn Profile</a>
+
+        <!-- Mentor 2: Shravya V J -->
+        <div class="bg-white rounded-[32px] shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-white p-6 md:p-8 flex flex-col md:flex-row items-center gap-8 whitespace-pre-line" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-[200px] md:w-[220px] shrink-0 relative group">
+             <div class="absolute inset-0 bg-[#3D2C8D] transform translate-y-3 translate-x-3 rounded-[24px] group-hover:translate-y-2 group-hover:translate-x-2 transition-transform"></div>
+             <img src="/mentor2.jpeg" alt="Shravya V J" class="rounded-[24px] w-full object-cover shadow-sm relative z-10 h-[260px] md:h-[280px]">
+          </div>
+          <div class="flex-1 text-center md:text-left">
+             <h3 class="text-2xl font-black text-[#1E1B4B] mb-1">Shravya V J</h3>
+             <p class="text-[#3D2C8D] font-bold text-[10px] tracking-widest uppercase mb-4">AI Mentor</p>
+             <p class="text-[13px] text-gray-600 mb-5 font-medium leading-relaxed">
+               Leading AI Transformation Strategist focusing on GenAI implementation. Dedicated to helping students master the AI tools of the future.
+             </p>
+             <a href="https://www.linkedin.com/in/shravyavj" target="_blank" class="bg-[#3D2C8D] text-white text-[11px] font-bold py-3 px-6 rounded-full hover:bg-black transition-all flex items-center gap-2 w-max mx-auto md:mx-0 shadow-lg shadow-[#3D2C8D]/20"><i class="fab fa-linkedin text-sm"></i> View Profile</a>
+          </div>
         </div>
       </div>
 
@@ -700,6 +1018,7 @@
       </div>
   </footer>
 
+    </div>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({
@@ -708,6 +1027,26 @@
       duration: 1200,
       offset: 100,
     });
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const overlay = document.getElementById('mobile-menu-overlay');
+      const isOpen = menu.classList.contains('translate-x-0');
+
+      if (!isOpen) {
+        menu.classList.remove('translate-x-full');
+        menu.classList.add('translate-x-0');
+        overlay.classList.remove('opacity-0', 'pointer-events-none');
+        overlay.classList.add('opacity-100', 'pointer-events-auto');
+        document.body.style.overflow = 'hidden';
+      } else {
+        menu.classList.remove('translate-x-0');
+        menu.classList.add('translate-x-full');
+        overlay.classList.remove('opacity-100', 'pointer-events-auto');
+        overlay.classList.add('opacity-0', 'pointer-events-none');
+        document.body.style.overflow = '';
+      }
+    }
 
     function toggleFAQ(element) {
       const answer = element.querySelector('.faq-answer');
@@ -734,5 +1073,96 @@
     }
   </script>
   <script type="module" src="/src/main.ts"></script>
+<script>
+
+    // --- PREMIUM CAROUSEL LOGIC ---
+    document.addEventListener('DOMContentLoaded', () => {
+      const slider = document.getElementById('curriculum-slider');
+      const prevBtn = document.getElementById('prev-week');
+      const nextBtn = document.getElementById('next-week');
+      const dots = document.querySelectorAll('.carousel-dot');
+      const slides = document.querySelectorAll('.curriculum-slide');
+
+      if (!slider || slides.length === 0) return;
+
+      // 1. Mouse Drag-to-Scroll
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+
+      slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+        slider.style.scrollSnapType = 'none'; // Disable snap while dragging
+      });
+
+      slider.addEventListener('mouseleave', () => {
+        isDown = false;
+        slider.style.scrollSnapType = 'x mandatory';
+      });
+
+      slider.addEventListener('mouseup', () => {
+        isDown = false;
+        slider.style.scrollSnapType = 'x mandatory';
+      });
+
+      slider.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 2; // Scroll speed
+        slider.scrollLeft = scrollLeft - walk;
+      });
+
+      // 2. Arrow Navigation
+      nextBtn?.addEventListener('click', () => {
+        const slideWidth = slides[0].offsetWidth + 48; // width + gap
+        slider.scrollBy({ left: slideWidth, behavior: 'smooth' });
+      });
+
+      prevBtn?.addEventListener('click', () => {
+        const slideWidth = slides[0].offsetWidth + 48;
+        slider.scrollBy({ left: -slideWidth, behavior: 'smooth' });
+      });
+
+      // 3. Sync Dots & Active Effect
+      const updateUI = () => {
+        const center = slider.scrollLeft + slider.offsetWidth / 2;
+        let activeIndex = 0;
+        let minDiff = Infinity;
+
+        slides.forEach((slide, i) => {
+          const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+          const diff = Math.abs(center - slideCenter);
+          
+          // Focus Scaling Effect
+          if (diff < slide.offsetWidth * 0.5) {
+            slide.style.transform = 'scale(1.05)';
+            slide.style.opacity = '1';
+            slide.style.zIndex = '10';
+          } else {
+            slide.style.transform = 'scale(0.95)';
+            slide.style.opacity = '0.4';
+            slide.style.zIndex = '1';
+          }
+
+          if (diff < minDiff) {
+            minDiff = diff;
+            activeIndex = i;
+          }
+        });
+
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === activeIndex);
+        });
+      };
+
+      slider.addEventListener('scroll', updateUI);
+      window.addEventListener('resize', updateUI);
+      updateUI();
+    });
+
+  </script>
 </body>
 </html>
