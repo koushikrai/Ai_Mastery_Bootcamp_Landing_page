@@ -23,9 +23,26 @@ html {
   --color-marquee-bg: #E5E7EB;
   /* Darker scroller bg */
 
+  /* Kids Colorful Palette */
+  --color-kids-pink: #FF0080;
+  --color-kids-yellow: #FFD700;
+  --color-kids-green: #32CD32;
+  --color-kids-purple: #8B5CF6;
+  --color-kids-cyan: #00C6FF;
+  --color-kids-mint: #E6FFFA;
+  --color-kids-lavender: #F5F3FF;
+  --color-kids-sky: #E0F2FE;
+  --color-kids-peach: #FFF7ED;
+
   --shadow-premium: 0 10px 30px rgba(0, 0, 0, 0.04);
   --shadow-card: 0 20px 40px rgba(0, 0, 0, 0.08);
+  --shadow-bubbly: 0 15px 35px rgba(255, 140, 0, 0.2);
+  --shadow-bubbly-purple: 0 15px 35px rgba(139, 92, 246, 0.2);
+  --shadow-bubbly-pink: 0 15px 35px rgba(255, 0, 128, 0.2);
+  --shadow-bubbly-green: 0 15px 35px rgba(50, 205, 50, 0.2);
+
   --radius-xl: 24px;
+  --radius-kids: 4rem;
 }
 
 @layer base {
@@ -124,3 +141,29 @@ nav {
     @apply text-3xl mb-4;
   }
 }
+
+/* Playful Decorations */
+.curvy-divider {
+  @apply relative w-full overflow-hidden leading-[0] fill-current;
+}
+
+.bg-dot-pattern {
+  background-image: radial-gradient(circle, #e5e7eb 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.bg-grid-pattern {
+  background-image: linear-gradient(to right, #e5e7eb 1px, transparent 1px),
+    linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.text-kids-gradient {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-[#FF0080] via-[#8B5CF6] to-[#00C6FF];
+}
+
+.card-kids-blue { @apply border-4 border-[#00C6FF]/20 shadow-[0_15px_35px_rgba(0,198,255,0.2)]; }
+.card-kids-orange { @apply border-4 border-[#FF8C00]/20 shadow-[0_15px_35px_rgba(255,140,0,0.2)]; }
+.card-kids-green { @apply border-4 border-[#32CD32]/20 shadow-[0_15px_35px_rgba(50,205,50,0.2)]; }
+.card-kids-purple { @apply border-4 border-[#8B5CF6]/20 shadow-[0_15px_35px_rgba(139,92,246,0.2)]; }
+.card-kids-pink { @apply border-4 border-[#FF0080]/20 shadow-[0_15px_35px_rgba(255,0,128,0.2)]; }
