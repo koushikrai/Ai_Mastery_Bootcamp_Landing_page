@@ -114,19 +114,4 @@ countElements.forEach(el => countObserver.observe(el));
   rzp.open();
 };
 
-// Smooth scroll adjustments for fixed header
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', (e) => {
-    e.preventDefault();
-    const targetId = (e.currentTarget as HTMLAnchorElement).getAttribute('href')?.substring(1);
-    if (targetId) {
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-        window.scrollTo({
-          top: targetElement.offsetTop - 64, // 64px is header height
-          behavior: 'smooth'
-        });
-      }
-    }
-  });
-});
+// Removed manual smooth scroll JS in favor of native CSS scroll-behavior and scroll-padding-top

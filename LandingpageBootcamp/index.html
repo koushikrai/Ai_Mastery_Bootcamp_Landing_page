@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="overflow-x-hidden">
+<html lang="en" class="overflow-x-hidden scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,6 +24,12 @@
 
     .selection\:bg-adani-maroon::selection { background-color: #8A1538; }
     .selection\:text-white::selection { color: #ffffff; }
+
+    /* Global Scroll Fix */
+    html {
+      scroll-behavior: smooth !important;
+      scroll-padding-top: 110px; /* Header Offset for all anchor links */
+    }
   </style>
 </head>
 <body class="font-[Poppins] text-gray-900 overflow-x-hidden pt-36 bg-[#F7F8FC] selection:bg-[#8A1538] selection:text-white w-full max-w-full">
@@ -53,9 +59,11 @@
   
         <div class="hidden md:flex items-center gap-8 font-bold text-sm text-[#2C0A15]">
           <a href="#home" class="hover:text-[#8A1538] transition-colors">Home</a>
-          <a href="#syllabus" class="hover:text-[#8A1538] transition-colors">Curriculum</a>
-          <a href="#faq" class="hover:text-[#8A1538] transition-colors">FAQ</a>
-          <button onclick="document.getElementById('enroll').scrollIntoView()" class="bg-[#8A1538] text-white px-6 py-2.5 rounded-full hover:shadow-lg hover:-translate-y-0.5 transition-all shadow-[#8A1538]/20">Reserve Seat</button>
+          <a href="#syllabus" class="hover:text-[#8A1538] transition-colors">The Journey</a>
+          <a href="#overview" class="hover:text-[#8A1538] transition-colors">Overview</a>
+          <a href="#skills" class="hover:text-[#8A1538] transition-colors">AI Skills</a>
+          <a href="#faq-master" class="hover:text-[#8A1538] transition-colors">FAQ</a>
+          <button onclick="showRegistrationModal('pro')" class="bg-[#8A1538] text-white px-6 py-2.5 rounded-full hover:shadow-lg hover:-translate-y-0.5 transition-all shadow-[#8A1538]/20">Reserve Seat</button>
         </div>
         <button onclick="toggleMobileMenu()" class="md:hidden text-2xl p-2 text-[#8A1538] transition-transform active:scale-90"><i class="fas fa-bars"></i></button>
       </div>
@@ -73,10 +81,12 @@
     </div>
     <div class="flex flex-col gap-6 text-lg font-bold text-[#2C0A15]">
       <a href="#home" onclick="toggleMobileMenu()" class="hover:text-[#8A1538] transition-colors flex items-center gap-4"><i class="fas fa-home w-6"></i> Home</a>
-      <a href="#syllabus" onclick="toggleMobileMenu()" class="hover:text-[#8A1538] transition-colors flex items-center gap-4"><i class="fas fa-book w-6"></i> Curriculum</a>
-      <a href="#faq" onclick="toggleMobileMenu()" class="hover:text-[#8A1538] transition-colors flex items-center gap-4"><i class="fas fa-question-circle w-6"></i> FAQ</a>
+      <a href="#syllabus" onclick="toggleMobileMenu()" class="hover:text-[#8A1538] transition-colors flex items-center gap-4"><i class="fas fa-rocket w-6"></i> The Journey</a>
+      <a href="#overview" onclick="toggleMobileMenu()" class="hover:text-[#8A1538] transition-colors flex items-center gap-4"><i class="fas fa-th-large w-6"></i> Overview</a>
+      <a href="#skills" onclick="toggleMobileMenu()" class="hover:text-[#8A1538] transition-colors flex items-center gap-4"><i class="fas fa-bolt w-6"></i> AI Skills</a>
+      <a href="#faq-master" onclick="toggleMobileMenu()" class="hover:text-[#8A1538] transition-colors flex items-center gap-4"><i class="fas fa-question-circle w-6"></i> FAQ</a>
       <hr class="border-gray-100">
-      <button onclick="toggleMobileMenu(); document.getElementById('enroll').scrollIntoView()" class="bg-[#8A1538] text-white px-6 py-4 rounded-xl hover:shadow-lg transition-all shadow-[#8A1538]/20 mt-4">Reserve Seat</button>
+      <button onclick="toggleMobileMenu(); showRegistrationModal('pro')" class="bg-[#8A1538] text-white px-6 py-4 rounded-xl hover:shadow-lg transition-all shadow-[#8A1538]/20 mt-4">Reserve Seat</button>
     </div>
     <div class="mt-auto pt-10 border-t border-gray-100 flex flex-col gap-4">
       <a href="https://wa.me/919723604009" target="_blank" class="flex items-center gap-3 text-sm font-bold text-gray-600 hover:text-[#25D366] transition-colors">
@@ -114,7 +124,7 @@
           <span class="block text-xl md:text-2xl font-black text-[#8A1538] mb-2">AI Tools</span>
           <span class="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-widest leading-relaxed">Hands-On<br/>Stack</span>
         </a>
-        <a href="#faq" class="bg-white p-6 rounded-[24px] shadow-[0_20px_40px_rgb(0,0,0,0.06)] border border-gray-50 text-center hover:-translate-y-2 transition-transform flex flex-col justify-center no-underline">
+        <a href="#faq-master" class="bg-white p-6 rounded-[24px] shadow-[0_20px_40px_rgb(0,0,0,0.06)] border border-gray-50 text-center hover:-translate-y-2 transition-transform flex flex-col justify-center no-underline">
           <span class="block text-4xl md:text-5xl font-black text-[#E30064] mb-1">0</span>
           <span class="block text-xl md:text-2xl font-black text-[#E30064] mb-2">Coding Req.</span>
           <span class="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-widest leading-relaxed">No Tech<br/>Background</span>
@@ -141,8 +151,135 @@
     </div>
   </div>
 
-  <!-- LEARNING PLAN SECTION (MOVED TO TOP) -->
-  <section id="syllabus" class="py-24 relative bg-white border-b border-gray-100">
+  <!-- 4 HIGH-INCOME AI SKILLS (REDESIGNED) (MOVED UP) -->
+  <section id="skills" class="py-24 bg-white relative overflow-hidden scroll-mt-28">
+    <!-- Abstract Background Elements -->
+    <div class="absolute top-0 right-0 w-96 h-96 bg-[#8A1538]/5 rounded-full blur-[100px] -mr-48"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-[#E30064]/5 rounded-full blur-[100px] -ml-48"></div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-5xl font-black text-[#2C0A15] mb-4">Master <span class="bg-gradient-to-r from-[#8A1538] to-[#E30064] bg-clip-text text-transparent">4 High-Income</span> AI Skills</h2>
+        <p class="text-gray-500 font-bold text-sm tracking-widest uppercase">Your unfair advantage in the AI-first economy</p>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-10 items-stretch">
+        <!-- Visual Showcase (Left) -->
+        <div class="lg:col-span-5 relative group hidden lg:block">
+           <div class="sticky top-32">
+              <div class="relative rounded-[40px] overflow-hidden shadow-2xl border-2 border-gray-100 bg-black aspect-[4/5] flex items-center justify-center">
+                 <!-- Background Image with Overlay -->
+                 <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-1000">
+                 <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#8A1538]/20 to-[#8A1538]/80"></div>
+                 
+                 <!-- Centered Content -->
+                 <div class="relative z-10 text-center p-12">
+                    <div class="w-20 h-20 bg-white/10 backdrop-blur-xl rounded-2xl flex items-center justify-center mx-auto mb-6 border border-white/20 shadow-2xl">
+                       <i class="fas fa-microchip text-4xl text-white"></i>
+                    </div>
+                    <h3 class="text-3xl font-black text-white mb-4 leading-tight">Industry-Grade<br/>AI Workflows</h3>
+                    <p class="text-white/70 font-semibold text-sm">Don't just use AI. Lead with it.</p>
+                 </div>
+
+                 <!-- Floating Badges -->
+                 <div class="absolute top-8 left-8 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 text-white text-[10px] font-black tracking-widest uppercase">Verified Curriculum</div>
+                 <div class="absolute bottom-8 right-8 flex -space-x-3">
+                    <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-200 overflow-hidden"><img src="https://i.pravatar.cc/100?u=1"></div>
+                    <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-300 overflow-hidden"><img src="https://i.pravatar.cc/100?u=2"></div>
+                    <div class="w-10 h-10 rounded-full border-2 border-white bg-[#8A1538] flex items-center justify-center text-white text-[10px] font-bold">+5k</div>
+                 </div>
+              </div>
+           </div>
+        </div>
+
+        <!-- Skills Cards (Right) -->
+        <div class="lg:col-span-7 space-y-6">
+           
+           <!-- Skill 1 -->
+           <div class="bg-[#F7F8FC] p-8 rounded-[32px] border-2 border-transparent hover:border-[#8A1538]/20 hover:bg-white hover:shadow-xl transition-all group">
+              <div class="flex flex-col md:flex-row gap-6 items-start">
+                 <div class="w-14 h-14 bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center shrink-0 group-hover:bg-[#8A1538] group-hover:text-white transition-all text-[#8A1538]">
+                    <i class="fas fa-terminal text-2xl"></i>
+                 </div>
+                 <div>
+                    <h4 class="text-xl font-black text-[#2C0A15] mb-3">Prompt Strategy & Design Patterns</h4>
+                    <p class="text-sm font-medium text-gray-500 leading-relaxed mb-4">
+                       Master advanced frameworks like Zero-shot, Chain-of-Thought, and RAG-optimization to build high-performance AI prompts for enterprise-level outputs.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                       <span class="bg-white px-3 py-1 rounded-full text-[10px] font-black text-gray-400 uppercase border border-gray-100">Zero-Shot</span>
+                       <span class="bg-white px-3 py-1 rounded-full text-[10px] font-black text-gray-400 uppercase border border-gray-100">Chain-of-Thought</span>
+                       <span class="bg-white px-3 py-1 rounded-full text-[10px] font-black text-gray-400 uppercase border border-gray-100">RAG</span>
+                    </div>
+                 </div>
+              </div>
+           </div>
+
+           <!-- Skill 2 -->
+           <div class="bg-[#F7F8FC] p-8 rounded-[32px] border-2 border-transparent hover:border-[#E30064]/20 hover:bg-white hover:shadow-xl transition-all group">
+              <div class="flex flex-col md:flex-row gap-6 items-start">
+                 <div class="w-14 h-14 bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center shrink-0 group-hover:bg-[#E30064] group-hover:text-white transition-all text-[#E30064]">
+                    <i class="fas fa-play-circle text-2xl"></i>
+                 </div>
+                 <div>
+                    <h4 class="text-xl font-black text-[#2C0A15] mb-3">AI Media & Content Production</h4>
+                    <p class="text-sm font-medium text-gray-500 leading-relaxed mb-4">
+                       Generate studio-quality brand assets, marketing videos, and voiceovers using specialized AI tools (Midjourney, Runway, ElevenLabs) for professional campaigns.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                       <span class="bg-white px-3 py-1 rounded-full text-[10px] font-black text-gray-400 uppercase border border-gray-100">Generative Art</span>
+                       <span class="bg-white px-3 py-1 rounded-full text-[10px] font-black text-gray-400 uppercase border border-gray-100">Video AI</span>
+                       <span class="bg-white px-3 py-1 rounded-full text-[10px] font-black text-gray-400 uppercase border border-gray-100">Audio Gen</span>
+                    </div>
+                 </div>
+              </div>
+           </div>
+
+           <!-- Skill 3 -->
+           <div class="bg-[#F7F8FC] p-8 rounded-[32px] border-2 border-transparent hover:border-[#8A1538]/20 hover:bg-white hover:shadow-xl transition-all group">
+              <div class="flex flex-col md:flex-row gap-6 items-start">
+                 <div class="w-14 h-14 bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center shrink-0 group-hover:bg-[#8A1538] group-hover:text-white transition-all text-[#8A1538]">
+                    <i class="fas fa-layer-group text-2xl"></i>
+                 </div>
+                 <div>
+                    <h4 class="text-xl font-black text-[#2C0A15] mb-3">Build Internal Tools without Code</h4>
+                    <p class="text-sm font-medium text-gray-500 leading-relaxed mb-4">
+                       Create custom dashboards, CRM integrations, and micro-SaaS applications using Vibe Coding and No-Code platforms—no technical degree required.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                       <span class="bg-white px-3 py-1 rounded-full text-[10px] font-black text-gray-400 uppercase border border-gray-100">No-Code CRM</span>
+                       <span class="bg-white px-3 py-1 rounded-full text-[10px] font-black text-gray-400 uppercase border border-gray-100">Micro-SaaS</span>
+                       <span class="bg-white px-3 py-1 rounded-full text-[10px] font-black text-gray-400 uppercase border border-gray-100">Vibe Coding</span>
+                    </div>
+                 </div>
+              </div>
+           </div>
+
+           <!-- Skill 4 -->
+           <div class="bg-[#F7F8FC] p-8 rounded-[32px] border-2 border-transparent hover:border-[#E30064]/20 hover:bg-white hover:shadow-xl transition-all group">
+              <div class="flex flex-col md:flex-row gap-6 items-start">
+                 <div class="w-14 h-14 bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center shrink-0 group-hover:bg-[#E30064] group-hover:text-white transition-all text-[#E30064]">
+                    <i class="fas fa-link text-2xl"></i>
+                 </div>
+                 <div>
+                    <h4 class="text-xl font-black text-[#2C0A15] mb-3">Workflow & Agentic Automation</h4>
+                    <p class="text-sm font-medium text-gray-500 leading-relaxed mb-4">
+                       Design multi-step automated agents that research, draft, and publish work autonomously, connecting AI directly to your existing software stack.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                       <span class="bg-white px-3 py-1 rounded-full text-[10px] font-black text-gray-400 uppercase border border-gray-100">Agentic Flow</span>
+                       <span class="bg-white px-3 py-1 rounded-full text-[10px] font-black text-gray-400 uppercase border border-gray-100">n8n / Make</span>
+                       <span class="bg-white px-3 py-1 rounded-full text-[10px] font-black text-gray-400 uppercase border border-gray-100">Auto-Publish</span>
+                    </div>
+                 </div>
+              </div>
+           </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="syllabus" class="py-24 relative bg-white border-b border-gray-100 scroll-mt-28">
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
       <h2 class="text-3xl md:text-[2.5rem] font-black text-center mb-16 text-[#2C0A15]">The <span class="text-[#8A1538]">Professional</span> Journey</h2>
       
@@ -182,7 +319,7 @@
   </section>
 
   <!-- PROGRAM OVERVIEW (img2 style) (MOVED UP) -->
-  <section class="py-24 bg-white border-b border-gray-100">
+  <section id="overview" class="py-24 bg-white border-b border-gray-100 scroll-mt-28">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-16">
         <h2 class="text-3xl md:text-[2.5rem] font-black mb-4 text-[#2C0A15]">Program <span class="text-[#8A1538]">Overview</span></h2>
@@ -440,134 +577,6 @@
   </section>
 
 
-  <!-- 4 HIGH-INCOME AI SKILLS (REDESIGNED) -->
-  <section class="py-24 bg-white relative overflow-hidden">
-    <!-- Abstract Background Elements -->
-    <div class="absolute top-0 right-0 w-96 h-96 bg-[#8A1538]/5 rounded-full blur-[100px] -mr-48"></div>
-    <div class="absolute bottom-0 left-0 w-96 h-96 bg-[#E30064]/5 rounded-full blur-[100px] -ml-48"></div>
-
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-5xl font-black text-[#2C0A15] mb-4">Master <span class="bg-gradient-to-r from-[#8A1538] to-[#E30064] bg-clip-text text-transparent">4 High-Income</span> AI Skills</h2>
-        <p class="text-gray-500 font-bold text-sm tracking-widest uppercase">Your unfair advantage in the AI-first economy</p>
-      </div>
-
-      <div class="grid lg:grid-cols-12 gap-10 items-stretch">
-        <!-- Visual Showcase (Left) -->
-        <div class="lg:col-span-5 relative group hidden lg:block">
-           <div class="sticky top-32">
-              <div class="relative rounded-[40px] overflow-hidden shadow-2xl border-2 border-gray-100 bg-black aspect-[4/5] flex items-center justify-center">
-                 <!-- Background Image with Overlay -->
-                 <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-1000">
-                 <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#8A1538]/20 to-[#8A1538]/80"></div>
-                 
-                 <!-- Centered Content -->
-                 <div class="relative z-10 text-center p-12">
-                    <div class="w-20 h-20 bg-white/10 backdrop-blur-xl rounded-2xl flex items-center justify-center mx-auto mb-6 border border-white/20 shadow-2xl">
-                       <i class="fas fa-microchip text-4xl text-white"></i>
-                    </div>
-                    <h3 class="text-3xl font-black text-white mb-4 leading-tight">Industry-Grade<br/>AI Workflows</h3>
-                    <p class="text-white/70 font-semibold text-sm">Don't just use AI. Lead with it.</p>
-                 </div>
-
-                 <!-- Floating Badges -->
-                 <div class="absolute top-8 left-8 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 text-white text-[10px] font-black tracking-widest uppercase">Verified Curriculum</div>
-                 <div class="absolute bottom-8 right-8 flex -space-x-3">
-                    <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-200 overflow-hidden"><img src="https://i.pravatar.cc/100?u=1"></div>
-                    <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-300 overflow-hidden"><img src="https://i.pravatar.cc/100?u=2"></div>
-                    <div class="w-10 h-10 rounded-full border-2 border-white bg-[#8A1538] flex items-center justify-center text-white text-[10px] font-bold">+5k</div>
-                 </div>
-              </div>
-           </div>
-        </div>
-
-        <!-- Skills Cards (Right) -->
-        <div class="lg:col-span-7 space-y-6">
-           
-           <!-- Skill 1 -->
-           <div class="bg-[#F7F8FC] p-8 rounded-[32px] border-2 border-transparent hover:border-[#8A1538]/20 hover:bg-white hover:shadow-xl transition-all group">
-              <div class="flex flex-col md:flex-row gap-6 items-start">
-                 <div class="w-14 h-14 bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center shrink-0 group-hover:bg-[#8A1538] group-hover:text-white transition-all text-[#8A1538]">
-                    <i class="fas fa-terminal text-2xl"></i>
-                 </div>
-                 <div>
-                    <h4 class="text-xl font-black text-[#2C0A15] mb-3">Prompt Strategy & Design Patterns</h4>
-                    <p class="text-sm font-medium text-gray-500 leading-relaxed mb-4">
-                       Master advanced frameworks like Zero-shot, Chain-of-Thought, and RAG-optimization to build high-performance AI prompts for enterprise-level outputs.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                       <span class="bg-white px-3 py-1 rounded-full text-[10px] font-black text-gray-400 uppercase border border-gray-100">Zero-Shot</span>
-                       <span class="bg-white px-3 py-1 rounded-full text-[10px] font-black text-gray-400 uppercase border border-gray-100">Chain-of-Thought</span>
-                       <span class="bg-white px-3 py-1 rounded-full text-[10px] font-black text-gray-400 uppercase border border-gray-100">RAG</span>
-                    </div>
-                 </div>
-              </div>
-           </div>
-
-           <!-- Skill 2 -->
-           <div class="bg-[#F7F8FC] p-8 rounded-[32px] border-2 border-transparent hover:border-[#E30064]/20 hover:bg-white hover:shadow-xl transition-all group">
-              <div class="flex flex-col md:flex-row gap-6 items-start">
-                 <div class="w-14 h-14 bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center shrink-0 group-hover:bg-[#E30064] group-hover:text-white transition-all text-[#E30064]">
-                    <i class="fas fa-play-circle text-2xl"></i>
-                 </div>
-                 <div>
-                    <h4 class="text-xl font-black text-[#2C0A15] mb-3">AI Media & Content Production</h4>
-                    <p class="text-sm font-medium text-gray-500 leading-relaxed mb-4">
-                       Generate studio-quality brand assets, marketing videos, and voiceovers using specialized AI tools (Midjourney, Runway, ElevenLabs) for professional campaigns.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                       <span class="bg-white px-3 py-1 rounded-full text-[10px] font-black text-gray-400 uppercase border border-gray-100">Generative Art</span>
-                       <span class="bg-white px-3 py-1 rounded-full text-[10px] font-black text-gray-400 uppercase border border-gray-100">Video AI</span>
-                       <span class="bg-white px-3 py-1 rounded-full text-[10px] font-black text-gray-400 uppercase border border-gray-100">Audio Gen</span>
-                    </div>
-                 </div>
-              </div>
-           </div>
-
-           <!-- Skill 3 -->
-           <div class="bg-[#F7F8FC] p-8 rounded-[32px] border-2 border-transparent hover:border-[#8A1538]/20 hover:bg-white hover:shadow-xl transition-all group">
-              <div class="flex flex-col md:flex-row gap-6 items-start">
-                 <div class="w-14 h-14 bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center shrink-0 group-hover:bg-[#8A1538] group-hover:text-white transition-all text-[#8A1538]">
-                    <i class="fas fa-layer-group text-2xl"></i>
-                 </div>
-                 <div>
-                    <h4 class="text-xl font-black text-[#2C0A15] mb-3">Build Internal Tools without Code</h4>
-                    <p class="text-sm font-medium text-gray-500 leading-relaxed mb-4">
-                       Create custom dashboards, CRM integrations, and micro-SaaS applications using Vibe Coding and No-Code platforms—no technical degree required.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                       <span class="bg-white px-3 py-1 rounded-full text-[10px] font-black text-gray-400 uppercase border border-gray-100">No-Code CRM</span>
-                       <span class="bg-white px-3 py-1 rounded-full text-[10px] font-black text-gray-400 uppercase border border-gray-100">Micro-SaaS</span>
-                       <span class="bg-white px-3 py-1 rounded-full text-[10px] font-black text-gray-400 uppercase border border-gray-100">Vibe Coding</span>
-                    </div>
-                 </div>
-              </div>
-           </div>
-
-           <!-- Skill 4 -->
-           <div class="bg-[#F7F8FC] p-8 rounded-[32px] border-2 border-transparent hover:border-[#E30064]/20 hover:bg-white hover:shadow-xl transition-all group">
-              <div class="flex flex-col md:flex-row gap-6 items-start">
-                 <div class="w-14 h-14 bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center shrink-0 group-hover:bg-[#E30064] group-hover:text-white transition-all text-[#E30064]">
-                    <i class="fas fa-link text-2xl"></i>
-                 </div>
-                 <div>
-                    <h4 class="text-xl font-black text-[#2C0A15] mb-3">Workflow & Agentic Automation</h4>
-                    <p class="text-sm font-medium text-gray-500 leading-relaxed mb-4">
-                       Design multi-step automated agents that research, draft, and publish work autonomously, connecting AI directly to your existing software stack.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                       <span class="bg-white px-3 py-1 rounded-full text-[10px] font-black text-gray-400 uppercase border border-gray-100">Agentic Flow</span>
-                       <span class="bg-white px-3 py-1 rounded-full text-[10px] font-black text-gray-400 uppercase border border-gray-100">n8n / Make</span>
-                       <span class="bg-white px-3 py-1 rounded-full text-[10px] font-black text-gray-400 uppercase border border-gray-100">Auto-Publish</span>
-                    </div>
-                 </div>
-              </div>
-           </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- OVERVIEW & STATS -->
   <section class="py-24 bg-[#F7F8FC] border-y border-gray-100 relative">
@@ -758,7 +767,7 @@
       </div>
 
   <!-- CERTIFICATION & RECOGNITION (img3 style) -->
-  <section class="py-24 bg-white border-b border-gray-100 overflow-hidden">
+  <section id="certification" class="py-24 bg-white border-b border-gray-100 overflow-hidden">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-16">
         <h2 class="text-3xl md:text-[2.5rem] font-black mb-4 text-[#2C0A15]">Industry-Level <span class="text-[#8A1538]">Recognition</span> For Your Career</h2>
@@ -805,8 +814,7 @@
     </div>
   </section>
 
-  <!-- MENTOR SECTION -->
-  <section class="py-24 bg-[#F7F8FC] relative border-y border-gray-100">
+  <section id="mentors" class="py-24 bg-[#F7F8FC] relative border-y border-gray-100 scroll-mt-28">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
       
       <h2 class="text-3xl md:text-[2.5rem] font-black text-center mb-16 text-[#2C0A15] tracking-tight uppercase">Meet Your AI <span class="text-[#8A1538]">Mentors</span></h2>
@@ -848,8 +856,8 @@
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section id="faq" class="py-24 bg-white">
+  <!-- FAQ SECTION (RE-MAPPED TO RESOLVE REDIRECTION) -->
+  <section id="faq-master" class="py-24 bg-white scroll-mt-32">
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
       
       <div class="text-center mb-16">
@@ -886,6 +894,86 @@
           </div>
           <div class="faq-answer hidden text-xs md:text-sm font-medium text-gray-500 mt-4 pr-8 leading-relaxed border-t border-gray-200 pt-4 transition-all">
             Yes. You will receive an official Certificate of Completion from Adani Skill Development Centre. This certification validates your mastery of Prompt Engineering, Workflow Automation, and No-Code Build frameworks.
+          </div>
+        </div>
+        <!-- FAQ 4 -->
+        <div class="faq-item bg-white rounded-2xl p-6 cursor-pointer hover:shadow-sm border border-gray-200 transition-all" onclick="toggleFAQ(this)">
+          <div class="w-full flex items-center justify-between text-left font-black text-[15px] md:text-lg text-[#2C0A15]">
+            <span>What are the session timings for the weekend classes?</span>
+            <div class="icon-bg w-10 h-10 bg-[#FFF0F5] rounded-full flex items-center justify-center text-[#8A1538] shrink-0 transition-colors"><i class="fas fa-plus text-sm"></i></div>
+          </div>
+          <div class="faq-answer hidden text-xs md:text-sm font-medium text-gray-500 mt-4 pr-8 leading-relaxed border-t border-gray-200 pt-4 transition-all">
+            To accommodate global schedules, we offer two slots: Morning (11am – 1pm) and Evening (5pm – 7pm) on both Saturday and Sunday. You can attend either slot or even both for additional reinforcement.
+          </div>
+        </div>
+        <!-- FAQ 5 -->
+        <div class="faq-item bg-white rounded-2xl p-6 cursor-pointer hover:shadow-sm border border-gray-200 transition-all" onclick="toggleFAQ(this)">
+          <div class="w-full flex items-center justify-between text-left font-black text-[15px] md:text-lg text-[#2C0A15]">
+            <span>Will I get lifetime access to the recordings?</span>
+            <div class="icon-bg w-10 h-10 bg-[#FFF0F5] rounded-full flex items-center justify-center text-[#8A1538] shrink-0 transition-colors"><i class="fas fa-plus text-sm"></i></div>
+          </div>
+          <div class="faq-answer hidden text-xs md:text-sm font-medium text-gray-500 mt-4 pr-8 leading-relaxed border-t border-gray-200 pt-4 transition-all">
+            Yes. All participants receive lifetime access to our Learning Management System (LMS), which includes session recordings, prompt libraries, and all project templates used during the program.
+          </div>
+        </div>
+        <!-- FAQ 6 -->
+        <div class="faq-item bg-white rounded-2xl p-6 cursor-pointer hover:shadow-sm border border-gray-200 transition-all" onclick="toggleFAQ(this)">
+          <div class="w-full flex items-center justify-between text-left font-black text-[15px] md:text-lg text-[#2C0A15]">
+            <span>Do I need to pay for AI tools like GPT-4 or Midjourney?</span>
+            <div class="icon-bg w-10 h-10 bg-[#FFF0F5] rounded-full flex items-center justify-center text-[#8A1538] shrink-0 transition-colors"><i class="fas fa-plus text-sm"></i></div>
+          </div>
+          <div class="faq-answer hidden text-xs md:text-sm font-medium text-gray-500 mt-4 pr-8 leading-relaxed border-t border-gray-200 pt-4 transition-all">
+            We focus on a mix of free and paid tools. While we demonstrate premium tools for enterprise workflows, we provide alternative methods and free tiers for all core exercises so you can learn without immediate additional costs.
+          </div>
+        </div>
+        <!-- FAQ 7 -->
+        <div class="faq-item bg-white rounded-2xl p-6 cursor-pointer hover:shadow-sm border border-gray-200 transition-all" onclick="toggleFAQ(this)">
+          <div class="w-full flex items-center justify-between text-left font-black text-[15px] md:text-lg text-[#2C0A15]">
+            <span>Is this program restricted to Adani employees?</span>
+            <div class="icon-bg w-10 h-10 bg-[#FFF0F5] rounded-full flex items-center justify-center text-[#8A1538] shrink-0 transition-colors"><i class="fas fa-plus text-sm"></i></div>
+          </div>
+          <div class="faq-answer hidden text-xs md:text-sm font-medium text-gray-500 mt-4 pr-8 leading-relaxed border-t border-gray-200 pt-4 transition-all">
+            No, this particular batch is open to external professionals and students who wish to gain industry-grade AI strategy. However, the curriculum is powered by the same standards set for Adani's internal skill transformation.
+          </div>
+        </div>
+        <!-- FAQ 8 -->
+        <div class="faq-item bg-white rounded-2xl p-6 cursor-pointer hover:shadow-sm border border-gray-200 transition-all" onclick="toggleFAQ(this)">
+          <div class="w-full flex items-center justify-between text-left font-black text-[15px] md:text-lg text-[#2C0A15]">
+            <span>What if I miss a live session due to an emergency?</span>
+            <div class="icon-bg w-10 h-10 bg-[#FFF0F5] rounded-full flex items-center justify-center text-[#8A1538] shrink-0 transition-colors"><i class="fas fa-plus text-sm"></i></div>
+          </div>
+          <div class="faq-answer hidden text-xs md:text-sm font-medium text-gray-500 mt-4 pr-8 leading-relaxed border-t border-gray-200 pt-4 transition-all">
+            Don't worry. All sessions are recorded in high-definition and uploaded to your student dashboard within 4 hours. You can watch the replays at your own pace and ask questions in the dedicated student support group.
+          </div>
+        </div>
+        <!-- FAQ 9 -->
+        <div class="faq-item bg-white rounded-2xl p-6 cursor-pointer hover:shadow-sm border border-gray-200 transition-all" onclick="toggleFAQ(this)">
+          <div class="w-full flex items-center justify-between text-left font-black text-[15px] md:text-lg text-[#2C0A15]">
+            <span>Do I need to have a technical background or coding skills?</span>
+            <div class="icon-bg w-10 h-10 bg-[#FFF0F5] rounded-full flex items-center justify-center text-[#8A1538] shrink-0 transition-colors"><i class="fas fa-plus text-sm"></i></div>
+          </div>
+          <div class="faq-answer hidden text-xs md:text-sm font-medium text-gray-500 mt-4 pr-8 leading-relaxed border-t border-gray-200 pt-4 transition-all">
+            Absolutely not. This bootcamp is specifically designed for the "No-Code" era. We teach you how to use AI through natural language and visual interfaces. If you can use an Excel sheet or a smartphone, you are qualified.
+          </div>
+        </div>
+        <!-- FAQ 10 -->
+        <div class="faq-item bg-white rounded-2xl p-6 cursor-pointer hover:shadow-sm border border-gray-200 transition-all" onclick="toggleFAQ(this)">
+          <div class="w-full flex items-center justify-between text-left font-black text-[15px] md:text-lg text-[#2C0A15]">
+            <span>Are the AI tools covered free or paid?</span>
+            <div class="icon-bg w-10 h-10 bg-[#FFF0F5] rounded-full flex items-center justify-center text-[#8A1538] shrink-0 transition-colors"><i class="fas fa-plus text-sm"></i></div>
+          </div>
+          <div class="faq-answer hidden text-xs md:text-sm font-medium text-gray-500 mt-4 pr-8 leading-relaxed border-t border-gray-200 pt-4 transition-all">
+            We focus on a mix of tools. For every paid tool we demonstrate (like GPT-4), we also provide high-quality free alternatives (like Claude or Gemini) so you can start applying your 10x productivity gains without any extra overhead.
+          </div>
+        </div>
+        <!-- FAQ 11 -->
+        <div class="faq-item bg-white rounded-2xl p-6 cursor-pointer hover:shadow-sm border border-gray-200 transition-all" onclick="toggleFAQ(this)">
+          <div class="w-full flex items-center justify-between text-left font-black text-[15px] md:text-lg text-[#2C0A15]">
+            <span>How is the Adani Skill Development Centre certification different?</span>
+            <div class="icon-bg w-10 h-10 bg-[#FFF0F5] rounded-full flex items-center justify-center text-[#8A1538] shrink-0 transition-colors"><i class="fas fa-plus text-sm"></i></div>
+          </div>
+          <div class="faq-answer hidden text-xs md:text-sm font-medium text-gray-500 mt-4 pr-8 leading-relaxed border-t border-gray-200 pt-4 transition-all">
+            Our certification is industry-recognized and carries the weight of one of India's largest corporate training entities. It signals to employers that you have been trained on enterprise-grade AI standards and ethical usage.
           </div>
         </div>
       </div>
@@ -1028,17 +1116,6 @@
                   <option value="Generative-AI">Generative AI</option>
                   <option value="Data-Analysis">Data Analysis</option>
                   <option value="Career-Switch">Career Switch</option>
-                </select>
-              </div>
-              <!-- No. of Seats -->
-              <div>
-                <label class="block text-sm font-black text-gray-700 mb-2">No. of Seats</label>
-                <select name="seats" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-[#8A1538] outline-none bg-white font-bold text-sm appearance-none cursor-pointer">
-                  <option value="1">1 Seat</option>
-                  <option value="2">2 Seats</option>
-                  <option value="3">3 Seats</option>
-                  <option value="4">4 Seats</option>
-                  <option value="5+">5+ Seats</option>
                 </select>
               </div>
               <!-- Pincode -->
