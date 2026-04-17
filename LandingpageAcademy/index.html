@@ -698,7 +698,7 @@
           <!-- Batch Cards -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             <!-- Batch 1 -->
-            <div class="bg-white border-4 border-kids-green/30 rounded-[3rem] p-10 shadow-bubbly relative transform hover:-translate-y-2 transition-all group overflow-hidden">
+            <div id="batch-1-card" onclick="switchBatch(1)" class="bg-white border-4 border-kids-green/30 rounded-[3rem] p-10 shadow-bubbly relative transform hover:-translate-y-2 transition-all group overflow-hidden cursor-pointer">
               <div class="absolute -right-4 -top-4 w-24 h-24 bg-kids-green/10 rounded-full group-hover:scale-150 transition-transform"></div>
               <div class="absolute top-6 right-10 bg-kids-green text-white text-[10px] font-black uppercase tracking-[0.2em] px-5 py-2 rounded-full shadow-md z-10 animate-pulse">
                 Filling Fast!
@@ -706,21 +706,21 @@
               <div class="w-16 h-16 bg-kids-green/10 rounded-2xl flex items-center justify-center text-kids-green text-3xl mb-6 shadow-inner border border-kids-green/20">
                 <i class="fas fa-calendar-alt"></i>
               </div>
-              <h3 class="font-kids text-3xl text-[#1E1B4B] mb-2">Summer Batch A</h3>
-              <p class="text-gray-500 font-bold mb-10 text-base">Begins <span class="text-kids-green font-black underline decoration-dashed">June 15th</span><br/><span class="text-xs uppercase tracking-widest opacity-60">Weekend Sessions</span></p>
+              <h3 class="font-kids text-3xl text-[#1E1B4B] mb-2">Batch 1</h3>
+              <p class="text-gray-500 font-bold mb-10 text-base">Begins <span class="text-kids-green font-black underline decoration-dashed">May 2nd</span><br/><span class="text-xs uppercase tracking-widest opacity-60">Weekend Sessions</span></p>
               <button onclick="document.getElementById('enroll').scrollIntoView()" class="w-full bg-kids-green text-white font-kids font-black py-5 rounded-[1.5rem] shadow-bubbly-green hover:shadow-2xl transition-all active:scale-95 text-xl">
                 Secure My Spot <i class="fas fa-check-circle ml-2"></i>
               </button>
             </div>
 
             <!-- Batch 2 -->
-            <div class="bg-white border-4 border-kids-purple/30 rounded-[3rem] p-10 shadow-bubbly relative transform hover:-translate-y-2 transition-all group overflow-hidden">
+            <div id="batch-2-card" onclick="switchBatch(2)" class="bg-white border-4 border-kids-purple/30 rounded-[3rem] p-10 shadow-bubbly relative transform hover:-translate-y-2 transition-all group overflow-hidden cursor-pointer">
               <div class="absolute -right-4 -top-4 w-24 h-24 bg-kids-purple/10 rounded-full group-hover:scale-150 transition-transform"></div>
               <div class="w-16 h-16 bg-kids-purple/10 rounded-2xl flex items-center justify-center text-kids-purple text-3xl mb-6 shadow-inner border border-kids-purple/20">
                 <i class="fas fa-rocket"></i>
               </div>
-              <h3 class="font-kids text-3xl text-[#1E1B4B] mb-2">Summer Batch B</h3>
-              <p class="text-gray-500 font-bold mb-10 text-base">Begins <span class="text-kids-purple font-black underline decoration-dashed">July 5th</span><br/><span class="text-xs uppercase tracking-widest opacity-60">Weekend Sessions</span></p>
+              <h3 class="font-kids text-3xl text-[#1E1B4B] mb-2">Batch 2</h3>
+              <p class="text-gray-500 font-bold mb-10 text-base">Begins <span class="text-kids-purple font-black underline decoration-dashed">May 9th</span><br/><span class="text-xs uppercase tracking-widest opacity-60">Weekend Sessions</span></p>
               <button onclick="document.getElementById('enroll').scrollIntoView()" class="w-full bg-[#3D2C8D] text-white font-kids font-black py-5 rounded-[1.5rem] shadow-bubbly-purple hover:shadow-2xl transition-all active:scale-95 text-xl">
                 Ready to Launch <i class="fas fa-arrow-right ml-2 opacity-60"></i>
               </button>
@@ -750,12 +750,12 @@
                 <tbody class="text-white text-base md:text-lg font-bold">
                   <tr class="border-b-2 border-dashed border-white/5 hover:bg-white/5 transition-colors group">
                     <td class="p-6 md:p-8 pl-8 font-kids text-kids-yellow text-2xl group-hover:scale-105 transition-transform origin-left">Saturday</td>
-                    <td class="p-6 md:p-8 font-black tracking-tight">10:00 AM – 12:00 PM</td>
+                    <td id="sat-time" class="p-6 md:p-8 font-black tracking-tight">10:00 AM – 12:00 PM</td>
                     <td class="p-6 md:p-8 text-right pr-8"><span class="bg-kids-cyan/20 text-kids-cyan px-4 py-1.5 rounded-full text-xs font-black border border-kids-cyan/30 uppercase tracking-widest">Live Interactive</span></td>
                   </tr>
                   <tr class="hover:bg-white/5 transition-colors group">
                     <td class="p-6 md:p-8 pl-8 font-kids text-kids-yellow text-2xl group-hover:scale-105 transition-transform origin-left">Sunday</td>
-                    <td class="p-6 md:p-8 font-black tracking-tight">10:00 AM – 12:00 PM</td>
+                    <td id="sun-time" class="p-6 md:p-8 font-black tracking-tight">10:00 AM – 12:00 PM</td>
                     <td class="p-6 md:p-8 text-right pr-8"><span class="bg-kids-cyan/20 text-kids-cyan px-4 py-1.5 rounded-full text-xs font-black border border-kids-cyan/30 uppercase tracking-widest">Live Interactive</span></td>
                   </tr>
                 </tbody>
@@ -1560,6 +1560,43 @@
          element.classList.add('bg-white');
       }
     }
+
+    function switchBatch(batchNum) {
+      const card1 = document.getElementById('batch-1-card');
+      const card2 = document.getElementById('batch-2-card');
+      const satTime = document.getElementById('sat-time');
+      const sunTime = document.getElementById('sun-time');
+
+      if (batchNum === 1) {
+        // Update Content
+        satTime.innerText = '10:00 AM – 12:00 PM';
+        sunTime.innerText = '10:00 AM – 12:00 PM';
+        
+        // Update UI Styles (Active states)
+        card1.classList.remove('opacity-60', 'grayscale-[0.5]');
+        card1.classList.add('scale-[1.02]', 'border-kids-green/50');
+        
+        card2.classList.add('opacity-60', 'grayscale-[0.5]');
+        card2.classList.remove('scale-[1.02]', 'border-kids-purple/50');
+      } else {
+        // Update Content
+        satTime.innerText = '02:00 PM – 04:00 PM';
+        sunTime.innerText = '02:00 PM – 04:00 PM';
+        
+        // Update UI Styles (Active states)
+        card2.classList.remove('opacity-60', 'grayscale-[0.5]');
+        card2.classList.add('scale-[1.02]', 'border-kids-purple/50');
+        
+        card1.classList.add('opacity-60', 'grayscale-[0.5]');
+        card1.classList.remove('scale-[1.02]', 'border-kids-green/50');
+      }
+    }
+
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', () => {
+      // Small timeout to ensure DOM is fully ready and other scripts don't conflict
+      setTimeout(() => switchBatch(1), 100);
+    });
   </script>
   <script type="module" src="/src/main.ts"></script>
 <script>
