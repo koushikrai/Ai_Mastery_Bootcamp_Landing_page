@@ -98,7 +98,7 @@ countElements.forEach(el => countObserver.observe(el));
     currency: "INR",
     name: "AI Mastery Workshop",
     description: program === 'kids'
-      ? "AI Explorers Academy — 4-Week Program"
+      ? "AI Rangers — 4-Week Program"
       : "AI Mastery Bootcamp — 2-Day Workshop",
     image: "/logo.png", // placeholder as requested
     handler: function (response: any) {

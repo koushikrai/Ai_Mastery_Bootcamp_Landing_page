@@ -148,7 +148,7 @@ let activeProgramToRegister: 'kids' | 'pro' | null = null;
     currency: "INR",
     name: "AI Mastery Workshop",
     description: program === 'kids'
-      ? `AI Explorers Academy — 4-Week Program (${seats} Seat${seats > 1 ? 's' : ''})`
+      ? `AI Rangers — 4-Week Program (${seats} Seat${seats > 1 ? 's' : ''})`
       : `AI Mastery Bootcamp — 2-Day Workshop (${seats} Seat${seats > 1 ? 's' : ''})`,
     image: "/logo.png", // placeholder as requested
     handler: function (response: any) {
