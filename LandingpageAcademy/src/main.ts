@@ -83,8 +83,54 @@ const countObserver = new IntersectionObserver((entries) => {
 
 countElements.forEach(el => countObserver.observe(el));
 
+// Registration Modal Logic
+let activeProgramToRegister: 'kids' | 'pro' | null = null;
+
+(window as any).openRegistrationModal = function(program: 'kids' | 'pro') {
+  activeProgramToRegister = program;
+  const modal = document.getElementById('registration-modal');
+  if (modal) {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+};
+
+(window as any).closeRegistrationModal = function() {
+  const modal = document.getElementById('registration-modal');
+  if (modal) {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+};
+
+(window as any).handleRegistrationSubmit = function(event: Event) {
+  event.preventDefault(); // Prevent page reload
+  
+  // Read basic info needed for checkout
+  const nameInput = document.getElementById('reg-name') as HTMLInputElement;
+  const emailInput = document.getElementById('reg-email') as HTMLInputElement;
+  const numInput = document.getElementById('reg-whatsapp') as HTMLInputElement;
+
+  const formData = {
+    name: nameInput?.value || '',
+    email: emailInput?.value || '',
+    contact: numInput ? `+91${numInput.value}` : '',
+    seats: 1
+  };
+
+  // Close modal
+  (window as any).closeRegistrationModal();
+
+  // Trigger Razorpay payment with prefill
+  if (activeProgramToRegister) {
+    (window as any).openRazorpay(activeProgramToRegister, formData);
+  }
+};
+
 // Razorpay Integration Logic
-(window as any).openRazorpay = function (program: 'kids' | 'pro') {
+(window as any).openRazorpay = function (program: 'kids' | 'pro', prefillData?: any) {
   const RAZORPAY_KEY = "YOUR_RAZORPAY_KEY_ID"; // REPLACEME: Get this from dashboard.razorpay.com
 
   if (RAZORPAY_KEY === "YOUR_RAZORPAY_KEY_ID") {
@@ -92,20 +138,28 @@ countElements.forEach(el => countObserver.observe(el));
     return;
   }
 
+  const baseAmount = program === 'kids' ? 500000 : 800000;
+  const seats = prefillData?.seats || 1;
+  const amountToCharge = baseAmount * seats;
+
   const options = {
     key: RAZORPAY_KEY,
-    amount: program === 'kids' ? 500000 : 800000, // as specified in requirements
+    amount: amountToCharge, // modified by number of seats selected
     currency: "INR",
     name: "AI Mastery Workshop",
     description: program === 'kids'
-      ? "AI Explorers Academy — 4-Week Program"
-      : "AI Mastery Bootcamp — 2-Day Workshop",
+      ? `AI Explorers Academy — 4-Week Program (${seats} Seat${seats > 1 ? 's' : ''})`
+      : `AI Mastery Bootcamp — 2-Day Workshop (${seats} Seat${seats > 1 ? 's' : ''})`,
     image: "/logo.png", // placeholder as requested
     handler: function (response: any) {
       console.log("Payment Success:", response.razorpay_payment_id);
       window.location.href = "/thank-you?payment_id=" + response.razorpay_payment_id;
     },
-    prefill: { name: "", email: "", contact: "" },
+    prefill: { 
+      name: prefillData?.name || "", 
+      email: prefillData?.email || "", 
+      contact: prefillData?.contact || "" 
+    },
     modal: { ondismiss: function () { console.log("Payment closed"); } },
     theme: { color: program === 'kids' ? "#FF8C00" : "#3D2C8D" }
   };
