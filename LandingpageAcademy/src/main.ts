@@ -86,13 +86,18 @@ countElements.forEach(el => countObserver.observe(el));
 // Registration Modal Logic
 let activeProgramToRegister: 'kids' | 'pro' | null = null;
 
-(window as any).openRegistrationModal = function(program: 'kids' | 'pro') {
+(window as any).openRegistrationModal = function(program: 'kids' | 'pro', batch?: number) {
   activeProgramToRegister = program;
   const modal = document.getElementById('registration-modal');
   if (modal) {
     modal.classList.remove('hidden');
     modal.classList.add('flex');
     document.body.style.overflow = 'hidden';
+    
+    // If a batch is specified, trigger the switchBatch function to update form state
+    if (batch && (window as any).switchBatch) {
+      (window as any).switchBatch(batch);
+    }
   }
 };
 
@@ -112,11 +117,16 @@ let activeProgramToRegister: 'kids' | 'pro' | null = null;
   const nameInput = document.getElementById('reg-name') as HTMLInputElement;
   const emailInput = document.getElementById('reg-email') as HTMLInputElement;
   const numInput = document.getElementById('reg-whatsapp') as HTMLInputElement;
+  
+  // Get selected batch
+  const batchInput = document.querySelector('input[name="reg-batch"]:checked') as HTMLInputElement;
+  const selectedBatch = batchInput ? batchInput.value : 'Not Selected';
 
   const formData = {
     name: nameInput?.value || '',
     email: emailInput?.value || '',
     contact: numInput ? `+91${numInput.value}` : '',
+    batch: selectedBatch,
     seats: 1
   };
 
@@ -148,7 +158,7 @@ let activeProgramToRegister: 'kids' | 'pro' | null = null;
     currency: "INR",
     name: "AI Mastery Workshop",
     description: program === 'kids'
-      ? `AI Rangers — 4-Week Program (${seats} Seat${seats > 1 ? 's' : ''})`
+      ? `AI Rangers — 4-Week Program | ${prefillData?.batch || "Batch 1"} (${seats} Seat${seats > 1 ? 's' : ''})`
       : `AI Mastery Bootcamp — 2-Day Workshop (${seats} Seat${seats > 1 ? 's' : ''})`,
     image: "/logo.png", // placeholder as requested
     handler: function (response: any) {

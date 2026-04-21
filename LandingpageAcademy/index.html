@@ -811,7 +811,7 @@
               </div>
               <h3 class="font-kids text-3xl text-[#1E1B4B] mb-2">Batch 1</h3>
               <p class="text-gray-500 font-bold mb-10 text-base">Begins <span class="text-kids-green font-black underline decoration-dashed">May 16th</span><br/><span class="text-xs uppercase tracking-widest opacity-60">Weekend Sessions</span></p>
-              <button onclick="document.getElementById('enroll').scrollIntoView()" class="w-full bg-kids-green text-white font-kids font-black py-5 rounded-[1.5rem] shadow-bubbly-green hover:shadow-2xl transition-all active:scale-95 text-xl">
+              <button onclick="openRegistrationModal('kids', 1)" class="w-full bg-kids-green text-white font-kids font-black py-5 rounded-[1.5rem] shadow-bubbly-green hover:shadow-2xl transition-all active:scale-95 text-xl">
                 Secure My Spot <i class="fas fa-check-circle ml-2"></i>
               </button>
             </div>
@@ -824,7 +824,7 @@
               </div>
               <h3 class="font-kids text-3xl text-[#1E1B4B] mb-2">Batch 2</h3>
               <p class="text-gray-500 font-bold mb-10 text-base">Begins <span class="text-kids-purple font-black underline decoration-dashed">May 16th</span><br/><span class="text-xs uppercase tracking-widest opacity-60">Weekend Sessions</span></p>
-              <button onclick="document.getElementById('enroll').scrollIntoView()" class="w-full bg-[#3D2C8D] text-white font-kids font-black py-5 rounded-[1.5rem] shadow-bubbly-purple hover:shadow-2xl transition-all active:scale-95 text-xl">
+              <button onclick="openRegistrationModal('kids', 2)" class="w-full bg-[#3D2C8D] text-white font-kids font-black py-5 rounded-[1.5rem] shadow-bubbly-purple hover:shadow-2xl transition-all active:scale-95 text-xl">
                 Ready to Launch <i class="fas fa-arrow-right ml-2 opacity-60"></i>
               </button>
             </div>
@@ -837,7 +837,7 @@
               </div>
               <h3 class="font-kids text-3xl text-[#1E1B4B] mb-2">Batch 3</h3>
               <p class="text-gray-500 font-bold mb-10 text-base">Begins <span class="text-kids-orange font-black underline decoration-dashed">May 16th</span><br/><span class="text-xs uppercase tracking-widest opacity-60">Weekend Sessions</span></p>
-              <button onclick="document.getElementById('enroll').scrollIntoView()" class="w-full bg-[#FF8C00] text-white font-kids font-black py-5 rounded-[1.5rem] shadow-bubbly-orange hover:shadow-2xl transition-all active:scale-95 text-xl">
+              <button onclick="openRegistrationModal('kids', 3)" class="w-full bg-[#FF8C00] text-white font-kids font-black py-5 rounded-[1.5rem] shadow-bubbly-orange hover:shadow-2xl transition-all active:scale-95 text-xl">
                 Join Mission <i class="fas fa-arrow-right ml-2 opacity-60"></i>
               </button>
             </div>
@@ -1972,31 +1972,36 @@
     function switchBatch(batchNum) {
       const card1 = document.getElementById('batch-1-card');
       const card2 = document.getElementById('batch-2-card');
+      const card3 = document.getElementById('batch-3-card');
       const satTime = document.getElementById('sat-time');
       const sunTime = document.getElementById('sun-time');
 
+      // Update Form Radio
+      const radio = document.getElementById(`reg-batch-${batchNum}`);
+      if (radio) radio.checked = true;
+
+      // Reset all cards
+      [card1, card2, card3].forEach(card => {
+        if (!card) return;
+        card.classList.add('opacity-60', 'grayscale-[0.5]');
+        card.classList.remove('scale-[1.02]', 'border-kids-green/50', 'border-kids-purple/50', 'border-kids-orange/50');
+      });
+
       if (batchNum === 1) {
-        // Update Content
-        satTime.innerText = '10:00 AM – 12:00 PM';
-        sunTime.innerText = '10:00 AM – 12:00 PM';
-        
-        // Update UI Styles (Active states)
+        if (satTime) satTime.innerText = '09:30 AM Induction ; 10 AM Onwards';
+        if (sunTime) sunTime.innerText = '09:30 AM Induction ; 10 AM Onwards';
         card1.classList.remove('opacity-60', 'grayscale-[0.5]');
         card1.classList.add('scale-[1.02]', 'border-kids-green/50');
-        
-        card2.classList.add('opacity-60', 'grayscale-[0.5]');
-        card2.classList.remove('scale-[1.02]', 'border-kids-purple/50');
-      } else {
-        // Update Content
-        satTime.innerText = '02:00 PM – 04:00 PM';
-        sunTime.innerText = '02:00 PM – 04:00 PM';
-        
-        // Update UI Styles (Active states)
+      } else if (batchNum === 2) {
+        if (satTime) satTime.innerText = '02:00 PM Induction ; 02:30 PM Onwards';
+        if (sunTime) sunTime.innerText = '02:00 PM Induction ; 02:30 PM Onwards';
         card2.classList.remove('opacity-60', 'grayscale-[0.5]');
         card2.classList.add('scale-[1.02]', 'border-kids-purple/50');
-        
-        card1.classList.add('opacity-60', 'grayscale-[0.5]');
-        card1.classList.remove('scale-[1.02]', 'border-kids-green/50');
+      } else {
+        if (satTime) satTime.innerText = '06:30 PM Induction ; 07:00 PM Onwards';
+        if (sunTime) sunTime.innerText = '06:30 PM Induction ; 07:00 PM Onwards';
+        card3.classList.remove('opacity-60', 'grayscale-[0.5]');
+        card3.classList.add('scale-[1.02]', 'border-kids-orange/50');
       }
     }
 
@@ -2234,10 +2239,29 @@
             </div>
           </div>
 
-          <!-- Row 4: Pincode -->
-          <div class="group">
-            <label class="block text-sm font-black text-[#1E1B4B] mb-2 px-1">Pincode 📍</label>
-            <input type="text" id="reg-pincode" required pattern="[0-9]{5,6}" placeholder="400001" class="w-full border-2 border-gray-100 rounded-2xl px-5 py-3.5 outline-none focus:border-kids-purple focus:ring-4 focus:ring-kids-purple/10 transition-all font-bold text-gray-700 placeholder:text-gray-300" >
+          <!-- Row 4: Batch Selection & Pincode -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="group">
+              <label class="block text-sm font-black text-[#1E1B4B] mb-2 px-1">Select Batch 🗓️</label>
+              <div class="flex gap-3 mt-1">
+                <label class="flex-1 cursor-pointer">
+                  <input type="radio" name="reg-batch" id="reg-batch-1" value="Batch 1" class="hidden peer" checked onchange="switchBatch(1)">
+                  <div class="w-full py-3 text-center rounded-xl border-2 border-gray-100 font-bold text-gray-500 peer-checked:border-kids-green peer-checked:bg-kids-green/5 peer-checked:text-kids-green transition-all text-xs">Batch 1</div>
+                </label>
+                <label class="flex-1 cursor-pointer">
+                  <input type="radio" name="reg-batch" id="reg-batch-2" value="Batch 2" class="hidden peer" onchange="switchBatch(2)">
+                  <div class="w-full py-3 text-center rounded-xl border-2 border-gray-100 font-bold text-gray-500 peer-checked:border-kids-purple peer-checked:bg-kids-purple/5 peer-checked:text-kids-purple transition-all text-xs">Batch 2</div>
+                </label>
+                <label class="flex-1 cursor-pointer">
+                  <input type="radio" name="reg-batch" id="reg-batch-3" value="Batch 3" class="hidden peer" onchange="switchBatch(3)">
+                  <div class="w-full py-3 text-center rounded-xl border-2 border-gray-100 font-bold text-gray-500 peer-checked:border-kids-orange peer-checked:bg-kids-orange/5 peer-checked:text-kids-orange transition-all text-xs">Batch 3</div>
+                </label>
+              </div>
+            </div>
+            <div class="group">
+              <label class="block text-sm font-black text-[#1E1B4B] mb-2 px-1">Pincode 📍</label>
+              <input type="text" id="reg-pincode" required pattern="[0-9]{5,6}" placeholder="400001" class="w-full border-2 border-gray-100 rounded-2xl px-5 py-3.5 outline-none focus:border-kids-purple focus:ring-4 focus:ring-kids-purple/10 transition-all font-bold text-gray-700 placeholder:text-gray-300" >
+            </div>
           </div>
 
           <button type="submit" id="reg-submit-btn" class="hidden">submit</button>
