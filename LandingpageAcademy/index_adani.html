@@ -224,10 +224,10 @@
       <div class="flex flex-col lg:flex-row items-center gap-12 pt-12 md:pt-20">
         <div class="text-center lg:text-left lg:w-3/5" data-aos="zoom-out-down" data-aos-duration="1000">
           <!-- Hook Banner -->
-          <div class="inline-flex flex-wrap lg:flex-nowrap justify-center lg:justify-start items-center gap-1.5 md:gap-2 lg:gap-3 px-3 md:px-5 lg:px-8 py-1.5 md:py-2.5 lg:py-4 bg-[#8A1538]/5 text-[#8A1538] rounded-xl lg:rounded-3xl text-[9px] md:text-xs lg:text-lg xl:text-2xl font-black mb-6 md:mb-10 border-2 border-[#8A1538]/10 shadow-xl backdrop-blur-sm leading-tight text-center lg:text-left w-full lg:w-max mx-auto lg:mx-0">
+          /* <div class="inline-flex flex-wrap lg:flex-nowrap justify-center lg:justify-start items-center gap-1.5 md:gap-2 lg:gap-3 px-3 md:px-5 lg:px-8 py-1.5 md:py-2.5 lg:py-4 bg-[#8A1538]/5 text-[#8A1538] rounded-xl lg:rounded-3xl text-[9px] md:text-xs lg:text-lg xl:text-2xl font-black mb-6 md:mb-10 border-2 border-[#8A1538]/10 shadow-xl backdrop-blur-sm leading-tight text-center lg:text-left w-full lg:w-max mx-auto lg:mx-0">
             <span class="flex h-1.5 w-1.5 md:h-2 md:w-2 lg:h-4 lg:w-4 rounded-full bg-[#8A1538] animate-pulse shrink-0 hidden lg:flex"></span>
             Beyond Basic <span class="text-kids-pink uppercase mx-1">Prompts</span>: Turn <span class="text-kids-cyan underline decoration-2 md:decoration-4 underline-offset-4 uppercase mx-1">Screen Time</span> into <span class="text-kids-pink uppercase underline decoration-2 md:decoration-4 underline-offset-4 mx-1">Solution Time</span>
-          </div>
+          </div> */
 
           <!-- USP Sub-headline -->
           <p class="text-lg md:text-xl font-bold text-gray-500 mb-3 tracking-wide">
@@ -404,8 +404,8 @@
       <div class="bg-white border-8 border-white rounded-[4rem] p-8 md:p-12 shadow-[0_40px_100px_rgba(61,44,141,0.15)] mb-14 relative overflow-hidden group hover:shadow-[0_40px_100px_rgba(255,0,128,0.15)] transition-shadow duration-500">
         <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-kids-pink/20 to-transparent rounded-bl-full"></div>
         
-        <div class="flex flex-col lg:flex-row gap-12 items-center relative z-10">
-          <div class="w-full lg:w-1/2">
+        <div class="flex flex-col gap-12 items-center relative z-10 w-full">
+          <div class="w-full">
             <div class="relative group h-full">
               <div class="absolute -inset-4 bg-gradient-to-r from-adani-magenta to-adani-maroon rounded-[32px] blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
               <div class="bg-gradient-to-br from-white to-[#F7F8FC] rounded-[28px] p-6 md:p-8 relative shadow-2xl border-4 border-white h-full flex flex-col justify-center overflow-hidden">
@@ -464,7 +464,7 @@
               </div>
             </div>
           </div>
-          <div class="w-full lg:w-1/2">
+          <div class="w-full mt-8 border-t border-gray-100 pt-12">
             <div class="flex justify-between items-start mb-8">
                <span class="bg-adani-maroon text-white text-[12px] font-black px-6 py-2 rounded-full uppercase tracking-widest shadow-lg shadow-adani-maroon/30">Workshop Overview</span>
             </div>
@@ -710,14 +710,14 @@
           </div>
 
           <!-- Batch Cards -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-16">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16">
             <!-- Batch 1 -->
             <div class="bg-white border-2 border-[#10b981] rounded-3xl p-8 shadow-[0_10px_30px_rgba(16,185,129,0.15)] relative transform hover:-translate-y-1 transition-all">
               <div class="absolute -top-3 right-8 bg-[#10b981] text-white text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-md">
                 Filling Fast
               </div>
               <h3 class="font-black text-2xl text-[#2C0A15] mb-2 font-kids">Batch 1</h3>
-              <p class="text-gray-500 font-medium mb-8 text-sm">Starts on <span class="text-gray-800 font-bold">2nd of May</span> (Weekend)</p>
+              <p class="text-gray-500 font-medium mb-8 text-sm">Starts on <span class="text-gray-800 font-bold">16th of May</span> (Weekend)</p>
               <button onclick="document.getElementById('enroll').scrollIntoView()" class="w-full bg-[#2C0A15] text-white font-bold py-3.5 rounded-xl hover:bg-[#8A1538] transition-colors relative overflow-hidden group">
                 <span class="relative z-10 flex items-center justify-center gap-2">Book This Batch <i class="fas fa-arrow-right"></i></span>
               </button>
@@ -726,7 +726,16 @@
             <!-- Batch 2 -->
             <div class="bg-white border border-gray-200 rounded-3xl p-8 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:border-[#8A1538]/30 relative transform hover:-translate-y-1 transition-all">
               <h3 class="font-black text-2xl text-[#2C0A15] mb-2 font-kids">Batch 2</h3>
-              <p class="text-gray-500 font-medium mb-8 text-sm">Starts on <span class="text-gray-800 font-bold">9th of May</span> (Weekend)</p>
+              <p class="text-gray-500 font-medium mb-8 text-sm">Starts on <span class="text-gray-800 font-bold">16th of May</span> (Weekend)</p>
+              <button onclick="document.getElementById('enroll').scrollIntoView()" class="w-full bg-[#F7F8FC] text-[#2C0A15] font-bold py-3.5 rounded-xl hover:bg-gray-100 transition-colors border border-gray-200">
+                Book This Batch
+              </button>
+            </div>
+
+            <!-- Batch 3 -->
+            <div class="bg-white border border-gray-200 rounded-3xl p-8 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:border-[#8A1538]/30 relative transform hover:-translate-y-1 transition-all">
+              <h3 class="font-black text-2xl text-[#2C0A15] mb-2 font-kids">Batch 3</h3>
+              <p class="text-gray-500 font-medium mb-8 text-sm">Starts on <span class="text-gray-800 font-bold">16th of May</span> (Weekend)</p>
               <button onclick="document.getElementById('enroll').scrollIntoView()" class="w-full bg-[#F7F8FC] text-[#2C0A15] font-bold py-3.5 rounded-xl hover:bg-gray-100 transition-colors border border-gray-200">
                 Book This Batch
               </button>
@@ -748,21 +757,26 @@
               <table class="w-full text-left border-collapse">
                 <thead>
                   <tr class="bg-white/15 text-white text-[11px] font-black uppercase tracking-widest border-b border-white/20">
-                    <th class="p-4 md:p-6 pl-6 md:pl-8">Day</th>
-                    <th class="p-4 md:p-6">Time (IST)</th>
-                    <th class="p-4 md:p-6 text-right pr-6 md:pr-8">Format</th>
+                    <th class="p-4 md:p-6 pl-6 md:pl-8">Launch Day</th>
+                    <th class="p-4 md:p-6">Mission Time (IST)</th>
+                    <th class="p-4 md:p-6 text-right pr-6 md:pr-8">Status</th>
                   </tr>
                 </thead>
                 <tbody class="text-white text-[13px] md:text-sm font-medium">
                   <tr class="border-b border-white/10 hover:bg-white/5 transition-colors">
-                    <td class="p-4 md:p-6 pl-6 md:pl-8 font-black text-[#FF8C00] text-base">Saturday</td>
-                    <td class="p-4 md:p-6 font-bold tracking-wide">10:00 AM – 12:00 PM</td>
-                    <td class="p-4 md:p-6 text-right pr-6 md:pr-8 text-[#E30064]">Live Interactive Session</td>
+                    <td class="p-4 md:p-6 pl-6 md:pl-8 font-black text-[#FF8C00] text-base">Batch 1</td>
+                    <td class="p-4 md:p-6 font-bold tracking-wide">9:30 AM Induction ; 10 AM Onwards</td>
+                    <td class="p-4 md:p-6 text-right pr-6 md:pr-8 text-kids-cyan font-black uppercase text-[10px]">Live Interactive</td>
+                  </tr>
+                  <tr class="border-b border-white/10 hover:bg-white/5 transition-colors">
+                    <td class="p-4 md:p-6 pl-6 md:pl-8 font-black text-[#FF8C00] text-base">Batch 2</td>
+                    <td class="p-4 md:p-6 font-bold tracking-wide">2:00 PM Induction ; 2:30 PM Onwards</td>
+                    <td class="p-4 md:p-6 text-right pr-6 md:pr-8 text-kids-cyan font-black uppercase text-[10px]">Live Interactive</td>
                   </tr>
                   <tr class="hover:bg-white/5 transition-colors">
-                    <td class="p-4 md:p-6 pl-6 md:pl-8 font-black text-[#FF8C00] text-base">Sunday</td>
-                    <td class="p-4 md:p-6 font-bold tracking-wide">10:00 AM – 12:00 PM</td>
-                    <td class="p-4 md:p-6 text-right pr-6 md:pr-8 text-[#E30064]">Live Interactive Session</td>
+                    <td class="p-4 md:p-6 pl-6 md:pl-8 font-black text-[#FF8C00] text-base">Batch 3</td>
+                    <td class="p-4 md:p-6 font-bold tracking-wide">6:30 PM Induction ; 7:00 PM Onwards</td>
+                    <td class="p-4 md:p-6 text-right pr-6 md:pr-8 text-kids-cyan font-black uppercase text-[10px]">Live Interactive</td>
                   </tr>
                 </tbody>
               </table>
