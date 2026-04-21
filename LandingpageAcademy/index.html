@@ -36,12 +36,43 @@
       filter: blur(100px);
     }
 
+    /* Completely hide scrollbars globally while maintaining functionality */
+    html, body {
+      scrollbar-width: none !important;
+      -ms-overflow-style: none !important;
+      overflow-x: clip !important;
+    }
+    html::-webkit-scrollbar, body::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+
+    * {
+      scrollbar-width: none !important;
+      -ms-overflow-style: none !important;
+    }
+    *::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+
     .hide-scroll-bar::-webkit-scrollbar {
-      display: none;
+      display: none !important;
     }
     .hide-scroll-bar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
+      -ms-overflow-style: none !important;
+      scrollbar-width: none !important;
+    }
+
+    .page-wrapper {
+      overflow-x: clip !important;
+      scrollbar-width: none !important;
+      -ms-overflow-style: none !important;
+    }
+    .page-wrapper::-webkit-scrollbar {
+      display: none !important;
     }
   
     /* Carousel Styling */
@@ -126,8 +157,8 @@
 
   </style>
 </head>
-<body class="font-[Poppins] text-gray-900 overflow-x-hidden pt-36 bg-[#FDFDFF] selection:bg-[#FF8C00] selection:text-white w-full max-w-full">
-  <div class="relative w-full max-w-full overflow-x-hidden">
+<body class="font-[Poppins] text-gray-900 overflow-x-clip pt-32 bg-[#FDFDFF] selection:bg-[#FF8C00] selection:text-white w-full max-w-full">
+  <div class="page-wrapper relative w-full max-w-full">
 
   <div class="blob-bg"></div>
 
@@ -189,25 +220,30 @@
   </div>
 
   <!-- HERO SECTION -->
-  <section id="home" class="relative pt-24 pb-32 md:pb-48 bg-transparent">
-    <div class="max-w-7xl mx-auto px-4 relative z-10">
-      <div class="flex flex-col lg:flex-row items-center gap-12 pt-12 md:pt-20">
-        <div class="text-center lg:text-left lg:w-3/4 pr-4" data-aos="zoom-out-down" data-aos-duration="1000">
+  <section id="home" class="relative pt-4 pb-10 md:pb-16 bg-transparent">
+    <div class="max-w-7xl mx-auto px-4 md:px-12 lg:px-16 xl:px-[4rem] relative z-10">
+      <div class="flex flex-col lg:flex-row items-center gap-12 pt-4 md:pt-8 w-full">
+        <div class="text-center lg:text-left lg:w-3/5 overflow-visible" data-aos="zoom-out-down" data-aos-duration="1000">
           <!-- Hook Banner -->
-          <div class="inline-flex justify-center lg:justify-start items-center gap-1.5 md:gap-2 lg:gap-3 px-3 md:px-5 lg:px-8 py-1.5 md:py-2.5 lg:py-4 bg-kids-purple/5 text-kids-purple rounded-xl lg:rounded-3xl text-[10px] md:text-sm lg:text-base xl:text-lg font-black mb-6 md:mb-10 border-2 border-kids-purple/10 shadow-xl backdrop-blur-sm leading-tight text-center lg:text-left w-max mx-auto lg:mx-0 whitespace-nowrap">
+          <div class="inline-flex justify-center lg:justify-start items-center gap-1.5 md:gap-2 lg:gap-3 px-3 md:px-5 lg:px-8 py-1.5 md:py-2.5 lg:py-4 bg-kids-purple/5 text-kids-purple rounded-xl lg:rounded-3xl text-[10px] md:text-sm lg:text-base xl:text-base font-black mb-6 md:mb-10 border-2 border-kids-purple/10 shadow-xl backdrop-blur-sm leading-tight text-center lg:text-left w-fit max-w-full mx-auto lg:mx-0 whitespace-nowrap">
             <span class="flex h-1.5 w-1.5 md:h-2 md:w-2 lg:h-4 lg:w-4 rounded-full bg-kids-purple animate-pulse shrink-0 hidden lg:flex"></span>
-            Beyond Basic <span class="text-kids-pink uppercase mx-1">Prompts</span>: Turn <span class="text-kids-cyan underline decoration-2 md:decoration-4 underline-offset-4 uppercase mx-1">Screen Time</span> into <span class="text-kids-pink uppercase underline decoration-2 md:decoration-4 underline-offset-4 mx-1">Solution Time</span>
+            <span>Beyond Basic <span class="text-kids-pink uppercase mx-1">Prompts</span>: Turn <span class="text-kids-cyan underline decoration-2 md:decoration-4 underline-offset-4 uppercase mx-1">Screen Time</span> into <span class="text-kids-pink uppercase underline decoration-2 md:decoration-4 underline-offset-4 mx-1">Solution Time</span></span>
           </div>
 
+          <!-- Summer Tagline -->
+          <p class="text-lg md:text-xl lg:text-2xl font-black text-[#1E1B4B] mb-3 tracking-tight !overflow-visible" data-aos="fade-up" data-aos-delay="100">
+            This summer, trade <span class="text-kids-pink">screen time</span> for <span class="text-kids-cyan font-kids text-2xl md:text-4xl lowercase">think time.</span>
+          </p>
+
           <!-- USP Sub-headline -->
-          <p class="text-2xl md:text-3xl font-bold text-gray-500 mb-3 tracking-wide">
-            4 Weeks of Learning. <span class="text-kids-orange font-kids text-2xl">A Lifetime of Impact.</span>
+          <p class="text-lg md:text-2xl font-bold text-gray-500 mb-6 tracking-wide" data-aos="fade-up" data-aos-delay="200">
+            4 Weeks of Learning. <span class="text-kids-orange font-kids text-xl md:text-2xl">A Lifetime of Impact.</span>
           </p>
 
           <!-- Main Title -->
-          <div class="relative inline-block mb-8 md:mb-10">
-            <h1 class="text-[14vw] sm:text-8xl md:text-9xl lg:text-[11rem] font-black text-[#1E1B4B] leading-[0.9] font-kids pr-6 whitespace-nowrap">
-              AI <span class="text-kids-gradient">Rangers</span>
+          <div class="relative inline-block mb-8 md:mb-10 max-w-full">
+            <h1 class="text-[14vw] sm:text-8xl md:text-9xl lg:text-[7.5rem] xl:text-[9rem] 2xl:text-[10rem] font-black text-[#1E1B4B] leading-[0.9] font-kids pr-2 lg:pr-6 md:whitespace-nowrap flex flex-wrap lg:block">
+              <span>AI</span> <span class="text-kids-gradient ml-2 lg:ml-0">Rangers</span>
             </h1>
           </div>
 
@@ -251,7 +287,7 @@
           </div>
         </div>
         <!-- Mascot Side -->
-        <div class="lg:w-2/5 hidden lg:block relative py-12 overflow-visible">
+        <div class="lg:w-[40%] hidden lg:block relative py-12 overflow-visible shrink-0">
           <div class="relative animate-bouncy overflow-visible">
             <!-- Kid Image Frame -->
             <div class="absolute -top-10 -right-10 w-48 h-48 bg-kids-yellow/20 rounded-full blur-2xl animate-pulse"></div>
@@ -271,7 +307,7 @@
           </div>
         </div>
       </div>
-      <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6 max-w-6xl mx-auto translate-y-12 md:translate-y-32 mb-12 md:mb-32 px-4 md:px-0 relative" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+      <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6 max-w-6xl mx-auto translate-y-6 md:translate-y-12 mb-6 md:mb-12 px-4 md:px-0 relative" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
         <a href="#curriculum-scroll-track" class="block bg-white p-6 rounded-[2.5rem] shadow-[0_20px_40px_rgb(0,0,0,0.06)] border-4 border-[#FF8C00]/10 text-center hover:-translate-y-2 transition-transform flex flex-col justify-center">
           <span class="block text-4xl md:text-5xl font-kids text-[#FF8C00] mb-1">4</span>
           <span class="block text-xl md:text-2xl font-black text-[#FF8C00] mb-2 font-kids">Weeks</span>
@@ -297,24 +333,12 @@
     </div>
   </section>
   
-  <!-- WAVY DIVIDER -->
-  <div class="curvy-divider text-[#F7F8FC]">
-    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-    </svg>
-  </div>
-
   <!-- LOGO/TRUST BAND -->
   <div class="py-3.5 bg-white border-b border-gray-100 overflow-hidden relative z-0 flex flex-col justify-center">
     <div class="relative flex overflow-x-hidden items-center h-full">
       
-      <!-- Static overlay label on the left to make it a true compact strip -->
-      <div class="absolute inset-y-0 left-0 z-10 bg-gradient-to-r from-white via-white/95 to-transparent pr-12 pl-4 md:pl-6 font-black text-[10px] text-gray-400 tracking-widest uppercase hidden md:flex items-center">
-        Trusted across India <i class="fas fa-chevron-right ml-2 text-gray-300"></i>
-      </div>
-      
       <!-- Scrolling Pills -->
-      <div class="flex animate-marquee whitespace-nowrap items-center py-1">
+      <div class="relative z-0 flex animate-marquee whitespace-nowrap items-center py-1">
         <span class="mx-3 md:mx-4 text-[13px] font-black text-[#1E1B4B] flex items-center gap-2 px-4 py-1.5 bg-[#FF0080]/10 rounded-full border border-[#FF0080]/20 shadow-sm">
           <i class="fas fa-tools text-[#FF0080]"></i> 20+ AI TOOLS COVERED
         </span>
@@ -328,7 +352,7 @@
           <i class="fas fa-certificate text-[#3D2C8D]"></i> CERTIFICATE OF COMPLETION
         </span>
       </div>
-      <div class="flex absolute inset-y-0 left-0 animate-marquee2 whitespace-nowrap items-center py-1">
+      <div class="flex absolute inset-y-0 left-0 z-0 animate-marquee2 whitespace-nowrap items-center py-1">
         <span class="mx-3 md:mx-4 text-[13px] font-black text-[#1E1B4B] flex items-center gap-2 px-4 py-1.5 bg-[#FF0080]/10 rounded-full border border-[#FF0080]/20 shadow-sm">
           <i class="fas fa-tools text-[#FF0080]"></i> 20+ AI TOOLS COVERED
         </span>
@@ -345,16 +369,11 @@
     </div>
   </div>
 
-  <!-- WAVY DIVIDER END -->
-  <div class="curvy-divider text-white rotate-180">
-    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-    </svg>
-  </div>
+
 
 
   <!-- LEARNING PLAN SECTION -->
-  <section id="curriculum-intro" class="py-24 relative bg-kids-lavender/40 backdrop-blur-sm border-b border-gray-100">
+  <section id="curriculum-intro" class="py-10 relative bg-kids-lavender/40 backdrop-blur-sm border-b border-gray-100">
     <!-- Floating Gear Doodles -->
     <div class="absolute top-20 right-10 text-kids-purple/10 text-[100px] -rotate-12 pointer-events-none"><i class="fas fa-cog animate-[spin_10s_linear_infinite]"></i></div>
     <div class="absolute bottom-20 left-10 text-kids-orange/10 text-[80px] rotate-45 pointer-events-none"><i class="fas fa-puzzle-piece"></i></div>
@@ -389,7 +408,7 @@
                 <h3 class="text-3xl font-black text-[#1E1B4B] font-kids mb-2 relative z-10">Walk Away With <br/><span class="text-kids-purple">8 Real Creations</span></h3>
                 <p class="text-sm font-bold text-gray-500 mb-6 relative z-10">Build a real portfolio you can show off to friends and family.</p>
                 
-                <div class="space-y-3 relative z-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 relative z-10">
                   <!-- Project 1 -->
                   <div class="flex items-center gap-4 p-3.5 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:scale-[1.02] transition-all group/item">
                      <div class="w-12 h-12 bg-kids-cyan/10 rounded-xl flex items-center justify-center shrink-0 group-hover/item:bg-kids-cyan group-hover/item:text-white transition-all">
@@ -431,6 +450,50 @@
                      <div>
                        <h4 class="font-black text-[15px] text-[#1E1B4B] leading-tight mb-0.5">Data Story Capstone</h4>
                        <p class="text-[12px] text-gray-500 font-bold leading-tight">Find & present hidden patterns to parents</p>
+                     </div>
+                  </div>
+
+                  <!-- Project 5 -->
+                  <div class="flex items-center gap-4 p-3.5 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:scale-[1.02] transition-all group/item">
+                     <div class="w-12 h-12 bg-kids-purple/10 rounded-xl flex items-center justify-center shrink-0 group-hover/item:bg-kids-purple group-hover/item:text-white transition-all">
+                       <i class="fas fa-gamepad text-kids-purple group-hover/item:text-white text-xl transition-colors"></i>
+                     </div>
+                     <div>
+                       <h4 class="font-black text-[15px] text-[#1E1B4B] leading-tight mb-0.5">Game Art Assets</h4>
+                       <p class="text-[12px] text-gray-500 font-bold leading-tight">Design unique characters with AI</p>
+                     </div>
+                  </div>
+
+                  <!-- Project 6 -->
+                  <div class="flex items-center gap-4 p-3.5 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:scale-[1.02] transition-all group/item">
+                     <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center shrink-0 group-hover/item:bg-blue-500 group-hover/item:text-white transition-all">
+                       <i class="fas fa-film text-blue-500 group-hover/item:text-white text-xl transition-colors"></i>
+                     </div>
+                     <div>
+                       <h4 class="font-black text-[15px] text-[#1E1B4B] leading-tight mb-0.5">Talking AI Avatar</h4>
+                       <p class="text-[12px] text-gray-500 font-bold leading-tight">Create a digital twin using voice tech</p>
+                     </div>
+                  </div>
+
+                  <!-- Project 7 -->
+                  <div class="flex items-center gap-4 p-3.5 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:scale-[1.02] transition-all group/item">
+                     <div class="w-12 h-12 bg-rose-500/10 rounded-xl flex items-center justify-center shrink-0 group-hover/item:bg-rose-500 group-hover/item:text-white transition-all">
+                       <i class="fas fa-bolt text-rose-500 group-hover/item:text-white text-xl transition-colors"></i>
+                     </div>
+                     <div>
+                       <h4 class="font-black text-[15px] text-[#1E1B4B] leading-tight mb-0.5">Smart Flashcards</h4>
+                       <p class="text-[12px] text-gray-500 font-bold leading-tight">Auto-generated from your textbooks</p>
+                     </div>
+                  </div>
+
+                  <!-- Project 8 -->
+                  <div class="flex items-center gap-4 p-3.5 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:scale-[1.02] transition-all group/item">
+                     <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center shrink-0 group-hover/item:bg-emerald-500 group-hover/item:text-white transition-all">
+                       <i class="fas fa-music text-emerald-500 group-hover/item:text-white text-xl transition-colors"></i>
+                     </div>
+                     <div>
+                       <h4 class="font-black text-[15px] text-[#1E1B4B] leading-tight mb-0.5">AI Music Track</h4>
+                       <p class="text-[12px] text-gray-500 font-bold leading-tight">Compose original background themes</p>
                      </div>
                   </div>
                 </div>
@@ -481,7 +544,7 @@
   </section>
 
   <!-- PROGRAM OVERVIEW SECTION -->
-  <section id="overview" class="py-24 relative z-10 w-full overflow-hidden">
+  <section id="overview" class="py-10 relative z-10 w-full overflow-hidden">
     <!-- Blob backgrounds -->
     <div class="absolute top-1/2 left-0 w-96 h-96 bg-kids-yellow/20 rounded-full blur-3xl -translate-y-1/2 -ml-20 pointer-events-none"></div>
     <div class="absolute top-1/4 right-0 w-80 h-80 bg-kids-purple/10 rounded-full blur-3xl shadow-lg -mr-20 pointer-events-none"></div>
@@ -512,8 +575,8 @@
           <!-- Kids Card 3 -->
           <div class="group relative bg-white p-8 rounded-[2.5rem] border-4 border-kids-pink/20 shadow-[0_20px_40px_rgba(255,0,128,0.08)] hover:-translate-y-2 transition-transform duration-300">
              <div class="absolute -top-8 -right-4 w-16 h-16 bg-kids-pink rounded-full flex items-center justify-center text-white text-2xl shadow-xl shadow-kids-pink/40 group-hover:scale-110 group-hover:rotate-12 transition-transform"><i class="fas fa-video"></i></div>
-             <h3 class="font-kids text-2xl text-[#1E1B4B] mb-3">Lifetime Recordings</h3>
-             <p class="text-gray-500 font-bold text-[13px] md:text-sm">Missed a session or need a quick revision? Every class is recorded and available forever!</p>
+             <h3 class="font-kids text-2xl text-[#1E1B4B] mb-3">1 Year LMS Access</h3>
+             <p class="text-gray-500 font-bold text-[13px] md:text-sm">Missed a session or need a quick revision? Get 1 year of LMS access with all recordings updated!</p>
           </div>
 
           <!-- Kids Card 4 -->
@@ -534,7 +597,7 @@
           <div class="group relative bg-white p-8 rounded-[2.5rem] border-4 border-[#FFC107]/20 shadow-[0_20px_40px_rgba(255,193,7,0.15)] hover:-translate-y-2 transition-transform duration-300">
              <div class="absolute -top-6 -right-2 md:-top-8 md:-right-4 w-12 h-12 md:w-16 md:h-16 bg-[#FFC107] rounded-full flex items-center justify-center text-white text-xl md:text-2xl shadow-xl shadow-[#FFC107]/40 group-hover:scale-110 group-hover:-rotate-12 transition-transform"><i class="fas fa-trophy"></i></div>
              <h3 class="font-kids text-2xl text-[#1E1B4B] mb-3">Capstone Showcase</h3>
-             <p class="text-gray-500 font-bold text-[13px] md:text-sm">Present the 4-week portfolio to a panel and get priority pass access to Level 2!</p>
+             <p class="text-gray-500 font-bold text-[13px] md:text-sm">Present your 4-week portfolio and showcase your creations to the leadership team of Adani Skill Development Centre!</p>
           </div>
         </div>
     </div>
@@ -548,7 +611,7 @@
           
           <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
              <div class="text-center md:text-left text-white max-w-2xl">
-                <h2 class="text-4xl md:text-5xl lg:text-6xl font-black mb-3 drop-shadow-md tracking-tight font-kids leading-tight">Your Child Enters 2026 Soon...</h2>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-black mb-3 drop-shadow-md tracking-tight font-kids leading-tight">The AI Era is Already Here...</h2>
                 <div class="bg-white/20 inline-block px-6 py-2 rounded-2xl backdrop-blur-sm border border-white/30 transform -rotate-1 hover:rotate-0 transition-transform">
                   <p class="text-xl md:text-3xl font-bold text-white font-kids">Make sure they are prepared to lead! 🚀</p>
                 </div>
@@ -570,7 +633,7 @@
   </section>
 
   <!-- PROGRAM STRUCTURE ROADMAP -->
-  <section id="program-roadmap" class="py-24 bg-[#F7F8FC] border-y border-gray-100 relative overflow-hidden">
+  <section id="program-roadmap" class="py-10 bg-[#F7F8FC] border-y border-gray-100 relative overflow-hidden">
     <!-- Background Doodles -->
     <div class="absolute top-10 left-6 text-kids-yellow/20 text-[120px] animate-[spin_20s_linear_infinite] pointer-events-none"><i class="fas fa-cog"></i></div>
     <div class="absolute top-1/2 right-0 text-kids-pink/10 text-[160px] -translate-y-1/2 pointer-events-none"><i class="fas fa-star"></i></div>
@@ -715,7 +778,7 @@
 
   <!-- CURRICULUM SECTION -->
       <div id="syllabus"></div>
-      <section id="curriculum-scroll-track" class="py-24 bg-gradient-to-b from-[#F7F8FC] to-white relative overflow-hidden">
+      <section id="curriculum-scroll-track" class="py-10 bg-gradient-to-b from-[#F7F8FC] to-white relative overflow-hidden">
         <!-- Background Doodles -->
         <div class="absolute top-16 right-10 text-kids-green/15 text-[100px] animate-pulse pointer-events-none"><i class="fas fa-calendar-check"></i></div>
         <div class="absolute bottom-20 left-0 text-kids-purple/10 text-[130px] pointer-events-none"><i class="fas fa-trophy"></i></div>
@@ -789,13 +852,18 @@
                 </thead>
                 <tbody class="text-white text-base md:text-lg font-bold">
                   <tr class="border-b-2 border-dashed border-white/5 hover:bg-white/5 transition-colors group">
-                    <td class="p-4 md:p-8 pl-6 md:pl-8 font-kids text-kids-yellow text-xl md:text-2xl group-hover:scale-105 transition-transform origin-left">Saturday</td>
-                    <td id="sat-time" class="p-4 md:p-8 font-black tracking-tight text-sm md:text-lg">10:00 AM – 12:00 PM</td>
+                    <td class="p-4 md:p-8 pl-6 md:pl-8 font-kids text-kids-yellow text-xl md:text-2xl group-hover:scale-105 transition-transform origin-left">Early Morning</td>
+                    <td class="p-4 md:p-8 font-black tracking-tight text-sm md:text-lg">9:30 AM Induction ; 10 AM Onwards</td>
+                    <td class="p-4 md:p-8 text-right pr-4 md:pr-8"><span class="inline-block whitespace-nowrap bg-kids-cyan/20 text-kids-cyan px-2 md:px-4 py-1 rounded-full text-[8px] md:text-[10px] font-black border border-kids-cyan/30 uppercase tracking-wide md:tracking-wider leading-tight">Live Interactive</span></td>
+                  </tr>
+                  <tr class="border-b-2 border-dashed border-white/5 hover:bg-white/5 transition-colors group">
+                    <td class="p-4 md:p-8 pl-6 md:pl-8 font-kids text-kids-yellow text-xl md:text-2xl group-hover:scale-105 transition-transform origin-left">Afternoon</td>
+                    <td class="p-4 md:p-8 font-black tracking-tight text-sm md:text-lg">2:00 PM Induction ; 2:30 PM Onwards</td>
                     <td class="p-4 md:p-8 text-right pr-4 md:pr-8"><span class="inline-block whitespace-nowrap bg-kids-cyan/20 text-kids-cyan px-2 md:px-4 py-1 rounded-full text-[8px] md:text-[10px] font-black border border-kids-cyan/30 uppercase tracking-wide md:tracking-wider leading-tight">Live Interactive</span></td>
                   </tr>
                   <tr class="hover:bg-white/5 transition-colors group">
-                    <td class="p-4 md:p-8 pl-6 md:pl-8 font-kids text-kids-yellow text-xl md:text-2xl group-hover:scale-105 transition-transform origin-left">Sunday</td>
-                    <td id="sun-time" class="p-4 md:p-8 font-black tracking-tight text-sm md:text-lg">10:00 AM – 12:00 PM</td>
+                    <td class="p-4 md:p-8 pl-6 md:pl-8 font-kids text-kids-yellow text-xl md:text-2xl group-hover:scale-105 transition-transform origin-left">Evening</td>
+                    <td class="p-4 md:p-8 font-black tracking-tight text-sm md:text-lg">6:30 PM Induction ; 7:00 PM Onwards</td>
                     <td class="p-4 md:p-8 text-right pr-4 md:pr-8"><span class="inline-block whitespace-nowrap bg-kids-cyan/20 text-kids-cyan px-2 md:px-4 py-1 rounded-full text-[8px] md:text-[10px] font-black border border-kids-cyan/30 uppercase tracking-wide md:tracking-wider leading-tight">Live Interactive</span></td>
                   </tr>
                 </tbody>
@@ -819,7 +887,7 @@
       </div>
 
   <!-- 4 WEEKS SKILLS -->
-  <section id="skills" class="py-24 bg-white relative overflow-hidden">
+  <section id="skills" class="py-10 bg-white relative overflow-hidden">
     <!-- Background Decorations -->
     <div class="absolute -top-10 -left-10 w-72 h-72 bg-kids-cyan/8 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute -bottom-10 -right-10 w-80 h-80 bg-kids-pink/8 rounded-full blur-3xl pointer-events-none"></div>
@@ -899,7 +967,7 @@
   </section>
 
   <!-- AI TOOLS SHOWCASE -->
-  <section class="pb-24 pt-12 bg-white relative overflow-hidden">
+  <section class="pb-16 pt-12 bg-white relative overflow-hidden">
     <!-- Background Magic -->
     <div class="absolute top-1/2 left-0 w-72 h-72 bg-kids-cyan/5 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute bottom-10 right-0 w-80 h-80 bg-kids-pink/5 rounded-full blur-3xl pointer-events-none"></div>
@@ -908,9 +976,11 @@
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-5xl font-kids font-black text-[#1E1B4B] mb-4">Master the <span class="text-kids-cyan">Pro Tools!</span></h2>
         <p class="text-[15px] font-bold text-gray-500 tracking-wide max-w-2xl mx-auto">Taught in a safe, age-appropriate way. Use the exact tools industry experts use every day. ✨</p>
+        <p class="text-xs font-bold text-kids-purple mt-2">20+ Real AI Platforms — All Free Tiers, No Paid Subscriptions Required</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
         <!-- Category 1: Thinking & Research -->
         <div class="space-y-4">
           <div class="flex items-center gap-3 mb-2 px-6">
@@ -918,41 +988,45 @@
             <h3 class="text-lg font-black text-gray-800 tracking-tight font-kids">Thinking & Research</h3>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="bg-white border-2 border-gray-50 p-6 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-purple/20">
-              <div class="flex items-center gap-4 mb-3">
+            <!-- ChatGPT -->
+            <div class="bg-white border-2 border-gray-50 p-5 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-purple/20">
+              <div class="flex items-center gap-3 mb-2">
                 <div class="w-10 h-10 border border-gray-100 rounded-xl flex items-center justify-center bg-gray-50 group-hover:scale-110 transition-transform">
                   <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT" class="w-6 h-6">
                 </div>
-                <h4 class="font-black text-sm text-gray-900">ChatGPT 4o</h4>
+                <h4 class="font-black text-sm text-gray-900">ChatGPT (OpenAI)</h4>
               </div>
-              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Industry standard for creative writing, prompt practice & brainstorms</p>
+              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Creative writing, stories, homework help, custom bots — most versatile</p>
             </div>
-            <div class="bg-white border-2 border-gray-50 p-6 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-cyan/20">
-              <div class="flex items-center gap-4 mb-3">
+            <!-- Claude -->
+            <div class="bg-white border-2 border-gray-50 p-5 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-pink/20">
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-10 h-10 border border-gray-100 rounded-xl flex items-center justify-center bg-gray-50 group-hover:scale-110 transition-transform">
+                   <i class="fas fa-comment-dots text-[#d97757] text-lg"></i>
+                </div>
+                <h4 class="font-black text-sm text-gray-900">Claude (Anthropic)</h4>
+              </div>
+              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Long text analysis, nuanced questions, safe and careful responses</p>
+            </div>
+            <!-- Gemini -->
+            <div class="bg-white border-2 border-gray-50 p-5 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-cyan/20">
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-10 h-10 border border-gray-100 rounded-xl flex items-center justify-center bg-gray-50 group-hover:scale-110 transition-transform">
+                   <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg" alt="Gemini" class="w-6 h-6">
+                </div>
+                <h4 class="font-black text-sm text-gray-900">Gemini (Google)</h4>
+              </div>
+              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Google Docs/Slides integration, research with web access</p>
+            </div>
+            <!-- Perplexity -->
+            <div class="bg-white border-2 border-gray-50 p-5 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-orange/20">
+              <div class="flex items-center gap-3 mb-2">
                 <div class="w-10 h-10 border border-gray-100 rounded-xl flex items-center justify-center bg-gray-50 group-hover:scale-110 transition-transform">
                   <i class="fas fa-asterisk text-gray-800 text-lg"></i>
                 </div>
                 <h4 class="font-black text-sm text-gray-900">Perplexity</h4>
               </div>
-              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Real-time cited research for school projects and deep facts</p>
-            </div>
-            <div class="bg-white border-2 border-gray-50 p-6 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-cyan/20">
-              <div class="flex items-center gap-4 mb-3">
-                <div class="w-10 h-10 border border-gray-100 rounded-xl flex items-center justify-center bg-gray-50 group-hover:scale-110 transition-transform">
-                   <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg" alt="Gemini" class="w-6 h-6">
-                </div>
-                <h4 class="font-black text-sm text-gray-900">Gemini</h4>
-              </div>
-              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Google's powerful AI linked directly to your Workspace and search</p>
-            </div>
-            <div class="bg-white border-2 border-gray-50 p-6 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-pink/20">
-              <div class="flex items-center gap-4 mb-3">
-                <div class="w-10 h-10 border border-gray-100 rounded-xl flex items-center justify-center bg-gray-50 group-hover:scale-110 transition-transform">
-                   <i class="fas fa-comment-dots text-[#d97757] text-lg"></i>
-                </div>
-                <h4 class="font-black text-sm text-gray-900">Claude</h4>
-              </div>
-              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Safer AI model for long text analysis and nuanced reading</p>
+              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Research with cited sources — great for school projects</p>
             </div>
           </div>
         </div>
@@ -964,41 +1038,45 @@
             <h3 class="text-lg font-black text-gray-800 tracking-tight font-kids">Visual Magic</h3>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="bg-white border-2 border-gray-50 p-6 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-cyan/20">
-              <div class="flex items-center gap-4 mb-3">
+            <!-- Canva AI -->
+            <div class="bg-white border-2 border-gray-50 p-5 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-cyan/20">
+              <div class="flex items-center gap-3 mb-2">
                 <div class="w-10 h-10 border border-gray-100 rounded-xl flex items-center justify-center bg-gray-50 group-hover:scale-110 transition-transform">
                    <i class="fas fa-pen-nib text-[#00C4CC] text-lg"></i>
                 </div>
                 <h4 class="font-black text-sm text-gray-900">Canva AI</h4>
               </div>
-              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Design poster layouts, charts & presentations with AI magic</p>
+              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Design, presentations, data charts, poster layouts</p>
             </div>
-            <div class="bg-white border-2 border-gray-50 p-6 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-pink/20">
-              <div class="flex items-center gap-4 mb-3">
+            <!-- Ideogram -->
+            <div class="bg-white border-2 border-gray-50 p-5 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-pink/20">
+              <div class="flex items-center gap-3 mb-2">
                 <div class="w-10 h-10 border border-gray-100 rounded-xl flex items-center justify-center bg-gray-50 group-hover:scale-110 transition-transform">
                    <i class="fas fa-image text-[#ff0080] text-lg"></i>
                 </div>
-                <h4 class="font-black text-sm text-gray-900">Ideogram</h4>
+                <h4 class="font-black text-sm text-gray-900">Ideogram.ai</h4>
               </div>
-              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Specialized image generator for complex designs & text overlays</p>
+              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Image generation with text overlay — safe guardrails</p>
             </div>
-            <div class="bg-white border-2 border-gray-50 p-6 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-orange/20">
-              <div class="flex items-center gap-4 mb-3">
+            <!-- ChatGPT 4o Image -->
+            <div class="bg-white border-2 border-gray-50 p-5 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-orange/20">
+              <div class="flex items-center gap-3 mb-2">
                 <div class="w-10 h-10 border border-gray-100 rounded-xl flex items-center justify-center bg-gray-50 group-hover:scale-110 transition-transform">
-                   <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="DALL-E" class="w-6 h-6 object-contain">
+                   <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT 4o Image" class="w-6 h-6 object-contain">
                 </div>
-                <h4 class="font-black text-sm text-gray-900">DALL-E 3</h4>
+                <h4 class="font-black text-sm text-gray-900">ChatGPT 4o Image</h4>
               </div>
-              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Create imaginative and high-quality images directly from text</p>
+              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">In-chat image generation, great for quick creative work</p>
             </div>
-            <div class="bg-white border-2 border-gray-50 p-6 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-yellow/20">
-              <div class="flex items-center gap-4 mb-3">
-                <div class="w-10 h-10 border border-gray-100 rounded-xl flex items-center justify-center bg-gray-50 group-hover:scale-110 transition-transform bg-gradient-to-br from-kids-yellow to-orange-400">
-                   <i class="fas fa-presentation-screen text-white text-sm"></i>
+            <!-- Gamma -->
+            <div class="bg-white border-2 border-gray-50 p-5 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-yellow/20">
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-10 h-10 border border-gray-100 rounded-xl flex items-center justify-center bg-white group-hover:scale-110 transition-transform overflow-hidden shadow-sm">
+                   <img src="https://www.google.com/s2/favicons?domain=gamma.app&sz=128" alt="Gamma" class="w-6 h-6 object-contain rounded-md">
                 </div>
                 <h4 class="font-black text-sm text-gray-900">Gamma.app</h4>
               </div>
-              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Generate entire professional presentations and decks in seconds</p>
+              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">AI presentation creation — generate decks in seconds</p>
             </div>
           </div>
         </div>
@@ -1010,87 +1088,126 @@
             <h3 class="text-lg font-black text-gray-800 tracking-tight font-kids">Video & Audio Magic</h3>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="bg-white border-2 border-gray-50 p-6 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-orange/20">
-              <div class="flex items-center gap-4 mb-3">
+            <!-- HeyGen -->
+            <div class="bg-white border-2 border-gray-50 p-5 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-orange/20">
+              <div class="flex items-center gap-3 mb-2">
                 <div class="w-10 h-10 border border-gray-100 rounded-xl flex items-center justify-center bg-gray-50 group-hover:scale-110 transition-transform bg-kids-orange">
                    <i class="fas fa-user-tie text-white text-lg"></i>
                 </div>
                 <h4 class="font-black text-sm text-gray-900">HeyGen</h4>
               </div>
-              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Create high-quality AI avatar videos for storytelling & projects</p>
+              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Avatar video creation — free tier gives 3 videos</p>
             </div>
-            <div class="bg-white border-2 border-gray-50 p-6 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-purple/20">
-              <div class="flex items-center gap-4 mb-3">
+            <!-- ElevenLabs -->
+            <div class="bg-white border-2 border-gray-50 p-5 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-purple/20">
+              <div class="flex items-center gap-3 mb-2">
                 <div class="w-10 h-10 border border-gray-100 rounded-xl flex items-center justify-center bg-gray-50 group-hover:scale-110 transition-transform">
                    <i class="fas fa-wave-square text-black text-lg"></i>
                 </div>
                 <h4 class="font-black text-sm text-gray-900">ElevenLabs</h4>
               </div>
-              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Highly realistic voice generation for your characters and stories</p>
+              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Text-to-speech and voice clone demonstration</p>
             </div>
-            <div class="bg-white border-2 border-gray-50 p-6 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-pink/20">
-              <div class="flex items-center gap-4 mb-3">
-                <div class="w-10 h-10 border border-gray-100 rounded-xl flex items-center justify-center bg-gray-50 group-hover:scale-110 transition-transform bg-gradient-to-br from-orange-400 to-red-500">
-                   <span class="text-[8px] font-black text-white">SUNO</span>
+            <!-- NotebookLM -->
+            <div class="bg-white border-2 border-gray-50 p-5 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-green/20">
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-10 h-10 border border-gray-100 rounded-xl flex items-center justify-center bg-white group-hover:scale-110 transition-transform overflow-hidden shadow-sm">
+                   <img src="https://www.google.com/s2/favicons?domain=notebooklm.google.com&sz=128" alt="NotebookLM" class="w-6 h-6 object-contain">
                 </div>
-                <h4 class="font-black text-sm text-gray-900">Suno</h4>
+                <h4 class="font-black text-sm text-gray-900">NotebookLM</h4>
               </div>
-              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Make original songs and music tracks from simple descriptions</p>
+              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Document Q&A, audio summary generation</p>
+            </div>
+            <!-- Google AI Studio -->
+            <div class="bg-white border-2 border-gray-50 p-5 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-cyan/20">
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-10 h-10 border border-gray-100 rounded-xl flex items-center justify-center bg-white group-hover:scale-110 transition-transform overflow-hidden shadow-sm">
+                   <img src="https://www.google.com/s2/favicons?domain=aistudio.google.com&sz=128" alt="Google AI Studio" class="w-6 h-6 object-contain border border-gray-100 rounded-full">
+                </div>
+                <h4 class="font-black text-sm text-gray-900">Google AI Studio</h4>
+              </div>
+              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Rapid prototyping, Gemini API access</p>
             </div>
           </div>
         </div>
 
-        <!-- Category 4: Vibe Coding & Data -->
+        <!-- Category 4: Vibe Coding, Data & Automation -->
         <div class="space-y-4">
           <div class="flex items-center gap-3 mb-2 px-6">
             <i class="fas fa-laptop-code text-kids-cyan"></i>
-            <h3 class="text-lg font-black text-gray-800 tracking-tight font-kids">Vibe Coding & Data</h3>
+            <h3 class="text-lg font-black text-gray-800 tracking-tight font-kids">Vibe Coding, Data & Automation</h3>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="bg-white border-2 border-gray-50 p-6 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-cyan/20">
-              <div class="flex items-center gap-4 mb-3">
+            <!-- Lovable -->
+            <div class="bg-white border-2 border-gray-50 p-5 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-cyan/20">
+              <div class="flex items-center gap-3 mb-2">
                 <div class="w-10 h-10 border border-gray-100 rounded-xl flex items-center justify-center bg-gray-50 group-hover:scale-110 transition-transform bg-kids-cyan">
                    <i class="fas fa-rocket text-white text-lg"></i>
                 </div>
                 <h4 class="font-black text-sm text-gray-900">Lovable.dev</h4>
               </div>
-              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Build entire, functional web applications using only regular "Vibes"</p>
+              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">No-code website builder — 5 free projects</p>
             </div>
-            <div class="bg-white border-2 border-gray-50 p-6 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-green/20">
-              <div class="flex items-center gap-4 mb-3">
-                <div class="w-10 h-10 border border-gray-100 rounded-xl flex items-center justify-center bg-gray-50 group-hover:scale-110 transition-transform bg-kids-green">
-                   <i class="fas fa-database text-white text-lg"></i>
+            <!-- Make/Zapier -->
+            <div class="bg-white border-2 border-gray-50 p-5 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-orange/20">
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-10 h-10 border border-gray-100 rounded-xl flex items-center justify-center bg-gray-50 group-hover:scale-110 transition-transform bg-orange-500">
+                   <i class="fas fa-bolt text-white text-lg"></i>
                 </div>
-                <h4 class="font-black text-sm text-gray-900">Kaggle Data</h4>
+                <h4 class="font-black text-sm text-gray-900">Make.com / Zapier</h4>
               </div>
-              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Explore real-world datasets and tell hidden stories with data</p>
+              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Basic automation demonstration — no code workflows</p>
             </div>
-            <div class="bg-white border-2 border-gray-50 p-6 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-purple/20">
-              <div class="flex items-center gap-4 mb-3">
-                <div class="w-10 h-10 border border-gray-100 rounded-xl flex items-center justify-center bg-gray-50 group-hover:scale-110 transition-transform bg-black">
-                   <i class="fas fa-book-open text-white text-sm"></i>
+            <!-- Quizgecko -->
+            <div class="bg-white border-2 border-gray-50 p-5 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-purple/20">
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-10 h-10 border border-gray-100 rounded-xl flex items-center justify-center bg-gray-50 group-hover:scale-110 transition-transform bg-purple-500">
+                   <i class="fas fa-question-circle text-white text-sm"></i>
                 </div>
-                <h4 class="font-black text-sm text-gray-900">NotebookLM</h4>
+                <h4 class="font-black text-sm text-gray-900">Quizgecko / Quizalize</h4>
               </div>
-              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Google's experimental AI to turn complex docs into podcasts & guides</p>
+              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">AI-powered quiz creation for learning games</p>
             </div>
-            <div class="bg-white border-2 border-gray-50 p-6 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-yellow/20">
-              <div class="flex items-center gap-4 mb-3">
+            <!-- Teachable Machine -->
+            <div class="bg-white border-2 border-gray-50 p-5 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-yellow/20">
+              <div class="flex items-center gap-3 mb-2">
                 <div class="w-10 h-10 border border-gray-100 rounded-xl flex items-center justify-center bg-gray-50 group-hover:scale-110 transition-transform">
                    <i class="fas fa-robot text-gray-800 text-lg"></i>
                 </div>
-                <h4 class="font-black text-sm text-gray-900">Teachable Machine</h4>
+                <h4 class="font-black text-sm text-gray-900">Google Teachable Machine</h4>
               </div>
-              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Train your own AI image and voice classifiers—no coding needed!</p>
+              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Train image and audio classifiers — no code, no login</p>
+            </div>
+            <!-- Kaggle -->
+            <div class="bg-white border-2 border-gray-50 p-5 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-green/20">
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-10 h-10 border border-gray-100 rounded-xl flex items-center justify-center bg-gray-50 group-hover:scale-110 transition-transform bg-kids-green">
+                   <i class="fas fa-database text-white text-lg"></i>
+                </div>
+                <h4 class="font-black text-sm text-gray-900">Kaggle</h4>
+              </div>
+              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Sample datasets for data story sessions</p>
+            </div>
+            <!-- data.gov.in -->
+            <div class="bg-white border-2 border-gray-50 p-5 rounded-[2rem] shadow-sm hover:shadow-md transition-all group cursor-pointer hover:border-kids-orange/20">
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-10 h-10 border border-gray-100 rounded-xl flex items-center justify-center bg-white group-hover:scale-110 transition-transform overflow-hidden shadow-sm">
+                   <img src="https://www.google.com/s2/favicons?domain=data.gov.in&sz=128" alt="data.gov.in" class="w-7 h-7 object-contain">
+                </div>
+                <h4 class="font-black text-sm text-gray-900">data.gov.in</h4>
+              </div>
+              <p class="text-[11px] text-gray-500 leading-relaxed font-bold">Indian government open data for local relevance</p>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
+<!-- The duplicate section has been removed -->
 
   <!-- CERTIFICATE MAP PLACEHOLDER -->
-  <section class="py-24 bg-white relative overflow-hidden border-t border-gray-100">
+  <section class="py-10 bg-white relative overflow-hidden border-t border-gray-100">
     <!-- Background Magic -->
     <div class="absolute top-0 right-0 w-full h-full bg-kids-purple/5 pointer-events-none"></div>
     <div class="absolute top-1/3 left-0 w-96 h-96 bg-kids-yellow/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -1129,7 +1246,7 @@
   </section>
 
   <!-- OVERVIEW & STATS -->
-  <section id="program-structure" class="py-24 bg-[#F7F8FC] border-y border-gray-100 relative">
+  <section id="program-structure" class="py-10 bg-[#F7F8FC] border-y border-gray-100 relative">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       
 
@@ -1166,28 +1283,28 @@
           <div class="w-16 h-16 bg-kids-yellow/10 rounded-2xl flex items-center justify-center text-kids-yellow font-black text-2xl mb-5 shadow-inner shadow-kids-yellow/5 group-hover:scale-110 transition-transform"><i class="fas fa-rocket"></i></div>
           <div class="text-3xl font-black text-[#1E1B4B] mb-2 font-kids tracking-tighter">90%</div>
           <p class="text-[13px] font-bold text-gray-500 leading-snug mb-3">Careers will demand <span class="text-kids-orange">AI Superpowers</span> by 2030.</p>
-          <p class="text-[10px] text-gray-300 font-black uppercase tracking-widest">(PwC Report)</p>
+          <a href="/reports/PwC_Report.pdf" download="PwC_Report.pdf" class="text-[11px] text-gray-800 font-black uppercase tracking-widest hover:text-kids-yellow hover:underline transition-colors">(PwC Report)</a>
         </div>
 
         <div class="md:border-r-2 border-dashed border-gray-100 px-6 flex flex-col items-center md:items-start text-center md:text-left group transition-transform hover:-translate-y-1">
           <div class="w-16 h-16 bg-kids-cyan/10 rounded-2xl flex items-center justify-center text-kids-cyan font-black text-2xl mb-5 shadow-inner shadow-kids-cyan/5 group-hover:scale-110 transition-transform"><i class="fas fa-globe"></i></div>
           <div class="text-3xl font-black text-[#1E1B4B] mb-2 font-kids tracking-tighter">70%</div>
           <p class="text-[13px] font-bold text-gray-500 leading-snug mb-3">Global students begin AI at age 10-12.</p>
-          <p class="text-[10px] text-gray-300 font-black uppercase tracking-widest">(Stanford)</p>
+          <a href="/reports/Stanford_Report.pdf" download="Stanford_Report.pdf" class="text-[11px] text-gray-800 font-black uppercase tracking-widest hover:text-kids-cyan hover:underline transition-colors">(Stanford)</a>
         </div>
 
         <div class="md:border-r-2 border-dashed border-gray-100 px-6 flex flex-col items-center md:items-start text-center md:text-left group transition-transform hover:-translate-y-1">
           <div class="w-16 h-16 bg-kids-pink/10 rounded-2xl flex items-center justify-center text-kids-pink font-black text-2xl mb-5 shadow-inner shadow-kids-pink/5 group-hover:scale-110 transition-transform"><i class="fas fa-bolt"></i></div>
           <div class="text-3xl font-black text-[#1E1B4B] mb-2 font-kids tracking-tighter">40%</div>
           <p class="text-[13px] font-bold text-gray-500 leading-snug mb-3">Higher <span class="text-kids-pink">Confidence</span> in early AI learners.</p>
-          <p class="text-[10px] text-gray-300 font-black uppercase tracking-widest">(MIT)</p>
+          <a href="/reports/MIT_Report.pdf" download="MIT_Report.pdf" class="text-[11px] text-gray-800 font-black uppercase tracking-widest hover:text-kids-pink hover:underline transition-colors">(MIT)</a>
         </div>
 
         <div class="px-6 flex flex-col items-center md:items-start text-center md:text-left group transition-transform hover:-translate-y-1">
           <div class="w-16 h-16 bg-kids-green/10 rounded-2xl flex items-center justify-center text-kids-green font-black text-2xl mb-5 shadow-inner shadow-kids-green/5 group-hover:scale-110 transition-transform"><i class="fas fa-smile"></i></div>
           <div class="text-3xl font-black text-[#1E1B4B] mb-2 font-kids tracking-tighter">100%</div>
           <p class="text-[13px] font-bold text-gray-500 leading-snug mb-3">Fun & Engagement guaranteed! ✨</p>
-          <p class="text-[10px] text-gray-300 font-black uppercase tracking-widest">(Our Students)</p>
+          <p class="text-[11px] text-gray-800 font-black uppercase tracking-widest">(Our Students)</p>
         </div>
       </div>
 
@@ -1195,7 +1312,7 @@
   </section>
 
   <!-- FUTURE READY KIDS -->
-  <section id="projects" class="py-24 bg-white relative overflow-hidden">
+  <section id="projects" class="py-10 bg-white relative overflow-hidden">
     <!-- Background Magic -->
     <div class="absolute top-1/4 left-0 w-72 h-72 bg-kids-purple/5 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute bottom-1/4 right-0 w-80 h-80 bg-kids-cyan/5 rounded-full blur-3xl pointer-events-none"></div>
@@ -1208,83 +1325,85 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
       <h2 class="text-4xl md:text-7xl font-black text-center mb-20 text-[#1E1B4B] tracking-tight font-kids leading-tight">What <span class="text-kids-purple underline decoration-wavy underline-offset-[12px] decoration-[3px] decoration-kids-orange">Super Kids</span> Create</h2>
       
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-aos="fade-up" data-aos-duration="1000">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" data-aos="fade-up" data-aos-duration="1000">
          <!-- Card 1 -->
-         <div class="bg-white rounded-[32px] shadow-[0_10px_40px_rgb(0,0,0,0.06)] border border-gray-100 overflow-hidden flex flex-col group hover:-translate-y-2 transition-transform duration-300">
-           <div class="p-4 pb-0">
-             <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=600&auto=format&fit=crop" class="w-full h-48 object-cover rounded-[24px]">
+         <div class="bg-white rounded-[24px] shadow-[0_10px_30px_rgb(0,0,0,0.06)] border border-gray-100 overflow-hidden flex flex-col group hover:-translate-y-2 transition-transform duration-300">
+           <div class="p-3 pb-0">
+             <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=600&auto=format&fit=crop" class="w-full h-40 object-cover rounded-[16px]">
            </div>
-           <div class="p-8">
-             <h4 class="font-black text-[#1E1B4B] text-lg mb-5">Build Your Own AI Tutor Right at Home</h4>
-             <ul class="space-y-4">
-               <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#FF8C00] mt-0.5 text-sm"></i> <span class="text-xs text-gray-600 font-bold leading-relaxed">Train a mini AI bot that can quiz you, explain topics, and help with homework.</span></li>
-               <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#FF8C00] mt-0.5 text-sm"></i> <span class="text-xs text-gray-600 font-bold leading-relaxed">Personalize it with your own voice or style — make it your friendly study buddy.</span></li>
-             </ul>
+           <div class="p-6">
+             <h4 class="font-black text-[#1E1B4B] text-base mb-3">AI Story Generator</h4>
+             <p class="text-xs text-gray-600 font-bold leading-relaxed mb-0">Learn to write and engineer prompts to generate creative, original stories using large language models.</p>
            </div>
          </div>
          <!-- Card 2 -->
-         <div class="bg-white rounded-[32px] shadow-[0_10px_40px_rgb(0,0,0,0.06)] border border-gray-100 overflow-hidden flex flex-col group hover:-translate-y-2 transition-transform duration-300">
-           <div class="p-4 pb-0">
-             <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?q=80&w=600&auto=format&fit=crop" class="w-full h-48 object-cover rounded-[24px]">
+         <div class="bg-white rounded-[24px] shadow-[0_10px_30px_rgb(0,0,0,0.06)] border border-gray-100 overflow-hidden flex flex-col group hover:-translate-y-2 transition-transform duration-300">
+           <div class="p-3 pb-0">
+             <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=600&auto=format&fit=crop" class="w-full h-40 object-cover rounded-[16px]">
            </div>
-           <div class="p-8">
-             <h4 class="font-black text-[#1E1B4B] text-lg mb-5">Prepare Smarter for Exams & Vivas</h4>
-             <ul class="space-y-4">
-               <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#FF8C00] mt-0.5 text-sm"></i> <span class="text-xs text-gray-600 font-bold leading-relaxed">Learn to summarize chapters, create flashcards, and test yourself using AI tools.</span></li>
-               <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#FF8C00] mt-0.5 text-sm"></i> <span class="text-xs text-gray-600 font-bold leading-relaxed">Practice viva answers or science explanations with your AI for confidence.</span></li>
-             </ul>
+           <div class="p-6">
+             <h4 class="font-black text-[#1E1B4B] text-base mb-3">Custom AI Tutor Bot</h4>
+             <p class="text-xs text-gray-600 font-bold leading-relaxed mb-0">Train a personalized 'Study Buddy' GPT that understands your grade and subjects, aiding with daily homework.</p>
            </div>
          </div>
          <!-- Card 3 -->
-         <div class="bg-white rounded-[32px] shadow-[0_10px_40px_rgb(0,0,0,0.06)] border border-gray-100 overflow-hidden flex flex-col group hover:-translate-y-2 transition-transform duration-300">
-           <div class="p-4 pb-0">
-             <img src="/child_speaking_mic.png" class="w-full h-48 object-cover rounded-[24px]" alt="Child speaking on stage">
+         <div class="bg-white rounded-[24px] shadow-[0_10px_30px_rgb(0,0,0,0.06)] border border-gray-100 overflow-hidden flex flex-col group hover:-translate-y-2 transition-transform duration-300">
+           <div class="p-3 pb-0">
+             <img src="/comic_book_creation_1776755803252.png" class="w-full h-40 object-cover rounded-[16px]">
            </div>
-           <div class="p-8">
-             <h4 class="font-black text-[#1E1B4B] text-lg mb-5">Master Public Speaking & Presentation</h4>
-             <ul class="space-y-4">
-               <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#FF8C00] mt-0.5 text-sm"></i> <span class="text-xs text-gray-600 font-bold leading-relaxed">Practice speeches and storytelling with an AI speech coach that gives instant feedback.</span></li>
-               <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#FF8C00] mt-0.5 text-sm"></i> <span class="text-xs text-gray-600 font-bold leading-relaxed">Learn voice modulation, confidence, and body-language tricks.</span></li>
-             </ul>
+           <div class="p-6">
+             <h4 class="font-black text-[#1E1B4B] text-base mb-3">Original AI Comic Strip</h4>
+             <p class="text-xs text-gray-600 font-bold leading-relaxed mb-0">Build a complete 6-panel comic strip from scratch, defining characters, settings, dialogue, and ethical storylines.</p>
            </div>
          </div>
          <!-- Card 4 -->
-         <div class="bg-white rounded-[32px] shadow-[0_10px_40px_rgb(0,0,0,0.06)] border border-gray-100 overflow-hidden flex flex-col group hover:-translate-y-2 transition-transform duration-300">
-           <div class="p-4 pb-0">
-             <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=600&auto=format&fit=crop" class="w-full h-48 object-cover rounded-[24px]">
+         <div class="bg-white rounded-[24px] shadow-[0_10px_30px_rgb(0,0,0,0.06)] border border-gray-100 overflow-hidden flex flex-col group hover:-translate-y-2 transition-transform duration-300">
+           <div class="p-3 pb-0">
+             <img src="/child_speaking_mic.png" class="w-full h-40 object-cover rounded-[16px]">
            </div>
-           <div class="p-8">
-             <h4 class="font-black text-[#1E1B4B] text-lg mb-5">Create No-Code Websites & Games</h4>
-             <ul class="space-y-4">
-               <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#FF8C00] mt-0.5 text-sm"></i> <span class="text-xs text-gray-600 font-bold leading-relaxed">Learn to build interactive websites and fun mini-games using simple drag-and-drop tools.</span></li>
-               <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#FF8C00] mt-0.5 text-sm"></i> <span class="text-xs text-gray-600 font-bold leading-relaxed">Showcase your projects online and surprise your friends and teachers!</span></li>
-             </ul>
+           <div class="p-6">
+             <h4 class="font-black text-[#1E1B4B] text-base mb-3">Talking Avatar Video</h4>
+             <p class="text-xs text-gray-600 font-bold leading-relaxed mb-0">Produce a 60-second animated video with your own scripted voice clone and a fully dynamic digital avatar.</p>
            </div>
          </div>
          <!-- Card 5 -->
-         <div class="bg-white rounded-[32px] shadow-[0_10px_40px_rgb(0,0,0,0.06)] border border-gray-100 overflow-hidden flex flex-col group hover:-translate-y-2 transition-transform duration-300">
-           <div class="p-4 pb-0">
-             <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=600&auto=format&fit=crop" class="w-full h-48 object-cover rounded-[24px]">
+         <div class="bg-white rounded-[24px] shadow-[0_10px_30px_rgb(0,0,0,0.06)] border border-gray-100 overflow-hidden flex flex-col group hover:-translate-y-2 transition-transform duration-300">
+           <div class="p-3 pb-0">
+             <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=600&auto=format&fit=crop" class="w-full h-40 object-cover rounded-[16px]">
            </div>
-           <div class="p-8">
-             <h4 class="font-black text-[#1E1B4B] text-lg mb-5">Turn Your Imagination into Art</h4>
-             <ul class="space-y-4">
-               <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#FF8C00] mt-0.5 text-sm"></i> <span class="text-xs text-gray-600 font-bold leading-relaxed">Create posters, characters, and digital art from your ideas - just by typing.</span></li>
-               <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#FF8C00] mt-0.5 text-sm"></i> <span class="text-xs text-gray-600 font-bold leading-relaxed">Explore how artists and creators use AI to bring fantasy worlds to life.</span></li>
-             </ul>
+           <div class="p-6">
+             <h4 class="font-black text-[#1E1B4B] text-base mb-3">Live Personal Website</h4>
+             <p class="text-xs text-gray-600 font-bold leading-relaxed mb-0">Learn 'vibe coding' to direct AI no-code builders into creating your own published website visible to the world.</p>
            </div>
          </div>
          <!-- Card 6 -->
-         <div class="bg-white rounded-[32px] shadow-[0_10px_40px_rgb(0,0,0,0.06)] border border-gray-100 overflow-hidden flex flex-col group hover:-translate-y-2 transition-transform duration-300">
-           <div class="p-4 pb-0">
-             <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=600&auto=format&fit=crop" class="w-full h-48 object-cover rounded-[24px]">
+         <div class="bg-white rounded-[24px] shadow-[0_10px_30px_rgb(0,0,0,0.06)] border border-gray-100 overflow-hidden flex flex-col group hover:-translate-y-2 transition-transform duration-300">
+           <div class="p-3 pb-0">
+             <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=600&auto=format&fit=crop" class="w-full h-40 object-cover rounded-[16px]">
            </div>
-           <div class="p-8">
-             <h4 class="font-black text-[#1E1B4B] text-lg mb-5">Generate Amazing Videos & Music</h4>
-             <ul class="space-y-4">
-               <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#FF8C00] mt-0.5 text-sm"></i> <span class="text-xs text-gray-600 font-bold leading-relaxed">Use AI to compose background music, make short videos, and design visuals.</span></li>
-               <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#FF8C00] mt-0.5 text-sm"></i> <span class="text-xs text-gray-600 font-bold leading-relaxed">Discover how YouTubers and game designers use the same AI tools to create magic.</span></li>
-             </ul>
+           <div class="p-6">
+             <h4 class="font-black text-[#1E1B4B] text-base mb-3">Interactive AI Quiz Game</h4>
+             <p class="text-xs text-gray-600 font-bold leading-relaxed mb-0">Reverse the roles from student to teacher by building a playable quiz game based on your favorite domains.</p>
+           </div>
+         </div>
+         <!-- Card 7 -->
+         <div class="bg-white rounded-[24px] shadow-[0_10px_30px_rgb(0,0,0,0.06)] border border-gray-100 overflow-hidden flex flex-col group hover:-translate-y-2 transition-transform duration-300">
+           <div class="p-3 pb-0">
+             <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop" class="w-full h-40 object-cover rounded-[16px]">
+           </div>
+           <div class="p-6">
+             <h4 class="font-black text-[#1E1B4B] text-base mb-3">Data Story Poster</h4>
+             <p class="text-xs text-gray-600 font-bold leading-relaxed mb-0">Extract meaning from pure data and design an infographic poster to visualize trends for an AI for Good initiative.</p>
+           </div>
+         </div>
+         <!-- Card 8 -->
+         <div class="bg-white rounded-[24px] shadow-[0_10px_30px_rgb(0,0,0,0.06)] border border-gray-100 overflow-hidden flex flex-col group hover:-translate-y-2 transition-transform duration-300">
+           <div class="p-3 pb-0">
+             <img src="https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?q=80&w=600&auto=format&fit=crop" class="w-full h-40 object-cover rounded-[16px]">
+           </div>
+           <div class="p-6">
+             <h4 class="font-black text-[#1E1B4B] text-base mb-3">Showcase Presentation</h4>
+             <p class="text-xs text-gray-600 font-bold leading-relaxed mb-0">Deliver a polished capstone presentation showcasing your portfolio and your personal 'AI Rules I Live By' pledge.</p>
            </div>
          </div>
       </div>
@@ -1297,8 +1416,38 @@
     </div>
   </section>
 
+  <!-- WORKSHOP OVERVIEW -->
+  <section id="workshop-overview" class="py-10 bg-gradient-to-br from-[#1E1B4B] to-[#3D2C8D] relative overflow-hidden">
+    <!-- Background Magic -->
+    <div class="absolute top-0 right-0 w-64 h-64 bg-kids-purple/30 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-80 h-80 bg-kids-cyan/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+       <div class="grid md:grid-cols-2 gap-10 items-center">
+         <div>
+            <h2 class="text-3xl md:text-5xl font-black text-white mb-6 font-kids">Workshop <span class="text-[#FF8C00]">Overview</span></h2>
+            <div class="bg-white/10 rounded-3xl p-6 backdrop-blur-md border border-white/20 mb-6">
+              <h4 class="text-xl font-black text-kids-yellow mb-2"><i class="fas fa-calendar-alt mr-2"></i> Session Schedule Format</h4>
+              <p class="text-white/80 text-sm leading-relaxed">The immersive program runs exclusively on weekends across 4 continuous weeks. Each week features 2 live online sessions of 2 hours, totaling 16 hours of dedicated learning. Limited to a max batch size of 20 students to ensure highly personalized attention.</p>
+            </div>
+         </div>
+         <div class="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-2xl border-t-8 border-kids-purple transform transition-transform hover:-translate-y-1 relative group">
+            <div class="absolute -right-6 -top-6 w-20 h-20 bg-kids-yellow rounded-full opacity-10 group-hover:scale-150 transition-transform duration-700"></div>
+            <h4 class="text-2xl font-black text-[#1E1B4B] mb-4">Unified AI Track <span class="text-sm font-bold text-gray-400 uppercase tracking-widest ml-2">(Grades 5–10)</span></h4>
+            <p class="text-gray-600 font-bold leading-relaxed mb-6">
+              A single, powerful curriculum that adapts to each student's age and experience. Whether they are starting out or ready for advanced challenges, our mentors ensure every child masters the tools at their own pace.
+            </p>
+            <ul class="space-y-4">
+              <li class="flex items-center gap-3 text-sm font-bold text-[#1E1B4B]"><i class="fas fa-check-circle text-kids-cyan"></i> Personalized 1:1 Mentorship Support</li>
+              <li class="flex items-center gap-3 text-sm font-bold text-[#1E1B4B]"><i class="fas fa-check-circle text-kids-pink"></i> Personalized Project Labs</li>
+              <li class="flex items-center gap-3 text-sm font-bold text-[#1E1B4B]"><i class="fas fa-check-circle text-kids-yellow"></i> Collaborative Peer Learning</li>
+            </ul>
+         </div>
+       </div>
+    </div>
+  </section>
+
   <!-- MENTOR SECTION -->
-  <section class="py-24 bg-[#FFF4E6] relative border-y border-[#FF8C00]/20 overflow-hidden">
+  <section class="py-10 bg-[#FFF4E6] relative border-y border-[#FF8C00]/20 overflow-hidden">
     <!-- Background Decorations -->
     <div class="absolute inset-0 z-0 h-full pointer-events-none opacity-10 bg-[linear-gradient(to_right,#FF8C00_1px,transparent_1px),linear-gradient(to_bottom,#FF8C00_1px,transparent_1px)] bg-[size:40px_40px]"></div>
     <!-- Floating Magic -->
@@ -1321,7 +1470,7 @@
              <h3 class="text-2xl font-black text-[#1E1B4B] mb-1">Om Mehta</h3>
              <p class="text-[#FF8C00] font-bold text-[10px] tracking-widest uppercase mb-4">AI Consultant & Trainer</p>
              <p class="text-[13px] text-gray-600 mb-5 font-medium leading-relaxed">
-               Expert Educator @ Adani Skill Development Centre. Founder of AI Innovators Club. Specializes in making complex AI simple for young minds.
+               Expert Educator @ Adani Skill Development Centre. Specializes in making complex AI simple for young minds.
              </p>
              <a href="https://www.linkedin.com/in/om-mehta-222a7a174/" target="_blank" class="bg-[#3D2C8D] text-white text-[11px] font-bold py-3 px-6 rounded-full hover:bg-black transition-all flex items-center gap-2 w-max mx-auto md:mx-0 shadow-lg shadow-[#3D2C8D]/20"><i class="fab fa-linkedin text-sm"></i> View Profile</a>
           </div>
@@ -1348,7 +1497,7 @@
   </section>
 
   <!-- FAQ -->
-  <section id="faq" class="pt-24 pb-12 relative overflow-hidden">
+  <section id="faq" class="pt-10 pb-12 relative overflow-hidden">
     <!-- Background Blobs -->
     <div class="absolute top-10 right-0 w-72 h-72 bg-kids-pink/10 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute bottom-20 left-0 w-96 h-96 bg-kids-cyan/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -1452,13 +1601,8 @@
     </div>
   </section>
 
-  <!-- Wavy Divider -->
-  <div class="bg-[#F7F8FC] -mt-1 relative z-0 overflow-hidden">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="w-full h-auto max-h-[160px] fill-white preserve-aspect-ratio-none"><path d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
-  </div>
-
   <!-- ENROLL / PRICING SECTION -->
-  <section id="enroll" class="pt-8 pb-10 bg-[#F7F8FC] relative overflow-hidden">
+  <section id="enroll" class="pt-8 pb-4 bg-[#F7F8FC] relative overflow-hidden">
     <!-- Background Decorations -->
     <div class="absolute top-20 left-10 w-20 h-20 bg-kids-yellow/20 rounded-full animate-pulse-slow pointer-events-none"></div>
     <div class="absolute bottom-20 right-10 w-32 h-32 bg-kids-purple/10 rounded-full animate-float pointer-events-none"></div>
@@ -1497,11 +1641,17 @@
               </div>
               <div class="inline-block bg-white/20 backdrop-blur-md px-4 py-1 rounded-full text-white text-[10px] font-black uppercase tracking-[0.2em] mb-4 border border-white/30">Official Enrollment</div>
               <h3 class="text-3xl md:text-4xl font-kids font-black text-white relative z-10">Rangers Pass</h3>
-              <div class="mt-6 flex justify-center items-end gap-1 relative z-10">
-                  <span class="text-white/80 font-kids text-xl mb-2">₹</span>
-                  <span class="text-6xl md:text-7xl font-black text-white leading-none">5,000</span>
-              </div>
-              <p class="text-white/90 font-bold text-xs mt-4 uppercase tracking-widest bg-black/10 inline-block px-4 py-1.5 rounded-full">One-Time | Lifetime Access</p>
+               <div class="mt-6 flex flex-col items-center justify-center relative z-10">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="text-white/50 font-black text-xl line-through decoration-white/40">₹11,999</span>
+                    <span class="bg-white/20 text-white text-[10px] font-black px-2 py-0.5 rounded-md">SAVE 33%</span>
+                  </div>
+                  <div class="flex items-end gap-1">
+                    <span class="text-white/80 font-kids text-xl mb-2">₹</span>
+                    <span class="text-6xl md:text-7xl font-black text-white leading-none">7,999</span>
+                  </div>
+               </div>
+               <p class="text-white/90 font-bold text-xs mt-4 uppercase tracking-widest bg-black/10 inline-block px-4 py-1.5 rounded-full">Actual Offer Price</p>
           </div>
           
           <!-- Card Body -->
@@ -1539,7 +1689,7 @@
   </section>
 
   <!-- BOTTOM FOOTER -->
-  <footer class="bg-white pt-10 pb-12 relative overflow-hidden">
+  <footer class="bg-white pt-16 pb-12 relative overflow-hidden">
       <!-- Wavy Top Divider -->
       <div class="absolute top-0 left-0 w-full rotate-180 -mt-px relative z-20 overflow-hidden">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="w-full h-auto max-h-[160px] fill-[#F7F8FC] preserve-aspect-ratio-none"><path d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
@@ -1557,7 +1707,7 @@
       </div>
 
       <div class="max-w-6xl mx-auto px-4 relative z-10">
-         <div class="text-center mb-16 px-4">
+         <div class="text-center mb-10 px-4 relative z-20">
             <div class="bg-gradient-to-r from-kids-purple to-[#2B1B61] rounded-[3rem] p-8 md:p-14 shadow-bubbly-purple relative overflow-hidden group border-4 border-white">
                 <div class="absolute -right-10 -bottom-10 opacity-10 group-hover:rotate-12 transition-transform duration-700">
                     <i class="fas fa-graduation-cap text-[200px] text-white"></i>
@@ -1602,10 +1752,10 @@
                 <div class="w-10 h-10 bg-gradient-to-br from-kids-purple to-kids-pink rounded-xl flex items-center justify-center text-white font-black shadow-sm">AR</div>
                 <span class="font-kids font-black text-xl text-[#1E1B4B]">AI Rangers</span>
             </div>
-            <p class="text-gray-400 font-black text-xs uppercase tracking-widest">© 2026 ASDC. All Rights Reserved.</p>
+            <p class="text-gray-400 font-black text-xs uppercase tracking-widest">© 2026 Adani Skill Development Centre. All Rights Reserved.</p>
             <div class="flex items-center gap-6">
-                <a href="#" class="w-10 h-10 bg-kids-pink/10 rounded-full flex items-center justify-center text-kids-pink hover:bg-kids-pink hover:text-white transition-all shadow-sm"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="w-10 h-10 bg-kids-cyan/10 rounded-full flex items-center justify-center text-kids-cyan hover:bg-kids-cyan hover:text-white transition-all shadow-sm"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/foundation.adani/" target="_blank" class="w-10 h-10 bg-kids-pink/10 rounded-full flex items-center justify-center text-kids-pink hover:bg-kids-pink hover:text-white transition-all shadow-sm"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@AdaniFoundation" target="_blank" class="w-10 h-10 bg-kids-cyan/10 rounded-full flex items-center justify-center text-kids-cyan hover:bg-kids-cyan hover:text-white transition-all shadow-sm"><i class="fab fa-youtube"></i></a>
             </div>
          </div>
       </div>
