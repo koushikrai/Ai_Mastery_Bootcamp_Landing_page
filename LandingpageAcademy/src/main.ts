@@ -1,18 +1,5 @@
 import './style.css'
 
-// Mobile Menu Toggle
-const mobileMenuButton = document.getElementById('mobile-menu-button');
-const mobileMenu = document.getElementById('mobile-menu');
-const closeMenuButton = document.getElementById('close-menu');
-
-mobileMenuButton?.addEventListener('click', () => mobileMenu?.classList.remove('hidden'));
-closeMenuButton?.addEventListener('click', () => mobileMenu?.classList.add('hidden'));
-
-// Close mobile menu on link click
-mobileMenu?.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => mobileMenu?.classList.add('hidden'));
-});
-
 // Accordion Functionality
 const setupAccordions = () => {
   const accordionHeaders = document.querySelectorAll('.accordion-header');
