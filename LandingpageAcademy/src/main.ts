@@ -1,4 +1,7 @@
 import './style.css'
+// Chatbot imports disabled
+// import './chatbot.css'
+// import './chatbot.js'
 
 // Accordion Functionality
 const setupAccordions = () => {

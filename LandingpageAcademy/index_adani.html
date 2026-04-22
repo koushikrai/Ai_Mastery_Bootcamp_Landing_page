@@ -718,8 +718,8 @@
               </div>
               <h3 class="font-black text-2xl text-[#2C0A15] mb-2 font-kids">Batch 1</h3>
               <p class="text-gray-500 font-medium mb-8 text-sm">Starts on <span class="text-gray-800 font-bold">16th of May</span> (Weekend)</p>
-              <button onclick="document.getElementById('enroll').scrollIntoView()" class="w-full bg-[#2C0A15] text-white font-bold py-3.5 rounded-xl hover:bg-[#8A1538] transition-colors relative overflow-hidden group">
-                <span class="relative z-10 flex items-center justify-center gap-2">Book This Batch <i class="fas fa-arrow-right"></i></span>
+              <button onclick="document.getElementById('enroll').scrollIntoView({ behavior: 'smooth' })" class="w-full bg-[#2C0A15] text-white font-bold py-3.5 rounded-xl hover:bg-[#8A1538] transition-colors relative overflow-hidden group">
+                <span class="relative z-10 flex items-center justify-center gap-2">Secure My Spot <i class="fas fa-check-circle"></i></span>
               </button>
             </div>
 
@@ -727,8 +727,8 @@
             <div class="bg-white border border-gray-200 rounded-3xl p-8 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:border-[#8A1538]/30 relative transform hover:-translate-y-1 transition-all">
               <h3 class="font-black text-2xl text-[#2C0A15] mb-2 font-kids">Batch 2</h3>
               <p class="text-gray-500 font-medium mb-8 text-sm">Starts on <span class="text-gray-800 font-bold">16th of May</span> (Weekend)</p>
-              <button onclick="document.getElementById('enroll').scrollIntoView()" class="w-full bg-[#F7F8FC] text-[#2C0A15] font-bold py-3.5 rounded-xl hover:bg-gray-100 transition-colors border border-gray-200">
-                Book This Batch
+              <button onclick="document.getElementById('enroll').scrollIntoView({ behavior: 'smooth' })" class="w-full bg-[#F7F8FC] text-[#2C0A15] font-bold py-3.5 rounded-xl hover:bg-gray-100 transition-colors border border-gray-200">
+                Ready to Launch <i class="fas fa-arrow-right ml-2 opacity-60"></i>
               </button>
             </div>
 
@@ -736,8 +736,8 @@
             <div class="bg-white border border-gray-200 rounded-3xl p-8 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:border-[#8A1538]/30 relative transform hover:-translate-y-1 transition-all">
               <h3 class="font-black text-2xl text-[#2C0A15] mb-2 font-kids">Batch 3</h3>
               <p class="text-gray-500 font-medium mb-8 text-sm">Starts on <span class="text-gray-800 font-bold">16th of May</span> (Weekend)</p>
-              <button onclick="document.getElementById('enroll').scrollIntoView()" class="w-full bg-[#F7F8FC] text-[#2C0A15] font-bold py-3.5 rounded-xl hover:bg-gray-100 transition-colors border border-gray-200">
-                Book This Batch
+              <button onclick="document.getElementById('enroll').scrollIntoView({ behavior: 'smooth' })" class="w-full bg-[#F7F8FC] text-[#2C0A15] font-bold py-3.5 rounded-xl hover:bg-gray-100 transition-colors border border-gray-200">
+                Join Mission <i class="fas fa-arrow-right ml-2 opacity-60"></i>
               </button>
             </div>
           </div>
@@ -789,7 +789,7 @@
 
       <div class="pb-24 pt-12 bg-white border-b border-gray-100">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
-            <button onclick="document.getElementById('enroll').scrollIntoView()" class="bg-[#8A1538] text-white font-black py-4 px-12 rounded-full shadow-[0_10px_20px_rgba(61,44,141,0.3)] hover:-translate-y-1 transition-all text-lg hover:bg-[#2b1f69]">Enroll for Course</button>
+            <button onclick="document.getElementById('enroll').scrollIntoView({ behavior: 'smooth' })" class="bg-[#8A1538] text-white font-black py-4 px-12 rounded-full shadow-[0_10px_20px_rgba(61,44,141,0.3)] hover:-translate-y-1 transition-all text-lg hover:bg-[#2b1f69]">Enroll for Course</button>
         </div>
       </div>
 
@@ -1751,13 +1751,13 @@
   </script>
   </div>
 
-  <!-- FLOATING MASCOT -->
-  <div id="floating-mascot-container" class="fixed bottom-10 right-10 w-24 md:w-32 cursor-pointer z-[10000] group select-none">
-    <div id="mascot-speech" class="speech-bubble">
-      Are you ready for an AI adventure? 🚀
+  <!-- FLOATING MASCOT (WhatsApp Link) -->
+  <a href="https://wa.me/919723604009" target="_blank" id="floating-mascot-container" class="fixed bottom-10 right-10 w-24 md:w-32 cursor-pointer z-[10000] group select-none">
+    <div id="mascot-speech" class="speech-bubble" style="opacity: 1 !important; pointer-events: none;">
+      Chat with me on WhatsApp! 📱
     </div>
     <img src="/mascots/brainy.svg" alt="Floating Mascot" id="floating-mascot" class="w-full drop-shadow-2xl animate-bouncy group-hover:scale-110 transition-transform duration-300">
-  </div>
+  </a>
 
 </body>
 </html>
