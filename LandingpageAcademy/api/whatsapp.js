@@ -6,24 +6,44 @@ const phone_number_id = process.env.PHONE_NUMBER_ID;
 
 const knowledgeBase = [
     {
-        keywords: ["price", "cost", "fee", "amount"],
-        answer: "The 4-week AI Rangers program is ₹7,999 (original ₹11,999). This includes 8 sessions and 8 projects! ✨"
+        keywords: ["price", "cost", "fee", "how much", "amount", "fees"],
+        answer: "You're getting an amazing deal! 🌟 The full 4-week program is just ₹7,999 right now (down from ₹11,999). That covers all 8 live sessions, 8 big projects, and a whole year of access to our learning platform. It's a great investment in your future! ✨"
     },
     {
-        keywords: ["start", "date", "when", "batch"],
-        answer: "Upcoming batches begin on May 16th! We have slots at 9:30 AM, 2:00 PM, and 6:30 PM. 😊"
+        keywords: ["start", "date", "when", "begins", "schedule", "batch", "timing"],
+        answer: "We're starting the adventure on May 16th! 🗓️ We have three different times to fit your weekend: \n- Batch 1: 9:30 AM\n- Batch 2: 2:00 PM\n- Batch 3: 6:30 PM\nEach session is 2 hours of pure fun. Which time works best for you? 😊"
     },
     {
-        keywords: ["age", "class", "grade"],
-        answer: "AI Rangers is for kids in Classes 6 to 12. 🎓"
+        keywords: ["who", "age", "class", "grade", "kids", "old", "level"],
+        answer: "We've built this specifically for kids in Classes 6 to 12. 🎓 Don't worry about it being too hard—we make the most complex AI secrets easy and super fun to learn for everyone! 🚀"
     },
     {
-        keywords: ["project", "build"],
-        answer: "You'll build 8 projects, including an AI Tutor Bot, Comic Strip, and a Website! 🤖"
+        keywords: ["parents", "mom", "dad", "join", "together", "family"],
+        answer: "Of course parents can join! 👨‍👩‍👧‍👦 In fact, we love it when parents and kids learn together. You can be your child's first 'AI Partner' during the sessions! ❤️"
     },
     {
-        keywords: ["human", "person", "expert", "teacher", "talk to"],
-        answer: "Transferring you to a human mentor... please wait! 👨‍🏫"
+        keywords: ["project", "build", "create", "make", "deliverables"],
+        answer: "You won't just be watching—you'll be building! 🛠️ By the end, you'll have 8 epic projects like your own AI Tutor, a 6-panel Comic Strip, and even your own live Website. Your friends won't believe you made them! 🤯"
+    },
+    {
+        keywords: ["tools", "software", "chatgpt", "midjourney", "canva", "stack", "tech"],
+        answer: "You'll be using the same tools the pros use! 🛠️ We'll master over 20 tools like ChatGPT, HeyGen for avatars, and ElevenLabs for voice magic. We make sure every tool is 100% safe and kid-friendly. 🛡️"
+    },
+    {
+        keywords: ["certificate", "verified", "degree", "adani", "outcome", "after"],
+        answer: "You bet! 📜 You'll earn an Official Certificate from the Adani Skill Development Centre. Plus, you'll get a professional portfolio of all your work to show off! It looks amazing on school records. 🌟"
+    },
+    {
+        keywords: ["safe", "security", "privacy", "guardrails", "ethics"],
+        answer: "Safety is our #1 priority. 🛡️ We use specially filtered tools and teach you how to use AI responsibly from Day 1. It's a completely safe, monitored space for you to explore and create! ✨"
+    },
+    {
+        keywords: ["prompt", "race", "task", "framework"],
+        answer: "We'll teach you the 'Secret Language' of AI! 🧠 Using our RACE and TASK frameworks, you'll learn how to talk to any AI to get exactly what you want. It's like having a superpower! ⚡"
+    },
+    {
+        keywords: ["vibe coding", "no code", "lovable"],
+        answer: "Forget boring code syntax! 🚫💻 We teach 'Vibe Coding'—where you just describe your dream app in plain English, and the AI builds it for you. It's the future of building! 🚀"
     }
 ];
 
@@ -74,7 +94,7 @@ export default async function handler(req, res) {
                 }
 
                 if (!responseText) {
-                    responseText = "I'm not sure about that. 😔 Would you like me to connect you with a human mentor? (Reply 'HUMAN')";
+                    responseText = "That's a great question! For detailed information on this topic, please connect directly with our ASDC Expert Team on WhatsApp. They will be happy to assist you! 👨‍🏫";
                 }
 
                 await sendWhatsAppMessage(from, responseText);

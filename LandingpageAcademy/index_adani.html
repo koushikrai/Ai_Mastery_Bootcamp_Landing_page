@@ -76,19 +76,25 @@
       position: absolute;
       bottom: 110%;
       right: 0;
-      width: 200px;
-      background: white;
-      border: 3px solid #FF8C00;
-      border-radius: 20px;
-      padding: 12px 16px;
-      box-shadow: 0 10px 25px rgba(255, 140, 0, 0.2);
+      width: 180px;
+      background: #2C0A15;
+      border: 3px solid #8A1538;
+      border-radius: 1.5rem;
+      padding: 10px 14px;
+      box-shadow: 0 10px 30px rgba(44, 10, 21, 0.3);
       font-size: 13px;
       font-weight: 800;
-      color: #1E1B4B;
+      color: white;
       opacity: 0;
       transform: translateY(10px) scale(0.9);
       pointer-events: none;
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: bubble-float 3s infinite ease-in-out;
+    }
+
+    @keyframes bubble-float {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-5px) scale(1.02); }
     }
     
     .speech-bubble.active {
@@ -103,7 +109,7 @@
       right: 30px;
       border-width: 15px 15px 0 0;
       border-style: solid;
-      border-color: #FF8C00 transparent transparent;
+      border-color: #8A1538 transparent transparent;
     }
     
     .speech-bubble::before {
@@ -113,7 +119,7 @@
       right: 33px;
       border-width: 10px 10px 0 0;
       border-style: solid;
-      border-color: white transparent transparent;
+      border-color: #2C0A15 transparent transparent;
       z-index: 1;
     }
 
@@ -1751,13 +1757,13 @@
   </script>
   </div>
 
-  <!-- FLOATING MASCOT (WhatsApp Link) -->
-  <a href="https://wa.me/919723604009" target="_blank" id="floating-mascot-container" class="fixed bottom-10 right-10 w-24 md:w-32 cursor-pointer z-[10000] group select-none">
-    <div id="mascot-speech" class="speech-bubble" style="opacity: 1 !important; pointer-events: none;">
-      Chat with me on WhatsApp! 📱
+  <!-- FLOATING MASCOT -->
+  <div id="floating-mascot-container" class="fixed bottom-10 right-10 w-24 md:w-32 cursor-pointer z-[10000] group select-none">
+    <div id="mascot-speech" class="speech-bubble">
+      Need help? I'm here to assist! 🤖✨
     </div>
     <img src="/mascots/brainy.svg" alt="Floating Mascot" id="floating-mascot" class="w-full drop-shadow-2xl animate-bouncy group-hover:scale-110 transition-transform duration-300">
-  </a>
+  </div>
 
 </body>
 </html>

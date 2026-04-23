@@ -6,35 +6,43 @@
 const knowledgeBase = [
     {
         keywords: ["price", "cost", "fee", "how much", "amount", "fees"],
-        answer: "The 4-week AI Rangers program is currently available at a special offer price of **₹7,999** (original price ₹11,999). This includes 8 live sessions, 8 projects, and 1 year of LMS access! ✨"
+        answer: "You're getting an amazing deal! 🌟 The full 4-week program is just **₹7,999** right now (down from ₹11,999). That covers all 8 live sessions, 8 big projects, and a whole year of access to our learning platform. It's a great investment in your future! ✨"
     },
     {
-        keywords: ["start", "date", "when", "begins", "schedule", "batch"],
-        answer: "Our upcoming batches begin on **May 16th**! We have 3 weekend slots: \n- Batch 1: 9:30 AM Induction\n- Batch 2: 2:00 PM Induction\n- Batch 3: 6:30 PM Induction\nWhich one works best for you? 😊"
+        keywords: ["start", "date", "when", "begins", "schedule", "batch", "timing"],
+        answer: "We're starting the adventure on **May 16th**! 🗓️ We have three different times to fit your weekend: \n- Batch 1: 9:30 AM\n- Batch 2: 2:00 PM\n- Batch 3: 6:30 PM\nEach session is 2 hours of pure fun. Which time works best for you? 😊"
     },
     {
-        keywords: ["who", "age", "class", "grade", "kids", "old"],
-        answer: "AI Rangers is specially designed for kids in **Classes 6 to 12**. We make complex AI concepts simple and fun for every age group! 🎓"
+        keywords: ["who", "age", "class", "grade", "kids", "old", "level"],
+        answer: "We've built this specifically for kids in **Classes 6 to 12**. 🎓 Don't worry about it being too hard—we make the most complex AI secrets easy and super fun to learn for everyone! 🚀"
     },
     {
-        keywords: ["project", "build", "create", "make", "what will i learn"],
-        answer: "You'll build **8 amazing projects**, including:\n- Your own AI Tutor Bot 🤖\n- An AI Comic Strip 🎨\n- A Live Published Website 🌐\n- A Talking AI Avatar 🗣️\nAnd 4 more epic creations! No coding required."
+        keywords: ["parents", "mom", "dad", "join", "together", "family"],
+        answer: "Of course parents can join! 👨‍👩‍👧‍👦 In fact, we love it when parents and kids learn together. You can be your child's first 'AI Partner' during the sessions! ❤️"
     },
     {
-        keywords: ["tools", "software", "chatgpt", "midjourney", "canva"],
-        answer: "You'll master over **20+ professional AI tools** like ChatGPT, Midjourney, DALL-E, Claude, Canva AI, and even 'Vibe Coding' tools. We use only safe, age-appropriate platforms. 🛠️"
+        keywords: ["project", "build", "create", "make", "deliverables"],
+        answer: "You won't just be watching—you'll be **building**! 🛠️ By the end, you'll have 8 epic projects like your own AI Tutor, a 6-panel Comic Strip, and even your own live Website. Your friends won't believe you made them! 🤯"
     },
     {
-        keywords: ["certificate", "verified", "degree", "adani"],
-        answer: "Yes! Every graduate receives an **Official Certificate of Completion** from the Adani Skill Development Centre, along with a professionally compiled digital portfolio of their projects. 📜"
+        keywords: ["tools", "software", "chatgpt", "midjourney", "canva", "stack", "tech"],
+        answer: "You'll be using the same tools the pros use! 🛠️ We'll master over 20 tools like ChatGPT, HeyGen for avatars, and ElevenLabs for voice magic. We make sure every tool is 100% safe and kid-friendly. 🛡️"
     },
     {
-        keywords: ["contact", "phone", "whatsapp", "support", "help", "number"],
-        answer: "You can reach our team anytime via **WhatsApp at +91 9723604009**. We're happy to help with any questions! 📱"
+        keywords: ["certificate", "verified", "degree", "adani", "outcome", "after"],
+        answer: "You bet! 📜 You'll earn an **Official Certificate** from the Adani Skill Development Centre. Plus, you'll get a professional portfolio of all your work to show off! It looks amazing on school records. 🌟"
     },
     {
-        keywords: ["safe", "security", "privacy", "guardrails"],
-        answer: "Safety is our priority. We use tools with built-in content guardrails and teach AI ethics from Day 1. The program is **100% Kid Safe**. 🛡️"
+        keywords: ["safe", "security", "privacy", "guardrails", "ethics"],
+        answer: "Safety is our #1 priority. 🛡️ We use specially filtered tools and teach you how to use AI responsibly from Day 1. It's a completely safe, monitored space for you to explore and create! ✨"
+    },
+    {
+        keywords: ["prompt", "race", "task", "framework"],
+        answer: "We'll teach you the 'Secret Language' of AI! 🧠 Using our **RACE** and **TASK** frameworks, you'll learn how to talk to any AI to get exactly what you want. It's like having a superpower! ⚡"
+    },
+    {
+        keywords: ["vibe coding", "no code", "lovable"],
+        answer: "Forget boring code syntax! 🚫💻 We teach 'Vibe Coding'—where you just describe your dream app in plain English, and the AI builds it for you. It's the future of building! 🚀"
     }
 ];
 
@@ -121,7 +129,13 @@ class AIForKidsChatbot {
         this.elements.input.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') this.handleUserInput();
         });
-
+        
+        // Show notification bubble after a short delay
+        setTimeout(() => {
+            if (!this.isOpen && this.elements.mascotSpeech) {
+                this.elements.mascotSpeech.classList.add('active');
+            }
+        }, 3000);
     }
 
     toggleChat(force) {
@@ -191,96 +205,29 @@ class AIForKidsChatbot {
     }
 
     showFallback() {
-        this.addMessage("I'm sorry, I don't have that information currently. 😔");
-        this.addMessage("Would you like to speak with a human mentor on WhatsApp or leave your details for a callback?");
+        this.addMessage("That's a great question! For detailed information on this topic, please connect directly with our ASDC Expert Team on WhatsApp.");
         
         const actionDiv = document.createElement('div');
         actionDiv.className = 'chatbot-actions';
-        actionDiv.style.cssText = 'display: flex; flex-direction: column; gap: 10px; margin-top: 10px;';
+        actionDiv.style.cssText = 'display: flex; flex-direction: column; gap: 10px; margin-top: 15px;';
         
         const whatsappBtn = document.createElement('button');
         whatsappBtn.className = 'whatsapp-btn';
-        whatsappBtn.innerHTML = '<i class="fab fa-whatsapp"></i> Chat on WhatsApp';
-        whatsappBtn.style.cssText = 'background: #25D366; color: white; border: none; padding: 12px; border-radius: 12px; font-weight: 800; cursor: pointer; display: flex; items-center; justify-content: center; gap: 8px; font-size: 14px;';
+        whatsappBtn.innerHTML = '<i class="fab fa-whatsapp"></i> Connect with Expert Team';
+        whatsappBtn.style.cssText = 'background: #25D366; color: white; border: none; padding: 14px; border-radius: 12px; font-weight: 800; cursor: pointer; display: flex; items-center; justify-content: center; gap: 10px; font-size: 15px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); transition: transform 0.2s;';
         
+        whatsappBtn.onmouseover = () => whatsappBtn.style.transform = 'scale(1.02)';
+        whatsappBtn.onmouseout = () => whatsappBtn.style.transform = 'scale(1)';
+
         whatsappBtn.onclick = () => {
             const phone = "919723604009";
-            const message = encodeURIComponent(`Hi Brainy! I have a question: "${this.lastQuery || ''}"`);
+            const message = encodeURIComponent(`Hello ASDC Team, I have a query from the AI Rangers website regarding: "${this.lastQuery || ''}"`);
             window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
         };
 
-        const formBtn = document.createElement('button');
-        formBtn.innerHTML = '<i class="fas fa-envelope"></i> Leave a Message';
-        formBtn.style.cssText = 'background: #F1F5F9; color: #1E1B4B; border: 2px solid #E2E8F0; padding: 12px; border-radius: 12px; font-weight: 800; cursor: pointer; font-size: 14px;';
-        
-        formBtn.onclick = () => {
-            formBtn.style.display = 'none';
-            whatsappBtn.style.display = 'none';
-            this.showLeadForm();
-        };
-
         actionDiv.appendChild(whatsappBtn);
-        actionDiv.appendChild(formBtn);
         this.elements.messages.appendChild(actionDiv);
         this.elements.messages.scrollTop = this.elements.messages.scrollHeight;
-    }
-
-    showLeadForm() {
-        const formDiv = document.createElement('div');
-        formDiv.className = 'lead-form';
-        formDiv.innerHTML = `
-            <input type="text" id="lead-name" placeholder="Student/Parent Name" required>
-            <input type="email" id="lead-email" placeholder="Email Address" required>
-            <input type="tel" id="lead-phone" placeholder="WhatsApp Number" required>
-            <button id="lead-submit">Request Call Back</button>
-        `;
-        this.elements.messages.appendChild(formDiv);
-        this.elements.messages.scrollTop = this.elements.messages.scrollHeight;
-
-        document.getElementById('lead-submit').addEventListener('click', () => this.handleLeadSubmit());
-    }
-
-    handleLeadSubmit() {
-        const name = document.getElementById('lead-name').value;
-        const email = document.getElementById('lead-email').value;
-        const phone = document.getElementById('lead-phone').value;
-
-        if (!name || !email || !phone) {
-            alert("Please fill all details! ✨");
-            return;
-        }
-
-        const submitBtn = document.getElementById('lead-submit');
-        submitBtn.disabled = true;
-        submitBtn.innerText = "Sending...";
-
-        // Simulate Email Sending
-        // In a real scenario, you'd call an API or EmailJS here
-        console.log("Sending lead to ASDC Admin:", { name, email, phone });
-
-        setTimeout(() => {
-            const form = document.querySelector('.lead-form');
-            if (form) form.remove();
-            this.addMessage("Thank you! Your details have been sent to the ASDC team admin. We'll reach out to you very soon! 🚀");
-            
-            // Optional: Actually send via EmailJS if configured
-            this.sendEmailNotification({ name, email, phone });
-        }, 1500);
-    }
-
-    sendEmailNotification(data) {
-        // Placeholder for EmailJS or other service
-        // Example:
-        /*
-        emailjs.send("service_id", "template_id", {
-            from_name: data.name,
-            from_email: data.email,
-            phone: data.phone,
-            message: "Chatbot Lead - Information unavailable",
-            to_email: "asdc.admin@example.com"
-        });
-        */
-       console.log("Lead captured for admin notification:", data);
     }
 }
 
