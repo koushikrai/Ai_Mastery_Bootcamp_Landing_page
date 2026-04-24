@@ -837,7 +837,9 @@
             <h3 class="text-2xl font-black text-white relative z-10 uppercase tracking-widest">Mastery Pass</h3>
             <p class="text-white/80 font-bold text-sm mt-1 relative z-10">2 days Strategic Mastery Series</p>
             <div class="mt-6 flex justify-center items-center gap-2 relative z-10">
-                <span class="text-5xl font-black text-white">₹5,000</span>
+                <span id="display-original-price" class="text-2xl font-bold text-gray-300 line-through hidden"></span>
+                <span id="display-current-price" class="text-5xl font-black text-white">₹5,000</span>
+                <span id="display-discount-badge" class="ml-2 bg-[#E30064] text-white text-[10px] font-black px-2 py-1 rounded-md hidden"></span>
             </div>
             <span class="inline-block mt-3 bg-white/20 px-3 py-1 text-white text-[11px] font-black uppercase tracking-widest rounded-full relative z-10 shadow-sm border border-white/30">Adani Founders Rate</span>
         </div>
@@ -864,7 +866,16 @@
                 </li>
             </ul>
             
-            <button onclick="showRegistrationModal('pro')" class="w-full bg-[#8A1538] text-white py-5 rounded-xl font-black text-lg shadow-[0_10px_20px_rgba(138,21,56,0.3)] hover:bg-[#2C0A15] hover:-translate-y-1 hover:shadow-xl transition-all">Secure My Seat</button>
+            <!-- Promo Code Section -->
+            <div id="coupon-container" class="mt-4 mb-4 hidden relative z-10">
+              <div class="flex items-center bg-white rounded-lg border-2 border-gray-100 overflow-hidden shadow-sm">
+                <input type="text" id="promo-code-input" placeholder="Enter Promo Code" class="flex-1 px-4 py-3 outline-none text-sm font-bold text-[#2C0A15] placeholder-gray-400">
+                <button id="apply-promo-btn" class="bg-[#2C0A15] text-white px-6 py-3 font-black text-sm hover:bg-[#8A1538] transition-colors h-full flex items-center justify-center min-w-[100px]">Apply</button>
+              </div>
+              <p id="promo-message" class="text-xs font-bold mt-2 text-center hidden"></p>
+            </div>
+
+            <button onclick="showRegistrationModal('pro')" class="w-full bg-[#8A1538] text-white py-5 rounded-xl font-black text-lg shadow-[0_10px_20px_rgba(138,21,56,0.3)] hover:bg-[#2C0A15] hover:-translate-y-1 hover:shadow-xl transition-all">Secure My Seat <span id="btn-final-price"></span></button>
             <p class="text-center text-[11px] text-gray-500 font-bold mt-4 uppercase tracking-widest"><i class="fas fa-lock text-gray-400 mr-1"></i> SSL Secure Enrollment</p>
         </div>
       </div>
