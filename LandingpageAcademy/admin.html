@@ -56,9 +56,58 @@
     .toggle-checkbox:checked + .toggle-label {
       background-color: #10b981;
     }
+
+    /* Login screen */
+    #login-screen {
+      background: linear-gradient(135deg, #1E1B4B 0%, #3D2C8D 60%, #FF8C00 100%);
+    }
+    .login-card {
+      backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadein { animation: fadeIn 0.5s ease forwards; }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800 min-h-screen p-8">
+<body class="bg-gray-50 text-gray-800 min-h-screen">
+
+  <!-- ═══ LOGIN SCREEN ═══════════════════════════════════════════════════ -->
+  <div id="login-screen" class="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div class="login-card rounded-3xl p-10 w-full max-w-md shadow-2xl animate-fadein">
+      <div class="text-center mb-8">
+        <div class="text-5xl mb-4">⚙️</div>
+        <h1 class="text-2xl font-black text-white">ASDC Admin Panel</h1>
+        <p class="text-white/60 text-sm mt-1 font-medium">Sign in to manage pricing & coupons</p>
+      </div>
+
+      <form id="login-form" class="space-y-4">
+        <div>
+          <label class="block text-white/70 text-xs font-bold uppercase tracking-widest mb-2">Email</label>
+          <input type="email" id="login-email" required placeholder="admin@yourdomain.com"
+            class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent font-medium transition">
+        </div>
+        <div>
+          <label class="block text-white/70 text-xs font-bold uppercase tracking-widest mb-2">Password</label>
+          <input type="password" id="login-password" required placeholder="••••••••"
+            class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent font-medium transition">
+        </div>
+
+        <p id="login-error" class="text-red-300 text-xs font-bold hidden"></p>
+
+        <button type="submit" id="login-btn"
+          class="w-full bg-[#FF8C00] hover:bg-[#e67e00] active:scale-95 text-white font-black py-4 rounded-xl transition shadow-lg mt-2 flex items-center justify-center gap-2">
+          <i class="fas fa-sign-in-alt"></i> Sign In
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ═══ ADMIN DASHBOARD (hidden until logged in) ════════════════════════ -->
+  <div id="admin-dashboard" class="hidden p-8">
   <div class="max-w-6xl mx-auto space-y-10">
     <!-- Header -->
     <div class="flex items-center justify-between">
@@ -70,9 +119,14 @@
           Manage product pricing and coupon codes. Changes reflect live on the website immediately.
         </p>
       </div>
-      <button id="refresh-btn" class="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-100 transition active:scale-95 bg-white">
-        <i class="fas fa-sync-alt"></i> Refresh
-      </button>
+      <div class="flex items-center gap-3">
+        <button id="refresh-btn" class="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-100 transition active:scale-95 bg-white">
+          <i class="fas fa-sync-alt"></i> Refresh
+        </button>
+        <button id="logout-btn" class="inline-flex items-center gap-2 px-4 py-2 bg-red-50 border border-red-200 rounded-xl text-sm font-semibold text-red-600 hover:bg-red-100 transition active:scale-95">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
     </div>
 
     <!-- Pricing Section -->
@@ -193,6 +247,7 @@
       </div>
     </section>
   </div>
+  </div> <!-- end admin-dashboard -->
 
   <div id="toast-container" class="toast-container"></div>
 

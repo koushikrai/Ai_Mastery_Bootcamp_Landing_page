@@ -7,6 +7,71 @@ import {
     deleteCouponCode
   } from './lib/pricing-api';
 import type { ProductPricing, CouponCode } from './lib/pricing-api';
+import { supabase } from './supabase-client';
+
+  // ─── AUTH ─────────────────────────────────────────────────────────────
+  
+  const showLoginScreen = () => {
+    document.getElementById('login-screen')!.classList.remove('hidden');
+    document.getElementById('admin-dashboard')!.classList.add('hidden');
+  };
+  
+  const showDashboard = () => {
+    document.getElementById('login-screen')!.classList.add('hidden');
+    document.getElementById('admin-dashboard')!.classList.remove('hidden');
+    loadData();
+  };
+  
+  // Check session on load
+  supabase.auth.getSession().then(({ data: { session } }) => {
+    if (session) {
+      showDashboard();
+    } else {
+      showLoginScreen();
+    }
+  });
+  
+  // Listen for auth changes (e.g. session expiry)
+  supabase.auth.onAuthStateChange((_event, session) => {
+    if (session) {
+      showDashboard();
+    } else {
+      showLoginScreen();
+    }
+  });
+  
+  // Handle login form
+  document.addEventListener('DOMContentLoaded', () => {
+    const loginForm = document.getElementById('login-form') as HTMLFormElement;
+    const loginBtn = document.getElementById('login-btn') as HTMLButtonElement;
+    const loginError = document.getElementById('login-error') as HTMLParagraphElement;
+    const logoutBtn = document.getElementById('logout-btn') as HTMLButtonElement;
+  
+    loginForm?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = (document.getElementById('login-email') as HTMLInputElement).value.trim();
+      const password = (document.getElementById('login-password') as HTMLInputElement).value;
+  
+      loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing in...';
+      loginBtn.disabled = true;
+      loginError.classList.add('hidden');
+  
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+  
+      if (error) {
+        loginError.textContent = error.message;
+        loginError.classList.remove('hidden');
+        loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Sign In';
+        loginBtn.disabled = false;
+      }
+      // On success, onAuthStateChange fires and calls showDashboard()
+    });
+  
+    logoutBtn?.addEventListener('click', async () => {
+      await supabase.auth.signOut();
+      // onAuthStateChange fires and calls showLoginScreen()
+    });
+  });
   
   // ─── UTILS ─────────────────────────────────────────────────────────────
   
