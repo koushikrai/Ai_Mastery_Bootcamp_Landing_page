@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASDC Settings</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Nunito', sans-serif; }
+    
+    /* Toast styles */
+    .toast-container {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .toast {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: white;
+      animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.3s ease;
+    }
+    
+    .toast.success { background-color: #16a34a; }
+    .toast.error { background-color: #dc2626; }
+    
+    .toast.hiding {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    
+    /* Toggle switch styles */
+    .toggle-checkbox:checked {
+      right: 0;
+      border-color: #10b981;
+    }
+    .toggle-checkbox:checked + .toggle-label {
+      background-color: #10b981;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 min-h-screen p-8">
+  <div class="max-w-6xl mx-auto space-y-10">
+    <!-- Header -->
+    <div class="flex items-center justify-between">
+      <div>
+        <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-2">
+          <span class="text-2xl">⚙️</span> ASDC Landing Page Settings
+        </h2>
+        <p class="text-sm text-gray-500 mt-1">
+          Manage product pricing and coupon codes. Changes reflect live on the website immediately.
+        </p>
+      </div>
+      <button id="refresh-btn" class="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-100 transition active:scale-95 bg-white">
+        <i class="fas fa-sync-alt"></i> Refresh
+      </button>
+    </div>
+
+    <!-- Pricing Section -->
+    <section>
+      <div class="flex items-center gap-2 mb-4">
+        <i class="fas fa-rupee-sign text-amber-600 text-xl"></i>
+        <h3 class="text-lg font-bold text-gray-800">Product Pricing</h3>
+        <span class="ml-1 text-xs text-gray-400 font-semibold bg-gray-200 px-2 py-0.5 rounded-full">(incl. GST)</span>
+      </div>
+
+      <div class="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm bg-white">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-gradient-to-r from-amber-50 to-orange-50 border-b border-gray-200">
+              <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Product</th>
+              <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Variant / Batch</th>
+              <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Original Price</th>
+              <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Current Price</th>
+              <th class="px-4 py-3 text-center text-xs font-bold text-gray-600 uppercase tracking-wider">Coupon Box</th>
+              <th class="px-4 py-3 text-center text-xs font-bold text-gray-600 uppercase tracking-wider">Action</th>
+            </tr>
+          </thead>
+          <tbody id="pricing-table-body" class="divide-y divide-gray-100">
+            <tr>
+              <td colspan="6" class="px-4 py-8 text-center text-gray-500">
+                <i class="fas fa-spinner fa-spin mr-2"></i> Loading pricing data...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-2 text-xs text-gray-500 flex items-center gap-1">
+        <i class="fas fa-info-circle"></i>
+        "Coupon Box" controls whether customers see the promo code input on the checkout modal for that specific product.
+      </p>
+    </section>
+
+    <!-- Coupons Section -->
+    <section>
+      <div class="flex items-center gap-2 mb-4">
+        <i class="fas fa-ticket-alt text-amber-600 text-xl"></i>
+        <h3 class="text-lg font-bold text-gray-800">Coupon Codes</h3>
+        <span id="active-coupons-count" class="ml-2 bg-amber-100 text-amber-700 text-xs px-2 py-0.5 rounded-full font-bold">
+          0 active
+        </span>
+      </div>
+
+      <!-- Add Coupon Form -->
+      <div class="mb-6">
+        <button id="toggle-add-coupon-btn" class="inline-flex items-center gap-2 px-4 py-2 bg-[#1E1B4B] hover:bg-[#2B1B61] text-white rounded-xl text-sm font-bold transition shadow-md active:scale-95">
+          <i class="fas fa-plus"></i> Add New Coupon
+        </button>
+
+        <form id="add-coupon-form" class="hidden mt-4 bg-amber-50 border border-amber-200 rounded-2xl p-6 grid grid-cols-1 md:grid-cols-2 gap-5 shadow-sm">
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1.5">Coupon Code *</label>
+            <input type="text" id="coupon-code" required placeholder="e.g. SUMMER2026" class="w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 font-mono uppercase bg-white">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1.5">Discount Amount (₹) *</label>
+            <input type="number" id="coupon-discount" required placeholder="e.g. 500" min="1" class="w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 bg-white">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1.5">Applicable Product *</label>
+            <select id="coupon-product" required class="w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 bg-white cursor-pointer">
+              <option value="kids">AI Rangers (Kids)</option>
+              <option value="pro">AI Mastery Bootcamp (Pro)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1.5">Applicable Variant (Optional)</label>
+            <select id="coupon-variant" class="w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 bg-white cursor-pointer">
+              <option value="">All Variants</option>
+              <option value="Batch 1">Batch 1</option>
+              <option value="Batch 2">Batch 2</option>
+              <option value="Batch 3">Batch 3</option>
+            </select>
+          </div>
+          
+          <div class="flex items-center gap-3 md:col-span-2 mt-2">
+            <label class="text-sm font-bold text-gray-700">Active immediately?</label>
+            <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                <input type="checkbox" name="toggle" id="coupon-active" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-gray-300 appearance-none cursor-pointer transition-all duration-300 z-10" checked/>
+                <label for="coupon-active" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer transition-colors duration-300"></label>
+            </div>
+            <span id="coupon-active-text" class="text-sm font-bold text-green-600">Yes</span>
+          </div>
+
+          <div class="md:col-span-2 mt-2">
+            <button type="submit" id="submit-coupon-btn" class="inline-flex items-center gap-2 px-6 py-3 bg-[#FF8C00] hover:bg-[#e67e00] text-white rounded-xl text-sm font-bold transition shadow-md active:scale-95">
+              <i class="fas fa-save"></i> Create Coupon
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Coupons Table -->
+      <div class="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm bg-white">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-gradient-to-r from-amber-50 to-orange-50 border-b border-gray-200">
+              <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Code</th>
+              <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Discount</th>
+              <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Product</th>
+              <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Variant</th>
+              <th class="px-4 py-3 text-center text-xs font-bold text-gray-600 uppercase tracking-wider">Status</th>
+              <th class="px-4 py-3 text-center text-xs font-bold text-gray-600 uppercase tracking-wider">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="coupons-table-body" class="divide-y divide-gray-100">
+            <tr>
+              <td colspan="6" class="px-4 py-8 text-center text-gray-500">
+                <i class="fas fa-spinner fa-spin mr-2"></i> Loading coupons...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script type="module" src="/src/admin.ts"></script>
+</body>
+</html>

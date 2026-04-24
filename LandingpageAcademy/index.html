@@ -1421,7 +1421,7 @@
          </div>
          <div class="relative z-10 text-center md:text-right">
            <button onclick="openRegistrationModal('kids')" class="bg-kids-yellow text-[#1E1B4B] font-black py-6 px-14 rounded-full shadow-[0_15px_30px_rgba(255,215,0,0.4)] hover:-translate-y-2 hover:scale-105 transition-all text-2xl font-kids tracking-wider">SECURE A SPOT!</button>
-           <p class="text-white/60 text-xs mt-4 font-bold uppercase tracking-widest">Limited Seats for June Batch</p>
+           <p class="text-white/60 text-xs mt-4 font-bold uppercase tracking-widest">Limited Seats for May Batch</p>
          </div>
       </div>
 
@@ -1802,13 +1802,13 @@
               <div class="inline-block bg-white/20 backdrop-blur-md px-4 py-1 rounded-full text-white text-[10px] font-black uppercase tracking-[0.2em] mb-4 border border-white/30">Official Enrollment</div>
               <h3 class="text-3xl md:text-4xl font-kids font-black text-white relative z-10">Rangers Pass</h3>
                <div class="mt-6 flex flex-col items-center justify-center relative z-10">
-                  <div class="flex items-center gap-2 mb-2">
-                    <span class="text-white/50 font-black text-xl line-through decoration-white/40">₹11,999</span>
-                    <span class="bg-white/20 text-white text-[10px] font-black px-2 py-0.5 rounded-md">SAVE 33%</span>
+                  <div class="flex items-center gap-2 mb-2" id="price-container">
+                    <span class="text-white/50 font-black text-xl line-through decoration-white/40" id="display-original-price">₹11,999</span>
+                    <span class="bg-white/20 text-white text-[10px] font-black px-2 py-0.5 rounded-md" id="display-discount-badge">SAVE 33%</span>
                   </div>
                   <div class="flex items-end gap-1">
                     <span class="text-white/80 font-kids text-xl mb-2">₹</span>
-                    <span class="text-6xl md:text-7xl font-black text-white leading-none">7,999</span>
+                    <span class="text-6xl md:text-7xl font-black text-white leading-none" id="display-current-price">7,999</span>
                   </div>
                </div>
                <p class="text-white/90 font-bold text-xs mt-4 uppercase tracking-widest bg-black/10 inline-block px-4 py-1.5 rounded-full">Limited time offer</p>
@@ -1899,7 +1899,7 @@
                 <i class="fas fa-rocket"></i>
               </div>
               <h3 class="text-2xl font-kids font-black text-[#1E1B4B] mb-4">Ready to Start?</h3>
-              <p class="text-gray-500 font-bold mb-8">Secure your spot in the upcoming June batch before seats fill up!</p>
+              <p class="text-gray-500 font-bold mb-8">Secure your spot in the upcoming May batch before seats fill up!</p>
               <button onclick="document.getElementById('enroll').scrollIntoView()" class="bg-[#FF8C00] text-white font-black py-4 px-10 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105">
                 Reserve Seat Now
               </button>
@@ -2254,21 +2254,24 @@
                   <input type="radio" name="reg-batch" id="reg-batch-1" value="Batch 1" class="hidden peer" checked onchange="switchBatch(1)">
                   <div class="w-full py-3 text-center rounded-xl border-2 border-gray-100 font-bold text-gray-500 peer-checked:border-kids-green peer-checked:bg-kids-green/10 peer-checked:text-kids-green transition-all leading-tight shadow-sm hover:border-kids-green/30">
                     <span class="text-[13px]">Batch 1</span><br/>
-                    <span class="text-[11px] opacity-80 font-black">9:30 AM</span>
+                    <span class="text-[11px] opacity-80 font-black">9:30 AM</span><br/>
+                    <span class="text-[9px] font-bold uppercase tracking-wider block mt-0.5">Starts May 16</span>
                   </div>
                 </label>
                 <label class="flex-1 cursor-pointer">
                   <input type="radio" name="reg-batch" id="reg-batch-2" value="Batch 2" class="hidden peer" onchange="switchBatch(2)">
                   <div class="w-full py-3 text-center rounded-xl border-2 border-gray-100 font-bold text-gray-500 peer-checked:border-kids-purple peer-checked:bg-kids-purple/10 peer-checked:text-kids-purple transition-all leading-tight shadow-sm hover:border-kids-purple/30">
                     <span class="text-[13px]">Batch 2</span><br/>
-                    <span class="text-[11px] opacity-80 font-black">2:00 PM</span>
+                    <span class="text-[11px] opacity-80 font-black">2:00 PM</span><br/>
+                    <span class="text-[9px] font-bold uppercase tracking-wider block mt-0.5">Starts May 16</span>
                   </div>
                 </label>
                 <label class="flex-1 cursor-pointer">
                   <input type="radio" name="reg-batch" id="reg-batch-3" value="Batch 3" class="hidden peer" onchange="switchBatch(3)">
                   <div class="w-full py-3 text-center rounded-xl border-2 border-gray-100 font-bold text-gray-500 peer-checked:border-kids-orange peer-checked:bg-kids-orange/10 peer-checked:text-kids-orange transition-all leading-tight shadow-sm hover:border-kids-orange/30">
                     <span class="text-[13px]">Batch 3</span><br/>
-                    <span class="text-[11px] opacity-80 font-black">6:30 PM</span>
+                    <span class="text-[11px] opacity-80 font-black">6:30 PM</span><br/>
+                    <span class="text-[9px] font-bold uppercase tracking-wider block mt-0.5">Starts May 16</span>
                   </div>
                 </label>
               </div>
@@ -2285,8 +2288,21 @@
 
       <!-- Footer / Actions -->
       <div class="p-8 border-t border-gray-100 shrink-0 bg-white relative z-10">
+        
+        <!-- Coupon Section -->
+        <div id="coupon-container" class="mb-6 hidden">
+          <label class="block text-xs font-black text-gray-500 uppercase tracking-widest mb-2 px-1">Have a Promo Code?</label>
+          <div class="flex items-center gap-3">
+            <input type="text" id="promo-code-input" placeholder="Enter code" class="flex-grow border-2 border-gray-100 rounded-xl px-4 py-3 outline-none focus:border-kids-purple focus:ring-4 focus:ring-kids-purple/10 transition-all font-bold text-gray-700 font-mono uppercase bg-gray-50 focus:bg-white" >
+            <button type="button" id="apply-promo-btn" class="bg-gray-800 text-white font-bold py-3 px-6 rounded-xl shadow-md hover:bg-black transition-all active:scale-95 shrink-0">
+              Apply
+            </button>
+          </div>
+          <p id="promo-message" class="text-xs font-bold mt-2 hidden"></p>
+        </div>
+
         <button type="button" onclick="document.getElementById('reg-submit-btn').click()" class="w-full bg-kids-purple text-white font-kids font-black py-5 text-center rounded-[1.5rem] shadow-bubbly-purple hover:scale-[1.02] transition-all text-2xl mb-6 flex items-center justify-center gap-3 active:scale-95">
-          Continue to Payment <i class="fas fa-arrow-right text-lg opacity-60"></i>
+          Continue to Payment <span id="btn-final-price"></span> <i class="fas fa-arrow-right text-lg opacity-60"></i>
         </button>
         <div class="flex items-start gap-4 bg-gray-50 p-4 rounded-2xl border border-gray-100">
           <div class="relative flex items-center">

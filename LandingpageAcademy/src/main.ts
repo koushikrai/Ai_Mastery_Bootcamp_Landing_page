@@ -1,6 +1,113 @@
 import './style.css'
 import './chatbot.css'
 import './chatbot.js'
+import { getProductPricing, validateCouponCode } from './lib/pricing-api'
+import type { ProductPricing } from './lib/pricing-api'
+
+// ─── STATE ─────────────────────────────────────────────────────────────
+let currentPricing: Record<string, ProductPricing> = {};
+let activeCouponDiscount: number = 0;
+
+// ─── PRICING LOGIC ─────────────────────────────────────────────────────
+
+const initPricing = async () => {
+  try {
+    const pricing = await getProductPricing();
+    
+    // Store in a map for easy lookup by product_id
+    pricing.forEach(p => {
+      // we'll default to the first variant if no specific variant is selected
+      if (!currentPricing[p.product_id]) {
+        currentPricing[p.product_id] = p;
+      }
+    });
+
+    // Update DOM if elements exist
+    const originalPriceEl = document.getElementById('display-original-price');
+    const currentPriceEl = document.getElementById('display-current-price');
+    const discountBadgeEl = document.getElementById('display-discount-badge');
+    const couponContainer = document.getElementById('coupon-container');
+
+    const kidsPricing = currentPricing['kids'];
+    if (kidsPricing) {
+      if (currentPriceEl) currentPriceEl.textContent = kidsPricing.price.toLocaleString();
+      
+      if (originalPriceEl && kidsPricing.original_price > kidsPricing.price) {
+        originalPriceEl.textContent = `₹${kidsPricing.original_price.toLocaleString()}`;
+        originalPriceEl.classList.remove('hidden');
+        
+        if (discountBadgeEl) {
+          const discountPercent = Math.round(((kidsPricing.original_price - kidsPricing.price) / kidsPricing.original_price) * 100);
+          discountBadgeEl.textContent = `SAVE ${discountPercent}%`;
+          discountBadgeEl.classList.remove('hidden');
+        }
+      }
+
+      if (couponContainer && kidsPricing.coupon_enabled) {
+        couponContainer.classList.remove('hidden');
+      }
+    }
+  } catch (error) {
+    console.error("Failed to load pricing", error);
+  }
+};
+
+const setupCouponHandling = () => {
+  const applyBtn = document.getElementById('apply-promo-btn') as HTMLButtonElement;
+  const input = document.getElementById('promo-code-input') as HTMLInputElement;
+  const message = document.getElementById('promo-message');
+  const btnFinalPrice = document.getElementById('btn-final-price');
+
+  if (!applyBtn || !input || !message) return;
+
+  applyBtn.addEventListener('click', async () => {
+    const code = input.value.trim();
+    if (!code) return;
+
+    applyBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+    applyBtn.disabled = true;
+
+    try {
+      // Assuming 'kids' program for now based on the landing page context
+      const result = await validateCouponCode(code, 'kids', '');
+      
+      message.classList.remove('hidden', 'text-red-500', 'text-green-600');
+
+      if (result) {
+        activeCouponDiscount = result.discount;
+        message.textContent = result.message;
+        message.classList.add('text-green-600');
+        input.classList.add('border-green-500', 'bg-green-50');
+        
+        // Update final price on the button
+        const basePrice = currentPricing['kids']?.price || 5000;
+        const finalPrice = Math.max(0, basePrice - activeCouponDiscount);
+        if (btnFinalPrice) {
+          btnFinalPrice.innerHTML = `| ₹${finalPrice.toLocaleString()}`;
+        }
+      } else {
+        activeCouponDiscount = 0;
+        message.textContent = 'Invalid or expired promo code.';
+        message.classList.add('text-red-500');
+        input.classList.remove('border-green-500', 'bg-green-50');
+        if (btnFinalPrice) btnFinalPrice.innerHTML = '';
+      }
+    } catch (error) {
+      console.error(error);
+      message.textContent = 'Error validating code.';
+      message.classList.remove('hidden');
+      message.classList.add('text-red-500');
+    } finally {
+      applyBtn.innerHTML = 'Apply';
+      applyBtn.disabled = false;
+    }
+  });
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  initPricing();
+  setupCouponHandling();
+});
 
 // Accordion Functionality
 const setupAccordions = () => {
@@ -137,9 +244,17 @@ let activeProgramToRegister: 'kids' | 'pro' | null = null;
     return;
   }
 
-  const baseAmount = program === 'kids' ? 500000 : 800000;
+  // Get base price from Supabase data if available, otherwise fallback
+  const fallbackPrice = program === 'kids' ? 5000 : 8000;
+  const basePrice = currentPricing[program]?.price || fallbackPrice;
+  
   const seats = prefillData?.seats || 1;
-  const amountToCharge = baseAmount * seats;
+  
+  // Calculate final amount per seat with discount
+  const pricePerSeat = Math.max(0, basePrice - activeCouponDiscount);
+  
+  // Amount to charge in paise (multiply by 100)
+  const amountToCharge = (pricePerSeat * seats) * 100;
 
   const options = {
     key: RAZORPAY_KEY,

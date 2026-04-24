@@ -1214,7 +1214,7 @@
          </div>
          <div class="relative z-10 text-center md:text-right">
            <button onclick="openRazorpay('kids')" class="bg-kids-yellow text-[#2C0A15] font-black py-6 px-14 rounded-full shadow-[0_15px_30px_rgba(255,215,0,0.4)] hover:-translate-y-2 hover:scale-105 transition-all text-2xl font-kids tracking-wider">SECURE A SPOT!</button>
-           <p class="text-white/60 text-xs mt-4 font-bold uppercase tracking-widest">Limited Seats for June Batch</p>
+           <p class="text-white/60 text-xs mt-4 font-bold uppercase tracking-widest">Limited Seats for May Batch</p>
          </div>
       </div>
 
@@ -1487,8 +1487,15 @@
             <div class="absolute inset-0 opacity-20"><i class="fas fa-rocket text-8xl absolute -right-6 -bottom-6 text-white"></i></div>
             <h3 class="text-2xl font-black text-white relative z-10">Rangers Pass</h3>
             <p class="text-white/80 font-bold text-sm mt-1 relative z-10">4-Week Live Training & Mentorship</p>
-            <div class="mt-6 flex justify-center items-center gap-2 relative z-10">
-                <span class="text-5xl font-black text-white">₹5,000</span>
+            <div class="mt-6 flex flex-col items-center justify-center gap-2 relative z-10" id="price-container">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="text-white/50 font-black text-xl line-through decoration-white/40 hidden" id="display-original-price"></span>
+                  <span class="bg-white/20 text-white text-[10px] font-black px-2 py-0.5 rounded-md hidden" id="display-discount-badge"></span>
+                </div>
+                <div class="flex items-end gap-1">
+                  <span class="text-white/80 font-kids text-xl mb-2">₹</span>
+                  <span class="text-5xl font-black text-white leading-none" id="display-current-price">5,000</span>
+                </div>
             </div>
             <span class="inline-block mt-3 bg-white/20 px-3 py-1 text-white text-[11px] font-black uppercase tracking-widest rounded-full relative z-10 shadow-sm border border-white/30">One-Time Payment</span>
         </div>
@@ -1519,7 +1526,19 @@
                 </li>
             </ul>
             
-            <button onclick="openRazorpay('kids')" class="w-full bg-[#8A1538] text-white py-5 rounded-xl font-black text-lg shadow-[0_10px_20px_rgba(61,44,141,0.3)] hover:bg-[#2B1B61] hover:-translate-y-1 hover:shadow-xl transition-all">Enroll Now via Razorpay</button>
+            <!-- Coupon Section -->
+            <div id="coupon-container" class="mb-6 mt-4 p-4 bg-gray-50 rounded-2xl border border-gray-100 hidden">
+              <label class="block text-xs font-black text-gray-500 uppercase tracking-widest mb-2 px-1">Have a Promo Code?</label>
+              <div class="flex items-center gap-3">
+                <input type="text" id="promo-code-input" placeholder="Enter code" class="flex-grow border-2 border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#8A1538] transition-all font-bold text-gray-700 font-mono uppercase bg-white" >
+                <button type="button" id="apply-promo-btn" class="bg-gray-800 text-white font-bold py-3 px-6 rounded-xl shadow-md hover:bg-black transition-all active:scale-95 shrink-0">
+                  Apply
+                </button>
+              </div>
+              <p id="promo-message" class="text-xs font-bold mt-2 hidden"></p>
+            </div>
+
+            <button onclick="openRazorpay('kids')" class="w-full bg-[#8A1538] text-white py-5 rounded-xl font-black text-lg shadow-[0_10px_20px_rgba(61,44,141,0.3)] hover:bg-[#2B1B61] hover:-translate-y-1 hover:shadow-xl transition-all">Enroll Now <span id="btn-final-price"></span></button>
             <p class="text-center text-[11px] text-gray-500 font-bold mt-4 uppercase tracking-widest"><i class="fas fa-lock text-gray-400 mr-1"></i> 100% Secure Checkout</p>
         </div>
       </div>
