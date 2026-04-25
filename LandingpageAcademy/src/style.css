@@ -1,5 +1,31 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Adani';
+  src: url('/font/Adani Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Adani';
+  src: url('/font/Adani Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Adani';
+  src: url('/font/Adani SemiBold.ttf') format('truetype');
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Adani';
+  src: url('/font/Adani Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Adani';
+  src: url('/font/Adani Light.ttf') format('truetype');
+  font-weight: 300;
+}
+
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -22,6 +48,8 @@ html {
   /* Slightly darker grey to contrast with cards */
   --color-marquee-bg: #E5E7EB;
   /* Darker scroller bg */
+
+  --font-adani: "Adani", sans-serif;
 
   /* Kids Colorful Palette */
   --color-kids-pink: #FF0080;

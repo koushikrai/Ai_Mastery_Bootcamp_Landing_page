@@ -1,5 +1,31 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Adani';
+  src: url('/font/Adani Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Adani';
+  src: url('/font/Adani Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Adani';
+  src: url('/font/Adani SemiBold.ttf') format('truetype');
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Adani';
+  src: url('/font/Adani Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Adani';
+  src: url('/font/Adani Light.ttf') format('truetype');
+  font-weight: 300;
+}
+
 @theme {
   --font-poppins: "Poppins", sans-serif;
   --color-indigo: #3D2C8D;
@@ -17,6 +43,8 @@
   /* Slightly darker grey to contrast with cards */
   --color-marquee-bg: #E5E7EB;
   /* Darker scroller bg */
+
+  --font-adani: "Adani", sans-serif;
 
   --shadow-premium: 0 10px 30px rgba(0, 0, 0, 0.04);
   --shadow-card: 0 20px 40px rgba(0, 0, 0, 0.08);
