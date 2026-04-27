@@ -156,9 +156,73 @@
 
     @media (max-width: 768px) {
       .speech-bubble {
-        width: 160px;
-        font-size: 11px;
+        width: 120px;
+        font-size: 10px;
       }
+      .speech-bubble-left {
+        width: 100px;
+        font-size: 9px;
+        padding: 4px 8px;
+        border-radius: 1rem;
+      }
+      .speech-bubble-left::after {
+        border-width: 10px 10px 0 0;
+        bottom: -10px;
+        left: 20px;
+      }
+      .speech-bubble-left::before {
+        border-width: 8px 8px 0 0;
+        bottom: -5px;
+        left: 22px;
+      }
+    }
+
+    /* MacBook Prize Bubble */
+    .speech-bubble-left {
+      position: absolute;
+      bottom: 110%;
+      left: 0;
+      width: 180px;
+      background: #1E1B4B;
+      border: 3px solid #FF0080;
+      border-radius: 1.5rem;
+      padding: 10px 14px;
+      box-shadow: 0 10px 30px rgba(30, 27, 75, 0.3);
+      font-size: 13px;
+      font-weight: 800;
+      color: white;
+      opacity: 0;
+      transform: translateY(10px) scale(0.9);
+      pointer-events: none;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .speech-bubble-left.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    
+    .speech-bubble-left::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 30px;
+      border-width: 15px 15px 0 0;
+      border-style: solid;
+      border-color: #FF0080 transparent transparent;
+      transform: scaleX(-1);
+    }
+    
+    .speech-bubble-left::before {
+      content: '';
+      position: absolute;
+      bottom: -7px;
+      left: 33px;
+      border-width: 10px 10px 0 0;
+      border-style: solid;
+      border-color: #1E1B4B transparent transparent;
+      transform: scaleX(-1);
+      z-index: 1;
     }
 
   </style>
@@ -502,6 +566,7 @@
                        <p class="text-[12px] text-gray-500 font-bold leading-tight">Compose original background themes</p>
                      </div>
                   </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -545,6 +610,44 @@
 
       <div class="text-center">
         <a href="/AI_Explorers_Academy_Curriculum.pdf" download class="inline-block border-2 border-[#3D2C8D] text-[#3D2C8D] font-bold py-4 px-12 rounded-full hover:bg-[#3D2C8D] hover:text-white transition-all hover:shadow-xl"><i class="fas fa-download mr-2"></i> Download Full Brochure</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MACBOOK PRIZE SECTION -->
+  <section class="py-24 relative overflow-hidden bg-[#F7F8FC]">
+    <div class="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#1E1B4B_1.5px,transparent_1.5px)] bg-[size:30px_30px]"></div>
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+      <div class="bg-white rounded-[4rem] overflow-hidden shadow-[0_50px_100px_rgba(30,27,75,0.1)] border-8 border-white flex flex-col md:flex-row items-center">
+        <!-- Image Side -->
+        <div class="w-full md:w-1/2 relative aspect-square md:aspect-auto md:h-[500px] overflow-hidden group">
+          <img src="/mascots/macbook_price.png" alt="Grand Prize MacBook" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#1E1B4B]/40 to-transparent"></div>
+          <!-- Floating Badge -->
+          <div class="absolute top-8 left-8 bg-kids-pink text-white text-[10px] font-black px-5 py-2 rounded-full uppercase tracking-[0.3em] shadow-xl animate-pulse">The Ultimate Prize</div>
+        </div>
+        
+        <!-- Content Side -->
+        <div class="w-full md:w-1/2 p-10 md:p-16 text-center md:text-left">
+          <div class="inline-flex items-center gap-2 mb-6">
+            <div class="w-10 h-[2px] bg-kids-purple"></div>
+            <span class="text-kids-purple font-black text-xs uppercase tracking-widest">Only One Can Win</span>
+          </div>
+          <h2 class="text-4xl md:text-6xl font-black text-[#1E1B4B] font-kids mb-8 leading-tight">Win a <span class="text-kids-pink underline decoration-dotted underline-offset-[12px]">MacBook</span></h2>
+          <p class="text-lg md:text-xl font-bold text-gray-500 mb-10 leading-relaxed">
+            One exceptional Ranger who demonstrates the most creative use of AI in their capstone project will stand a chance to win a brand new MacBook.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center gap-6">
+            <div class="bg-kids-peach/30 border border-kids-orange/20 px-8 py-4 rounded-2xl flex items-center gap-4">
+              <i class="fas fa-trophy text-kids-orange text-2xl"></i>
+              <div>
+                <p class="text-[10px] text-kids-orange font-black uppercase tracking-tighter">Merit Based</p>
+                <p class="text-sm font-black text-[#1E1B4B]">Top Performer Award</p>
+              </div>
+            </div>
+            <p class="text-xs font-bold text-gray-400 italic">Terms & Conditions Apply*</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -2212,16 +2315,22 @@
       <!-- Body / Form -->
       <div class="p-8 overflow-y-auto relative z-10 custom-scrollbar">
         <form id="registration-form" class="space-y-6" onsubmit="handleRegistrationSubmit(event)">
-          <!-- Row 1: Name & Email -->
+          <!-- Row 1: Student Name & Email -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div class="group">
               <label class="block text-sm font-black text-[#1E1B4B] mb-2 px-1">Student Name ✨</label>
               <input type="text" id="reg-name" required placeholder="Ex: Alex Spark" class="w-full border-2 border-gray-100 rounded-2xl px-5 py-3.5 outline-none focus:border-kids-purple focus:ring-4 focus:ring-kids-purple/10 transition-all font-bold text-gray-700 placeholder:text-gray-300" >
             </div>
             <div class="group">
-              <label class="block text-sm font-black text-[#1E1B4B] mb-2 px-1">Email 📧</label>
+              <label class="block text-sm font-black text-[#1E1B4B] mb-2 px-1">Student Email 🎓</label>
               <input type="email" id="reg-email" required placeholder="alex@magic.com" class="w-full border-2 border-gray-100 rounded-2xl px-5 py-3.5 outline-none focus:border-kids-purple focus:ring-4 focus:ring-kids-purple/10 transition-all font-bold text-gray-700 placeholder:text-gray-300" >
             </div>
+          </div>
+
+          <!-- Parent's Email Row -->
+          <div class="group">
+            <label class="block text-sm font-black text-[#1E1B4B] mb-2 px-1">Parent's Email 📧</label>
+            <input type="email" id="reg-parent-email" required placeholder="parent@home.com" class="w-full border-2 border-gray-100 rounded-2xl px-5 py-3.5 outline-none focus:border-kids-purple focus:ring-4 focus:ring-kids-purple/10 transition-all font-bold text-gray-700 placeholder:text-gray-300" >
           </div>
 
           <!-- Row 2: School & WhatsApp -->
@@ -2347,6 +2456,29 @@
     </div>
     <img src="/mascots/brainy.svg" alt="Floating Mascot" id="floating-mascot" class="w-full drop-shadow-2xl animate-bouncy group-hover:scale-110 transition-transform duration-300">
   </div>
+
+  <!-- FLOATING MACBOOK PRIZE -->
+  <div id="floating-prize-container" class="fixed bottom-6 left-4 w-14 md:bottom-10 md:left-10 md:w-28 cursor-pointer z-[10000] group select-none">
+    <div id="prize-speech" class="speech-bubble-left active">
+      Win a MacBook! 💻✨
+    </div>
+    <img src="/mascots/macbook_prize.svg" alt="MacBook Mascot" class="w-full drop-shadow-2xl animate-bouncy group-hover:scale-110 transition-transform duration-300" style="animation-delay: 0.5s">
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const prizeSpeech = document.getElementById('prize-speech');
+      if (prizeSpeech) {
+        setTimeout(() => {
+          prizeSpeech.classList.add('active');
+        }, 5000);
+      }
+    });
+
+    window.switchBatch = function(batch) {
+      console.log("Switched to batch", batch);
+    };
+  </script>
 
 </body>
 </html>

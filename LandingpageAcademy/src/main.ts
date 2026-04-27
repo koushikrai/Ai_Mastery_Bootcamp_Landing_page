@@ -212,6 +212,7 @@ let activeProgramToRegister: 'kids' | 'pro' | null = null;
   // Read basic info needed for checkout
   const nameInput = document.getElementById('reg-name') as HTMLInputElement;
   const emailInput = document.getElementById('reg-email') as HTMLInputElement;
+  const parentEmailInput = document.getElementById('reg-parent-email') as HTMLInputElement;
   const numInput = document.getElementById('reg-whatsapp') as HTMLInputElement;
   
   // Get selected batch
@@ -221,6 +222,7 @@ let activeProgramToRegister: 'kids' | 'pro' | null = null;
   const formData = {
     name: nameInput?.value || '',
     email: emailInput?.value || '',
+    parentEmail: parentEmailInput?.value || '',
     contact: numInput ? `+91${numInput.value}` : '',
     batch: selectedBatch,
     seats: 1
@@ -266,7 +268,7 @@ let activeProgramToRegister: 'kids' | 'pro' | null = null;
     },
     prefill: { 
       name: prefillData?.name || "", 
-      email: prefillData?.email || "", 
+      email: prefillData?.parentEmail || prefillData?.email || "", 
       contact: prefillData?.contact || "" 
     },
     modal: { ondismiss: function () { console.log("Payment closed"); } },

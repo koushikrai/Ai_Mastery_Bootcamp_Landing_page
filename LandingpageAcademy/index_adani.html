@@ -125,9 +125,73 @@
 
     @media (max-width: 768px) {
       .speech-bubble {
-        width: 160px;
-        font-size: 11px;
+        width: 120px;
+        font-size: 10px;
       }
+      .speech-bubble-left {
+        width: 100px;
+        font-size: 9px;
+        padding: 4px 8px;
+        border-radius: 1rem;
+      }
+      .speech-bubble-left::after {
+        border-width: 10px 10px 0 0;
+        bottom: -10px;
+        left: 20px;
+      }
+      .speech-bubble-left::before {
+        border-width: 8px 8px 0 0;
+        bottom: -5px;
+        left: 22px;
+      }
+    }
+
+    /* MacBook Prize Bubble */
+    .speech-bubble-left {
+      position: absolute;
+      bottom: 110%;
+      left: 0;
+      width: 180px;
+      background: #1E1B4B;
+      border: 3px solid #E30064;
+      border-radius: 1.5rem;
+      padding: 10px 14px;
+      box-shadow: 0 10px 30px rgba(30, 27, 75, 0.3);
+      font-size: 13px;
+      font-weight: 800;
+      color: white;
+      opacity: 0;
+      transform: translateY(10px) scale(0.9);
+      pointer-events: none;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .speech-bubble-left.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    
+    .speech-bubble-left::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 30px;
+      border-width: 15px 15px 0 0;
+      border-style: solid;
+      border-color: #E30064 transparent transparent;
+      transform: scaleX(-1);
+    }
+    
+    .speech-bubble-left::before {
+      content: '';
+      position: absolute;
+      bottom: -7px;
+      left: 33px;
+      border-width: 10px 10px 0 0;
+      border-style: solid;
+      border-color: #1E1B4B transparent transparent;
+      transform: scaleX(-1);
+      z-index: 1;
     }
 
   </style>
@@ -175,7 +239,7 @@
       <span class="w-1.5 h-1.5 rounded-full bg-[#FF8C00] animate-ping"></span>
       <span>Join the Magic!</span>
     </p>
-    <button onclick="openRazorpay('kids')" class="relative z-10 bg-[#FF8C00] hover:bg-white hover:text-[#FF8C00] text-white px-6 py-1.5 rounded-full text-[12px] md:text-sm font-black transition-all shadow-xl active:scale-95 border-2 border-transparent hover:border-[#FF8C00] font-kids">GET STARTED</button>
+    <button onclick="openRegistrationModal('kids')" class="relative z-10 bg-[#FF8C00] hover:bg-white hover:text-[#FF8C00] text-white px-6 py-1.5 rounded-full text-[12px] md:text-sm font-black transition-all shadow-xl active:scale-95 border-2 border-transparent hover:border-[#FF8C00] font-kids">GET STARTED</button>
   </div>
 
   <!-- NAVIGATION PILL -->
@@ -382,11 +446,45 @@
   </div>
 
   <!-- WAVY DIVIDER END -->
-  <div class="curvy-divider text-white rotate-180">
-    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-    </svg>
   </div>
+
+  <!-- MACBOOK PRIZE SECTION -->
+  <section class="py-24 relative overflow-hidden bg-[#F7F8FC]">
+    <div class="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#8A1538_1.5px,transparent_1.5px)] bg-[size:30px_30px]"></div>
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+      <div class="bg-white rounded-[4rem] overflow-hidden shadow-[0_50px_100px_rgba(138,21,56,0.1)] border-8 border-white flex flex-col md:flex-row items-center">
+        <!-- Image Side -->
+        <div class="w-full md:w-1/2 relative aspect-square md:aspect-auto md:h-[500px] overflow-hidden group">
+          <img src="/mascots/macbook_price.png" alt="Grand Prize MacBook" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#8A1538]/40 to-transparent"></div>
+          <!-- Floating Badge -->
+          <div class="absolute top-8 left-8 bg-kids-pink text-white text-[10px] font-black px-5 py-2 rounded-full uppercase tracking-[0.3em] shadow-xl animate-pulse">The Ultimate Prize</div>
+        </div>
+        
+        <!-- Content Side -->
+        <div class="w-full md:w-1/2 p-10 md:p-16 text-center md:text-left">
+          <div class="inline-flex items-center gap-2 mb-6">
+            <div class="w-10 h-[2px] bg-adani-maroon"></div>
+            <span class="text-adani-maroon font-black text-xs uppercase tracking-widest">Only One Can Win</span>
+          </div>
+          <h2 class="text-4xl md:text-6xl font-black text-[#2C0A15] font-kids mb-8 leading-tight">Win a <span class="text-kids-pink underline decoration-dotted underline-offset-[12px]">MacBook</span></h2>
+          <p class="text-lg md:text-xl font-bold text-gray-500 mb-10 leading-relaxed">
+            One exceptional Ranger who demonstrates the most creative use of AI in their capstone project will stand a chance to win a brand new MacBook.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center gap-6">
+            <div class="bg-adani-magenta/5 border border-adani-magenta/20 px-8 py-4 rounded-2xl flex items-center gap-4">
+              <i class="fas fa-trophy text-adani-magenta text-2xl"></i>
+              <div>
+                <p class="text-[10px] text-adani-magenta font-black uppercase tracking-tighter">Merit Based</p>
+                <p class="text-sm font-black text-[#2C0A15]">Top Performer Award</p>
+              </div>
+            </div>
+            <p class="text-xs font-bold text-gray-400 italic">Terms & Conditions Apply*</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
   <!-- LEARNING PLAN SECTION -->
@@ -465,6 +563,7 @@
                        <h4 class="font-black text-[15px] text-[#2C0A15] leading-tight mb-0.5">Data Story Capstone</h4>
                        <p class="text-[12px] text-gray-500 font-bold leading-tight">Find & present hidden patterns to parents</p>
                      </div>
+                  </div>
                   </div>
                 </div>
               </div>
@@ -1538,7 +1637,7 @@
               <p id="promo-message" class="text-xs font-bold mt-2 hidden"></p>
             </div>
 
-            <button onclick="openRazorpay('kids')" class="w-full bg-[#8A1538] text-white py-5 rounded-xl font-black text-lg shadow-[0_10px_20px_rgba(61,44,141,0.3)] hover:bg-[#2B1B61] hover:-translate-y-1 hover:shadow-xl transition-all">Enroll Now <span id="btn-final-price"></span></button>
+            <button onclick="openRegistrationModal('kids')" class="w-full bg-[#8A1538] text-white py-5 rounded-xl font-black text-lg shadow-[0_10px_20px_rgba(61,44,141,0.3)] hover:bg-[#2B1B61] hover:-translate-y-1 hover:shadow-xl transition-all">Enroll Now <span id="btn-final-price"></span></button>
             <p class="text-center text-[11px] text-gray-500 font-bold mt-4 uppercase tracking-widest"><i class="fas fa-lock text-gray-400 mr-1"></i> 100% Secure Checkout</p>
         </div>
       </div>
@@ -1804,6 +1903,168 @@
     </div>
     <img src="/mascots/brainy.svg" alt="Floating Mascot" id="floating-mascot" class="w-full drop-shadow-2xl animate-bouncy group-hover:scale-110 transition-transform duration-300">
   </div>
+
+  <!-- FLOATING MACBOOK PRIZE -->
+  <div id="floating-prize-container" class="fixed bottom-6 left-4 w-14 md:bottom-10 md:left-10 md:w-28 cursor-pointer z-[10000] group select-none">
+    <div id="prize-speech" class="speech-bubble-left active">
+      Win a MacBook! 💻✨
+    </div>
+    <img src="/mascots/macbook_prize.svg" alt="MacBook Mascot" class="w-full drop-shadow-2xl animate-bouncy group-hover:scale-110 transition-transform duration-300" style="animation-delay: 0.5s">
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const prizeSpeech = document.getElementById('prize-speech');
+      if (prizeSpeech) {
+        setTimeout(() => {
+          prizeSpeech.classList.add('active');
+        }, 5000);
+      }
+    });
+  </script>
+
+  <!-- EVENT REGISTRATION MODAL -->
+  <div id="registration-modal" class="fixed inset-0 z-[10001] hidden items-center justify-center p-4">
+    <div class="absolute inset-0 bg-[#2C0A15]/40 backdrop-blur-md" onclick="closeRegistrationModal()"></div>
+    <div class="w-full max-w-2xl relative flex flex-col items-center">
+      <!-- Peeking Mascot -->
+      <div class="absolute -top-10 md:-top-16 left-1/2 -translate-x-1/2 w-20 md:w-32 z-50 pointer-events-none drop-shadow-2xl">
+        <img src="/mascots/robot-kid.svg" alt="" class="w-full">
+      </div>
+
+      <!-- Modal Box -->
+      <div class="bg-white rounded-[3rem] w-full relative shadow-[0_40px_100px_rgba(138,21,56,0.2)] flex flex-col max-h-[90vh] overflow-hidden border-8 border-white">
+        
+        <!-- Decorative background elements -->
+        <div class="absolute -top-20 -right-20 w-64 h-64 bg-[#E30064]/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-kids-cyan/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-10 left-10 text-kids-yellow/20 text-4xl animate-bounce pointer-events-none"><i class="fas fa-star"></i></div>
+        <div class="absolute bottom-40 right-10 text-[#8A1538]/15 text-5xl animate-bouncy pointer-events-none"><i class="fas fa-rocket"></i></div>
+
+      <!-- Header -->
+      <div class="pt-14 pb-6 px-8 border-b border-gray-100 flex items-center justify-center shrink-0 relative z-10">
+        <h2 class="text-3xl md:text-4xl font-kids font-black text-[#2C0A15] text-center">Join the <span class="text-[#8A1538]">AI Adventure!</span></h2>
+        <button onclick="closeRegistrationModal()" class="absolute top-6 right-6 text-gray-400 hover:text-red-500 transition-all w-10 h-10 flex items-center justify-center rounded-full bg-gray-50 hover:bg-white hover:rotate-90 hover:shadow-md border border-gray-100">
+          <i class="fas fa-times text-lg"></i>
+        </button>
+      </div>
+
+      <!-- Body / Form -->
+      <div class="p-8 overflow-y-auto relative z-10 custom-scrollbar">
+        <form id="registration-form" class="space-y-6" onsubmit="handleRegistrationSubmit(event)">
+          <!-- Row 1: Student Name & Email -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="group">
+              <label class="block text-sm font-black text-[#2C0A15] mb-2 px-1">Student Name ✨</label>
+              <input type="text" id="reg-name" required placeholder="Ex: Alex Spark" class="w-full border-2 border-gray-100 rounded-2xl px-5 py-3.5 outline-none focus:border-[#8A1538] focus:ring-4 focus:ring-[#8A1538]/10 transition-all font-bold text-gray-700 placeholder:text-gray-300" >
+            </div>
+            <div class="group">
+              <label class="block text-sm font-black text-[#2C0A15] mb-2 px-1">Student Email 🎓</label>
+              <input type="email" id="reg-email" required placeholder="alex@magic.com" class="w-full border-2 border-gray-100 rounded-2xl px-5 py-3.5 outline-none focus:border-[#8A1538] focus:ring-4 focus:ring-[#8A1538]/10 transition-all font-bold text-gray-700 placeholder:text-gray-300" >
+            </div>
+          </div>
+
+          <!-- Parent's Email Row -->
+          <div class="group">
+            <label class="block text-sm font-black text-[#2C0A15] mb-2 px-1">Parent's Email 📧</label>
+            <input type="email" id="reg-parent-email" required placeholder="parent@home.com" class="w-full border-2 border-gray-100 rounded-2xl px-5 py-3.5 outline-none focus:border-[#8A1538] focus:ring-4 focus:ring-[#8A1538]/10 transition-all font-bold text-gray-700 placeholder:text-gray-300" >
+          </div>
+
+          <!-- Row 2: School & WhatsApp -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="group">
+              <label class="block text-sm font-black text-[#2C0A15] mb-2 px-1">School 🏫</label>
+              <input type="text" id="reg-school" required placeholder="Academy of Excellence" class="w-full border-2 border-gray-100 rounded-2xl px-5 py-3.5 outline-none focus:border-[#8A1538] focus:ring-4 focus:ring-[#8A1538]/10 transition-all font-bold text-gray-700 placeholder:text-gray-300" >
+            </div>
+            <div class="group">
+              <label class="block text-sm font-black text-[#2C0A15] mb-2 px-1">WhatsApp Number 📱</label>
+              <div class="flex">
+                <div class="border-2 border-r-0 border-gray-100 rounded-l-2xl px-4 py-3.5 bg-gray-50 font-black text-gray-400 shrink-0 flex items-center">+91</div>
+                <input type="tel" id="reg-whatsapp" required pattern="[0-9]{10}" placeholder="9876543210" class="w-full border-2 border-gray-100 rounded-r-2xl px-5 py-3.5 outline-none focus:border-[#8A1538] focus:ring-4 focus:ring-[#8A1538]/10 transition-all font-bold text-gray-700 placeholder:text-gray-300" >
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 3: Grade -->
+          <div class="group">
+            <label class="block text-sm font-black text-[#2C0A15] mb-2 px-1">Grade 🎓</label>
+            <select id="reg-grade" required class="w-full border-2 border-gray-100 rounded-2xl px-5 py-3.5 outline-none focus:border-[#8A1538] focus:ring-4 focus:ring-[#8A1538]/10 transition-all font-bold text-gray-700 bg-white cursor-pointer">
+              <option value="">-- Choose Grade --</option>
+              <option>Grade 6</option>
+              <option>Grade 7</option>
+              <option>Grade 8</option>
+              <option>Grade 9</option>
+              <option>Grade 10</option>
+              <option>Grade 11</option>
+              <option>Grade 12</option>               
+            </select>
+          </div>
+
+          <!-- Row 4: Batch Selection & Pincode -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="group">
+              <label class="block text-sm font-black text-[#2C0A15] mb-2 px-1">Select Batch 🗓️</label>
+              <div class="flex gap-3 mt-1">
+                <label class="flex-1 cursor-pointer">
+                  <input type="radio" name="reg-batch" id="reg-batch-1" value="Batch 1" class="hidden peer" checked onchange="switchBatch(1)">
+                  <div class="w-full py-3 text-center rounded-xl border-2 border-gray-100 font-bold text-gray-500 peer-checked:border-adani-green peer-checked:bg-adani-green/10 peer-checked:text-adani-green transition-all leading-tight shadow-sm hover:border-adani-green/30">
+                    <span class="text-[13px]">Batch 1</span><br/>
+                    <span class="text-[11px] opacity-80 font-black">9:30 AM</span><br/>
+                    <span class="text-[9px] font-bold uppercase tracking-wider block mt-0.5">Starts May 16</span>
+                  </div>
+                </label>
+                <label class="flex-1 cursor-pointer">
+                  <input type="radio" name="reg-batch" id="reg-batch-2" value="Batch 2" class="hidden peer" onchange="switchBatch(2)">
+                  <div class="w-full py-3 text-center rounded-xl border-2 border-gray-100 font-bold text-gray-500 peer-checked:border-[#8A1538] peer-checked:bg-[#8A1538]/10 peer-checked:text-[#8A1538] transition-all leading-tight shadow-sm hover:border-[#8A1538]/30">
+                    <span class="text-[13px]">Batch 2</span><br/>
+                    <span class="text-[11px] opacity-80 font-black">2:00 PM</span><br/>
+                    <span class="text-[9px] font-bold uppercase tracking-wider block mt-0.5">Starts May 16</span>
+                  </div>
+                </label>
+                <label class="flex-1 cursor-pointer">
+                  <input type="radio" name="reg-batch" id="reg-batch-3" value="Batch 3" class="hidden peer" onchange="switchBatch(3)">
+                  <div class="w-full py-3 text-center rounded-xl border-2 border-gray-100 font-bold text-gray-500 peer-checked:border-[#FF8C00] peer-checked:bg-[#FF8C00]/10 peer-checked:text-[#FF8C00] transition-all leading-tight shadow-sm hover:border-[#FF8C00]/30">
+                    <span class="text-[13px]">Batch 3</span><br/>
+                    <span class="text-[11px] opacity-80 font-black">6:30 PM</span><br/>
+                    <span class="text-[9px] font-bold uppercase tracking-wider block mt-0.5">Starts May 16</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+            <div class="group">
+              <label class="block text-sm font-black text-[#2C0A15] mb-2 px-1">Pincode 📍</label>
+              <input type="text" id="reg-pincode" required pattern="[0-9]{5,6}" placeholder="400001" class="w-full border-2 border-gray-100 rounded-2xl px-5 py-3.5 outline-none focus:border-[#8A1538] focus:ring-4 focus:ring-[#8A1538]/10 transition-all font-bold text-gray-700 placeholder:text-gray-300" >
+            </div>
+          </div>
+
+          <button type="submit" id="reg-submit-btn" class="hidden">submit</button>
+        </form>
+      </div>
+
+      <!-- Footer / Actions -->
+      <div class="p-8 border-t border-gray-100 shrink-0 bg-white relative z-10">
+        <div class="flex flex-col gap-4">
+          <button onclick="document.getElementById('reg-submit-btn').click()" class="w-full bg-[#8A1538] text-white py-5 rounded-[2rem] font-kids font-black text-2xl shadow-[0_15px_30px_rgba(138,21,56,0.3)] hover:bg-[#2B1B61] hover:-translate-y-2 hover:shadow-2xl transition-all active:scale-95">
+            Continue to Payment <i class="fas fa-arrow-right ml-2"></i>
+          </button>
+          <div class="flex items-start gap-3 p-4 bg-gray-50 rounded-2xl border border-gray-100">
+             <input type="checkbox" id="reg-consent" required class="mt-1 w-5 h-5 rounded-md border-2 border-gray-200 text-[#8A1538] focus:ring-[#8A1538] cursor-pointer" checked>
+             <label for="reg-consent" class="text-[11px] font-bold text-gray-500 leading-relaxed cursor-pointer">
+               I authorize receiving reminders and informational updates about the AI Adventure program via WhatsApp and Email.
+             </label>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.switchBatch = function(batch) {
+      // Internal batch switching logic if needed
+      console.log("Switched to batch", batch);
+    }
+  </script>
 
 </body>
 </html>
