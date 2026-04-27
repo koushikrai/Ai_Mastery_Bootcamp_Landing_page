@@ -190,12 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Razorpay Integration Logic
 (window as any).openRazorpay = function (program: 'kids' | 'pro', prefillData?: any) {
-  const RAZORPAY_KEY = "YOUR_RAZORPAY_KEY_ID"; // REPLACEME: Get this from dashboard.razorpay.com
-
-  if (RAZORPAY_KEY === "YOUR_RAZORPAY_KEY_ID") {
-    alert("Please set your real Razorpay Key ID in src/main.ts to enable payments.\nYou can get one from the Razorpay Dashboard (Test Mode).");
-    return;
-  }
+  const RAZORPAY_KEY = import.meta.env.VITE_RAZORPAY_KEY_ID as string;
 
   // Get base price from Supabase data if available, otherwise fallback
   const fallbackPrice = program === 'kids' ? 5000 : 8000;

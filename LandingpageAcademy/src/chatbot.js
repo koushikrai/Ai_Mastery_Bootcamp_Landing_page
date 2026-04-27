@@ -220,9 +220,9 @@ class AIForKidsChatbot {
         whatsappBtn.onmouseout = () => whatsappBtn.style.transform = 'scale(1)';
 
         whatsappBtn.onclick = () => {
-            const phone = "919723604009";
+            const phone = "919727257426";
             const message = encodeURIComponent(`Hello ASDC Team, I have a query from the AI Rangers website regarding: "${this.lastQuery || ''}"`);
-            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+            window.open(`https://api.whatsapp.com/send?phone=${phone}&text=${message}&lang=en`, '_blank');
         };
 
         actionDiv.appendChild(whatsappBtn);
